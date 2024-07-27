@@ -23,7 +23,7 @@ public class View_TT extends javax.swing.JFrame {
 
     private repositories.Repositories_HD rp_HD = new Repositories_HD();
     private repositories.Repositories_HDCT rp_HDCT = new Repositories_HDCT();
-    private repositories.Repositories_TT rp_TT = new Repositories_TT();
+//    private repositories.Repositories_TT rp_TT = new Repositories_TT();
     private DefaultTableModel mol = new DefaultTableModel();
     private int i = -1;
 
@@ -36,17 +36,17 @@ public class View_TT extends javax.swing.JFrame {
         this.fillTable_HD(rp_HD.getAll_HD());
         this.fillTable_HDCT(rp_HDCT.getAll_HDCT());
         // TT
-        this.fillTable_TT(rp_TT.getBasicInfo_HD());
-        this.fillTable_TT_DV(rp_TT.getTongTienDV_HD());
-        this.fillTable_TT_P(rp_TT.getTongTienPhong_HD());
+//        this.fillTable_TT(rp_TT.getBasicInfo_HD());
+//        this.fillTable_TT_DV(rp_TT.getTongTienDV_HD());
+//        this.fillTable_TT_P(rp_TT.getTongTienPhong_HD());
         //
         cbo_KM.removeAllItems();
         cbo_KM.addItem("5");
         cbo_KM.addItem("10");
         //TT
-        cbo_KM1.removeAllItems();
-        cbo_KM1.addItem("5");
-        cbo_KM1.addItem("10");
+//        cbo_KM1.removeAllItems();
+//        cbo_KM1.addItem("5");
+//        cbo_KM1.addItem("10");
         //
         i = rp_HD.getAll_HD().size();
         this.showData_HD(i - 1);
@@ -56,17 +56,17 @@ public class View_TT extends javax.swing.JFrame {
         this.showData_HDCT(i - 1);
         tbl_HDCT.setRowSelectionInterval(i - 1, i - 1);
         //TT
-        i = rp_TT.getBasicInfo_HD().size();
-        this.showData_TT(i - 1);
-        tbl_HDCT.setRowSelectionInterval(i - 1, i - 1);
-
-        i = rp_TT.getTongTienDV_HD().size();
-        this.showData_TT_DV(i - 1);
-        tbl_HDCT.setRowSelectionInterval(i - 1, i - 1);
-
-        i = rp_TT.getTongTienPhong_HD().size();
-        this.showData_TT_P(i - 1);
-        tbl_HDCT.setRowSelectionInterval(i - 1, i - 1);
+//        i = rp_TT.getBasicInfo_HD().size();
+//        this.showData_TT(i - 1);
+//        tbl_HDCT.setRowSelectionInterval(i - 1, i - 1);
+//
+//        i = rp_TT.getTongTienDV_HD().size();
+//        this.showData_TT_DV(i - 1);
+//        tbl_HDCT.setRowSelectionInterval(i - 1, i - 1);
+//
+//        i = rp_TT.getTongTienPhong_HD().size();
+//        this.showData_TT_P(i - 1);
+//        tbl_HDCT.setRowSelectionInterval(i - 1, i - 1);
     }
         //
     void fillTable_HD(ArrayList<Model_TT> list_HD) {
@@ -138,47 +138,47 @@ public class View_TT extends javax.swing.JFrame {
         }
     }
     //TT
-    void fillTable_TT(ArrayList<Model_TT> list_TT) {
-        mol = (DefaultTableModel) tbl_ThanhToan.getModel();
-        mol.setRowCount(0);
-        for (Model_TT x : list_TT) {
-            Object[] rowData = x.toDataRow_TT();
-            for (int i = 0; i < rowData.length; i++) {
-                if (rowData[i] == null) {
-                    rowData[i] = "";
-                }
-            }
-            mol.addRow(rowData);
-        }
-    }
-
-    void fillTable_TT_DV(ArrayList<Model_TT> list_TT) {
-        mol = (DefaultTableModel) tbl_DV.getModel();
-        mol.setRowCount(0);
-        for (Model_TT x : list_TT) {
-            Object[] rowData = x.toDataRow_TT_DV();
-            for (int i = 0; i < rowData.length; i++) {
-                if (rowData[i] == null) {
-                    rowData[i] = "";
-                }
-            }
-            mol.addRow(rowData);
-        }
-    }
-
-    void fillTable_TT_P(ArrayList<Model_TT> list_TT) {
-        mol = (DefaultTableModel) tbl_P.getModel();
-        mol.setRowCount(0);
-        for (Model_TT x : list_TT) {
-            Object[] rowData = x.toDataRow_TT_P();
-            for (int i = 0; i < rowData.length; i++) {
-                if (rowData[i] == null) {
-                    rowData[i] = "";
-                }
-            }
-            mol.addRow(rowData);
-        }
-    }
+//    void fillTable_TT(ArrayList<Model_TT> list_TT) {
+//        mol = (DefaultTableModel) tbl_ThanhToan.getModel();
+//        mol.setRowCount(0);
+//        for (Model_TT x : list_TT) {
+//            Object[] rowData = x.toDataRow_TT();
+//            for (int i = 0; i < rowData.length; i++) {
+//                if (rowData[i] == null) {
+//                    rowData[i] = "";
+//                }
+//            }
+//            mol.addRow(rowData);
+//        }
+//    }
+//
+//    void fillTable_TT_DV(ArrayList<Model_TT> list_TT) {
+//        mol = (DefaultTableModel) tbl_DV.getModel();
+//        mol.setRowCount(0);
+//        for (Model_TT x : list_TT) {
+//            Object[] rowData = x.toDataRow_TT_DV();
+//            for (int i = 0; i < rowData.length; i++) {
+//                if (rowData[i] == null) {
+//                    rowData[i] = "";
+//                }
+//            }
+//            mol.addRow(rowData);
+//        }
+//    }
+//
+//    void fillTable_TT_P(ArrayList<Model_TT> list_TT) {
+//        mol = (DefaultTableModel) tbl_P.getModel();
+//        mol.setRowCount(0);
+//        for (Model_TT x : list_TT) {
+//            Object[] rowData = x.toDataRow_TT_P();
+//            for (int i = 0; i < rowData.length; i++) {
+//                if (rowData[i] == null) {
+//                    rowData[i] = "";
+//                }
+//            }
+//            mol.addRow(rowData);
+//        }
+//    }
     //
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1586,20 +1586,20 @@ public class View_TT extends javax.swing.JFrame {
 
     private void tbl_DVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_DVMouseClicked
         // TODO add your handling code here:
-        int i = tbl_DV.getSelectedRow();
-        this.showData_TT_DV(i);
+//        int i = tbl_DV.getSelectedRow();
+//        this.showData_TT_DV(i);
     }//GEN-LAST:event_tbl_DVMouseClicked
 
     private void tbl_PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_PMouseClicked
         // TODO add your handling code here:
-        int i = tbl_P.getSelectedRow();
-        this.showData_TT_P(i);
+//        int i = tbl_P.getSelectedRow();
+//        this.showData_TT_P(i);
     }//GEN-LAST:event_tbl_PMouseClicked
 
     private void tbl_ThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_ThanhToanMouseClicked
         // TODO add your handling code here:
-        int i = tbl_ThanhToan.getSelectedRow();
-        this.showData_TT(i);
+//        int i = tbl_ThanhToan.getSelectedRow();
+//        this.showData_TT(i);
     }//GEN-LAST:event_tbl_ThanhToanMouseClicked
 
     private void tbl_ThanhToanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_ThanhToanMouseEntered
@@ -1848,36 +1848,36 @@ public class View_TT extends javax.swing.JFrame {
         txt_TP.setText(tbl_HDCT.getValueAt(i, 5).toString());
     }
     //TT
-    void showData_TT(int i) {
-        txt_MaHD2.setText(tbl_ThanhToan.getValueAt(i, 0).toString());
-        txt_MaNV.setText(tbl_ThanhToan.getValueAt(i, 1).toString());
-        txt_MaKH.setText(tbl_ThanhToan.getValueAt(i, 2).toString());
-        txt_SDT2.setText(tbl_ThanhToan.getValueAt(i, 3).toString());
-        txt_DC.setText(tbl_ThanhToan.getValueAt(i, 4).toString());
-
-        String ngayXuatDonStr = tbl_ThanhToan.getValueAt(i, 5).toString();
-        if (!ngayXuatDonStr.isEmpty()) {
-            try {
-                Date ngayXuatDon = new SimpleDateFormat("yyyy-MM-dd").parse(ngayXuatDonStr);
-                jdc_NXD1.setDate(ngayXuatDon);
-            } catch (ParseException e) {
-                JOptionPane.showMessageDialog(this, "Lỗi định dạng ngày xuất đơn: " + e.getMessage());
-                e.printStackTrace();
-            }
-        }
-
-        txt_TC2.setText(tbl_ThanhToan.getValueAt(i, 6).toString());
-    }
-
-    void showData_TT_DV(int i) {
-        txt_TTDV1.setText(tbl_DV.getValueAt(i, 0).toString());
-
-    }
-
-    void showData_TT_P(int i) {
-        txt_SPD.setText(tbl_P.getValueAt(i, 0).toString());
-        txt_TTP1.setText(tbl_P.getValueAt(i, 1).toString());
-    }
+//    void showData_TT(int i) {
+//        txt_MaHD2.setText(tbl_ThanhToan.getValueAt(i, 0).toString());
+//        txt_MaNV.setText(tbl_ThanhToan.getValueAt(i, 1).toString());
+//        txt_MaKH.setText(tbl_ThanhToan.getValueAt(i, 2).toString());
+//        txt_SDT2.setText(tbl_ThanhToan.getValueAt(i, 3).toString());
+//        txt_DC.setText(tbl_ThanhToan.getValueAt(i, 4).toString());
+//
+//        String ngayXuatDonStr = tbl_ThanhToan.getValueAt(i, 5).toString();
+//        if (!ngayXuatDonStr.isEmpty()) {
+//            try {
+//                Date ngayXuatDon = new SimpleDateFormat("yyyy-MM-dd").parse(ngayXuatDonStr);
+//                jdc_NXD1.setDate(ngayXuatDon);
+//            } catch (ParseException e) {
+//                JOptionPane.showMessageDialog(this, "Lỗi định dạng ngày xuất đơn: " + e.getMessage());
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        txt_TC2.setText(tbl_ThanhToan.getValueAt(i, 6).toString());
+//    }
+//
+//    void showData_TT_DV(int i) {
+//        txt_TTDV1.setText(tbl_DV.getValueAt(i, 0).toString());
+//
+//    }
+//
+//    void showData_TT_P(int i) {
+//        txt_SPD.setText(tbl_P.getValueAt(i, 0).toString());
+//        txt_TTP1.setText(tbl_P.getValueAt(i, 1).toString());
+//    }
     //
     private Model_TT readForm() {
         String maHD;

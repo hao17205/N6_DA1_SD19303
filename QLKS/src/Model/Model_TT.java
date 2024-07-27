@@ -285,28 +285,28 @@ public class Model_TT {
         };
     }
 
-    public Object[] toDataRow_TT() {
-        return new Object[]{
-            this.getMaHD() == null ? "" : this.getMaHD(),
-            this.getTenNV() == null ? "" : this.getTenNV(),
-            this.getTenKH() == null ? "" : this.getTenKH(),
-            this.getSoDienThoai() == null ? "" : this.getSoDienThoai(),
-            this.getDiaChi() == null ? "" : this.getDiaChi(),
-            this.getNgayXuatDon() == null ? "" : this.getNgayXuatDon().toString(),
-            this.getThue()
-        };
-    }
-
-    public Object[] toDataRow_TT_DV() {
-        return new Object[]{
-            this.getTongTienDichVu()
-        };
-    }
-
-    public Object[] toDataRow_TT_P() {
-        return new Object[]{
-            this.getSoPhongDat(),
-            this.getTongTienPhong()
-        };
-    }
+//    public Object[] toDataRow_TT() {
+//        return new Object[]{
+//            this.getMaHD() == null ? "" : this.getMaHD(),
+//            this.getTenNV() == null ? "" : this.getTenNV(),
+//            this.getTenKH() == null ? "" : this.getTenKH(),
+//            this.getSoDienThoai() == null ? "" : this.getSoDienThoai(),
+//            this.getDiaChi() == null ? "" : this.getDiaChi(),
+//            this.getNgayXuatDon() == null ? "" : this.getNgayXuatDon().toString(),
+//            this.getThue()
+//        };
+//    }
+//
+//    public Object[] toDataRow_TT_DV() {
+//        return new Object[]{
+//            this.getTongTienDichVu()
+//        };
+//    }
+//
+//    public Object[] toDataRow_TT_P() {
+//        return new Object[]{
+//            this.getSoPhongDat(),
+//            this.getTongTienPhong()
+//        };
+//    }
 }
