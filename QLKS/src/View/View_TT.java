@@ -35,18 +35,19 @@ public class View_TT extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.fillTable_HD(rp_HD.getAll_HD());
         this.fillTable_HDCT(rp_HDCT.getAll_HDCT());
+        // TT
         this.fillTable_TT(rp_TT.getBasicInfo_HD());
         this.fillTable_TT_DV(rp_TT.getTongTienDV_HD());
         this.fillTable_TT_P(rp_TT.getTongTienPhong_HD());
-
+        //
         cbo_KM.removeAllItems();
         cbo_KM.addItem("5");
         cbo_KM.addItem("10");
-
+        //TT
         cbo_KM1.removeAllItems();
         cbo_KM1.addItem("5");
         cbo_KM1.addItem("10");
-
+        //
         i = rp_HD.getAll_HD().size();
         this.showData_HD(i - 1);
         tbl_HD.setRowSelectionInterval(i - 1, i - 1);
@@ -54,7 +55,7 @@ public class View_TT extends javax.swing.JFrame {
         i = rp_HDCT.getAll_HDCT().size();
         this.showData_HDCT(i - 1);
         tbl_HDCT.setRowSelectionInterval(i - 1, i - 1);
-
+        //TT
         i = rp_TT.getBasicInfo_HD().size();
         this.showData_TT(i - 1);
         tbl_HDCT.setRowSelectionInterval(i - 1, i - 1);
@@ -67,7 +68,7 @@ public class View_TT extends javax.swing.JFrame {
         this.showData_TT_P(i - 1);
         tbl_HDCT.setRowSelectionInterval(i - 1, i - 1);
     }
-
+        //
     void fillTable_HD(ArrayList<Model_TT> list_HD) {
         mol = (DefaultTableModel) tbl_HD.getModel();
         mol.setRowCount(0);
@@ -136,7 +137,7 @@ public class View_TT extends javax.swing.JFrame {
             });
         }
     }
-
+    //TT
     void fillTable_TT(ArrayList<Model_TT> list_TT) {
         mol = (DefaultTableModel) tbl_ThanhToan.getModel();
         mol.setRowCount(0);
@@ -178,7 +179,7 @@ public class View_TT extends javax.swing.JFrame {
             mol.addRow(rowData);
         }
     }
-
+    //
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1846,7 +1847,7 @@ public class View_TT extends javax.swing.JFrame {
 
         txt_TP.setText(tbl_HDCT.getValueAt(i, 5).toString());
     }
-
+    //TT
     void showData_TT(int i) {
         txt_MaHD2.setText(tbl_ThanhToan.getValueAt(i, 0).toString());
         txt_MaNV.setText(tbl_ThanhToan.getValueAt(i, 1).toString());
@@ -1877,7 +1878,7 @@ public class View_TT extends javax.swing.JFrame {
         txt_SPD.setText(tbl_P.getValueAt(i, 0).toString());
         txt_TTP1.setText(tbl_P.getValueAt(i, 1).toString());
     }
-
+    //
     private Model_TT readForm() {
         String maHD;
         String maKH;
