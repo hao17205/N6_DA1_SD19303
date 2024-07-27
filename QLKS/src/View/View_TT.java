@@ -23,7 +23,8 @@ public class View_TT extends javax.swing.JFrame {
 
     private repositories.Repositories_HD rp_HD = new Repositories_HD();
     private repositories.Repositories_HDCT rp_HDCT = new Repositories_HDCT();
-//    private repositories.Repositories_TT rp_TT = new Repositories_TT();
+    private repositories.Repositories_TT rp_TT = new Repositories_TT();
+
     private DefaultTableModel mol = new DefaultTableModel();
     private int i = -1;
 
@@ -35,6 +36,8 @@ public class View_TT extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.fillTable_HD(rp_HD.getAll_HD());
         this.fillTable_HDCT(rp_HDCT.getAll_HDCT());
+        // fillTable TTTT
+        this.fillTable_TTTT(rp_TT.get_TTTT());
         // TT
 //        this.fillTable_TT(rp_TT.getBasicInfo_HD());
 //        this.fillTable_TT_DV(rp_TT.getTongTienDV_HD());
@@ -44,10 +47,14 @@ public class View_TT extends javax.swing.JFrame {
         cbo_KM.addItem("5");
         cbo_KM.addItem("10");
         //TT
-//        cbo_KM1.removeAllItems();
+        cbo_KM1.removeAllItems();
 //        cbo_KM1.addItem("5");
 //        cbo_KM1.addItem("10");
         //
+        //add cbo
+        for (int j = 0; j <= 100; j++) {
+            cbo_KM1.addItem(String.valueOf(j));
+        }
         i = rp_HD.getAll_HD().size();
         this.showData_HD(i - 1);
         tbl_HD.setRowSelectionInterval(i - 1, i - 1);
@@ -68,7 +75,8 @@ public class View_TT extends javax.swing.JFrame {
 //        this.showData_TT_P(i - 1);
 //        tbl_HDCT.setRowSelectionInterval(i - 1, i - 1);
     }
-        //
+    //
+
     void fillTable_HD(ArrayList<Model_TT> list_HD) {
         mol = (DefaultTableModel) tbl_HD.getModel();
         mol.setRowCount(0);
@@ -137,6 +145,34 @@ public class View_TT extends javax.swing.JFrame {
             });
         }
     }
+
+    // FillTable bảng thông tin thanh toán
+    private void fillTable_TTTT(ArrayList<Model_TT> list) {
+        mol = (DefaultTableModel) tbl_ThanhToan.getModel();
+        mol.setRowCount(0);
+        for (Model_TT x : list) {
+            mol.addRow(x.toDaTaRow_TTTT());
+        }
+    }
+
+    // Fill bảng tổng tiền phòng và số lượng phòng
+    private void fillTable_P(ArrayList<Model_TT> list) {
+        mol = (DefaultTableModel) tbl_P.getModel();
+        mol.setRowCount(0);
+        for (Model_TT x : list) {
+            mol.addRow(x.toDaTaRow_TTP());
+        }
+    }
+
+    // Fill bảng tổng tiền các dịch vụ
+    private void fillTable_TTDV(ArrayList<Model_TT> list) {
+        mol = (DefaultTableModel) tbl_DV.getModel();
+        mol.setRowCount(0);
+        for (Model_TT x : list) {
+            mol.addRow(x.toDaTaRow_TTDV());
+        }
+    }
+
     //TT
 //    void fillTable_TT(ArrayList<Model_TT> list_TT) {
 //        mol = (DefaultTableModel) tbl_ThanhToan.getModel();
@@ -364,7 +400,7 @@ public class View_TT extends javax.swing.JFrame {
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
                         .addComponent(jLabel24)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addComponent(txt_MaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -492,7 +528,7 @@ public class View_TT extends javax.swing.JFrame {
 
         btn_TT1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btn_TT1.setForeground(new java.awt.Color(255, 0, 0));
-        btn_TT1.setText("Thanh Toán");
+        btn_TT1.setText("Tính Toán");
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -511,7 +547,7 @@ public class View_TT extends javax.swing.JFrame {
                                 .addComponent(jLabel25)
                                 .addGap(18, 18, 18)
                                 .addComponent(txt_TTP1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel28)
                             .addComponent(jLabel26))
@@ -548,7 +584,7 @@ public class View_TT extends javax.swing.JFrame {
                     .addComponent(txt_TTDV1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29)
                     .addComponent(cbo_KM1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_KM_T, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_KM_T))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
@@ -562,15 +598,20 @@ public class View_TT extends javax.swing.JFrame {
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel34)
                     .addComponent(txt_STCTT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(17, 17, 17))
         );
 
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Thanh Toán", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 18), new java.awt.Color(255, 0, 0))); // NOI18N
+        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Hóa Đơn Chưa Thanh Toán", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 18), new java.awt.Color(255, 0, 0))); // NOI18N
 
         btn_Tk3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btn_Tk3.setForeground(new java.awt.Color(255, 0, 0));
         btn_Tk3.setText("Tìm Kiếm");
+        btn_Tk3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Tk3ActionPerformed(evt);
+            }
+        });
 
         tbl_ThanhToan.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         tbl_ThanhToan.setModel(new javax.swing.table.DefaultTableModel(
@@ -1290,7 +1331,7 @@ public class View_TT extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jdc_CO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel10.setBackground(new java.awt.Color(153, 255, 255));
@@ -1586,25 +1627,44 @@ public class View_TT extends javax.swing.JFrame {
 
     private void tbl_DVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_DVMouseClicked
         // TODO add your handling code here:
-//        int i = tbl_DV.getSelectedRow();
-//        this.showData_TT_DV(i);
+        int i = tbl_DV.getSelectedRow();
+        this.showData_TT_DV(i);
     }//GEN-LAST:event_tbl_DVMouseClicked
 
     private void tbl_PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_PMouseClicked
         // TODO add your handling code here:
-//        int i = tbl_P.getSelectedRow();
-//        this.showData_TT_P(i);
+        int i = tbl_P.getSelectedRow();
+        this.showData_TT_P(i);
     }//GEN-LAST:event_tbl_PMouseClicked
 
     private void tbl_ThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_ThanhToanMouseClicked
         // TODO add your handling code here:
-//        int i = tbl_ThanhToan.getSelectedRow();
-//        this.showData_TT(i);
+        int i = tbl_ThanhToan.getSelectedRow();
+        this.showData_TT(i);
     }//GEN-LAST:event_tbl_ThanhToanMouseClicked
 
     private void tbl_ThanhToanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_ThanhToanMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_tbl_ThanhToanMouseEntered
+
+    private void btn_Tk3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Tk3ActionPerformed
+        // TODO add your handling code here:
+        String maTK = txt_TK3.getText().trim();
+        if (maTK.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập thông tin vào ô tìm kiếm");
+        } else {
+
+            ArrayList<Model_TT> KQTK_TTTT = rp_TT.timKiem_TTTT(maTK);
+            if (KQTK_TTTT.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không có thông tin muốn tìm");
+            } else {
+                JOptionPane.showMessageDialog(this, "Đã tìm thấy dữ liệu");
+                this.fillTable_TTTT(rp_TT.timKiem_TTTT(maTK));
+                this.fillTable_P(rp_TT.getAll_TTP(maTK));
+                this.fillTable_TTDV(rp_TT.getAll_TTDV(maTK));
+            }
+        }
+    }//GEN-LAST:event_btn_Tk3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1847,37 +1907,39 @@ public class View_TT extends javax.swing.JFrame {
 
         txt_TP.setText(tbl_HDCT.getValueAt(i, 5).toString());
     }
+
     //TT
-//    void showData_TT(int i) {
-//        txt_MaHD2.setText(tbl_ThanhToan.getValueAt(i, 0).toString());
-//        txt_MaNV.setText(tbl_ThanhToan.getValueAt(i, 1).toString());
-//        txt_MaKH.setText(tbl_ThanhToan.getValueAt(i, 2).toString());
-//        txt_SDT2.setText(tbl_ThanhToan.getValueAt(i, 3).toString());
-//        txt_DC.setText(tbl_ThanhToan.getValueAt(i, 4).toString());
-//
-//        String ngayXuatDonStr = tbl_ThanhToan.getValueAt(i, 5).toString();
-//        if (!ngayXuatDonStr.isEmpty()) {
-//            try {
-//                Date ngayXuatDon = new SimpleDateFormat("yyyy-MM-dd").parse(ngayXuatDonStr);
-//                jdc_NXD1.setDate(ngayXuatDon);
-//            } catch (ParseException e) {
-//                JOptionPane.showMessageDialog(this, "Lỗi định dạng ngày xuất đơn: " + e.getMessage());
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        txt_TC2.setText(tbl_ThanhToan.getValueAt(i, 6).toString());
-//    }
-//
-//    void showData_TT_DV(int i) {
-//        txt_TTDV1.setText(tbl_DV.getValueAt(i, 0).toString());
-//
-//    }
-//
-//    void showData_TT_P(int i) {
-//        txt_SPD.setText(tbl_P.getValueAt(i, 0).toString());
-//        txt_TTP1.setText(tbl_P.getValueAt(i, 1).toString());
-//    }
+    void showData_TT(int i) {
+        txt_MaHD2.setText(tbl_ThanhToan.getValueAt(i, 0).toString());
+        txt_MaNV.setText(tbl_ThanhToan.getValueAt(i, 1).toString());
+        txt_MaKH.setText(tbl_ThanhToan.getValueAt(i, 2).toString());
+        txt_SDT2.setText(tbl_ThanhToan.getValueAt(i, 3).toString());
+        txt_DC.setText(tbl_ThanhToan.getValueAt(i, 4).toString());
+
+        String ngayXuatDonStr = tbl_ThanhToan.getValueAt(i, 5).toString();
+        if (!ngayXuatDonStr.isEmpty()) {
+            try {
+                Date ngayXuatDon = new SimpleDateFormat("yyyy-MM-dd").parse(ngayXuatDonStr);
+                jdc_NXD1.setDate(ngayXuatDon);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(this, "Lỗi định dạng ngày xuất đơn: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+
+        txt_TC2.setText(tbl_ThanhToan.getValueAt(i, 6).toString());
+    }
+
+    void showData_TT_DV(int i) {
+        txt_TTDV1.setText(tbl_DV.getValueAt(i, 0).toString());
+
+    }
+
+    void showData_TT_P(int i) {
+        txt_SPD.setText(tbl_P.getValueAt(i, 0).toString());
+        txt_TTP1.setText(tbl_P.getValueAt(i, 1).toString());
+    }
+
     //
     private Model_TT readForm() {
         String maHD;

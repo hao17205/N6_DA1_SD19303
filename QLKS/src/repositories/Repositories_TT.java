@@ -7,13 +7,114 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.crypto.spec.PSource;
 
 public class Repositories_TT {
+
     //TT
-//    private Connection con = null;
-//    private PreparedStatement pr = null;
-//    private ResultSet rs = null;
-//    private String sql = null;
+    private Connection con = null;
+    private PreparedStatement pr = null;
+    private ResultSet rs = null;
+    private String sql = null;
+
+    public ArrayList<Model_TT> get_TTTT() {
+        ArrayList<Model_TT> list_TTTT = new ArrayList<>();
+        sql = "select MAHD, MAKH, MANV,SoDienThoai,DiaChi, NgayXuatDon, TienCoc from HOADON\n" +
+"WHERE   TrangThai IS NULL";
+        try {
+            con = DBconnect.getConnection();
+            pr = con.prepareStatement(sql);
+            rs = pr.executeQuery();
+            while (rs.next()) {                
+                String maHD = rs.getString(1);
+                String maKH = rs.getString(2);
+                String maNV = rs.getString(3);
+                String soDienThoai = rs.getString(4);
+                String diaChi = rs.getString(5);
+                Date ngayXD = rs.getDate(6);
+                double tienCoc = rs.getDouble(7);
+                Model_TT m = new Model_TT(maHD, maKH, maNV, soDienThoai, diaChi, ngayXD, tienCoc);
+                list_TTTT.add(m);
+            }
+            return list_TTTT;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    // tìm kiếm hóa đơn
+    public ArrayList<Model_TT> timKiem_TTTT(String maHD_New ){
+        ArrayList<Model_TT> list_TKTTTT = new ArrayList<>();
+        sql = "select MAHD, MAKH, MANV, SoDienThoai, DiaChi, NgayXuatDon, TienCoc from HOADON \n" +
+"where (MAHD like ? or MAKH like ? or MANV LIKE ? or SoDienThoai LIKE ? or DiaChi like ?) AND TrangThai IS NULL";
+        try {
+            con = DBconnect.getConnection();
+            pr = con.prepareStatement(sql);
+            pr.setObject(1, '%'+ maHD_New+'%');
+            pr.setObject(2, '%'+ maHD_New+'%');
+            pr.setObject(3, '%'+ maHD_New+'%');
+            pr.setObject(4, '%'+ maHD_New+'%');
+            pr.setObject(5, '%'+ maHD_New+'%');
+            
+            
+            rs = pr.executeQuery();
+            while (rs.next()) {                
+                String maHD = rs.getString(1);
+                String maKH = rs.getString(2);
+                String maNV = rs.getString(3);
+                String soDienThoai = rs.getString(4);
+                String diaChi = rs.getString(5);
+                Date ngayXD = rs.getDate(6);
+                double tienCoc = rs.getDouble(7);
+                Model_TT m = new Model_TT(maHD, maKH, maNV, soDienThoai, diaChi, ngayXD, tienCoc);
+                list_TKTTTT.add(m);
+            }
+            return list_TKTTTT;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public ArrayList<Model_TT> getAll_TTP(String maHD_New){
+        ArrayList<Model_TT> list_TTP = new ArrayList<>();
+        sql = "SELECT COUNT(MA_HDCT), SUM(TienPhong) FROM HOADONCHITIET WHERE MaHD = ?";
+        try {
+            con = DBconnect.getConnection();
+            pr = con.prepareStatement(sql);
+            pr.setObject(1, maHD_New);
+            rs = pr.executeQuery();
+            while (rs.next()) {                
+                int soLP = rs.getInt(1);
+                double tongTP = rs.getDouble(2);
+                Model_TT m = new Model_TT(soLP, tongTP);
+                list_TTP.add(m);
+            }
+            return list_TTP;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public ArrayList<Model_TT> getAll_TTDV(String maHD_New){
+        ArrayList<Model_TT> list_TTP = new ArrayList<>();
+        sql = "SELECT SUM(TongTien) FROM DATDICHVU WHERE MaHD like ? ";
+        try {
+            con = DBconnect.getConnection();
+            pr = con.prepareStatement(sql);
+            pr.setObject(1,'%'+ maHD_New+'%');
+            rs = pr.executeQuery();
+            while (rs.next()) {                
+            double tongTDV = rs.getDouble(1);
+            Model_TT m = new Model_TT(tongTDV);
+            list_TTP.add(m);
+            }
+           return list_TTP;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 //
 //    public ArrayList<Model_TT> getBasicInfo_HD() {
 //        sql = "SELECT MAHD, MAKH, MaNV, SoDienThoai, DiaChi, NgayXuatDon, TienCoc FROM HOADON WHERE TrangThai is Null;";
@@ -100,5 +201,6 @@ public class Repositories_TT {
 //            e.printStackTrace();
 //        }
 //    }
+    // star
+
 }
-//
