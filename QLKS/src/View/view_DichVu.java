@@ -563,7 +563,7 @@ public class view_DichVu extends javax.swing.JFrame {
 
     private void XóaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XóaActionPerformed
         // TODO add your handling code here:
-        int chon = JOptionPane.showConfirmDialog(this, "bạn có muốn thêm dữ liệu");
+        int chon = JOptionPane.showConfirmDialog(this, "bạn có muốn xóa dữ liệu");
         if (chon == 0) {
             i = tbl_DV.getSelectedRow();
             if (i == -1) {
@@ -606,19 +606,29 @@ public class view_DichVu extends javax.swing.JFrame {
     }//GEN-LAST:event_tbn_SửaActionPerformed
 
     private void tbn_ThemDVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbn_ThemDVActionPerformed
-        // TODO add your handling code here:
-        int chon = JOptionPane.showConfirmDialog(this, "bạn có muốn thêm dữ liệu");
-        if (chon == 0) {
-            if (this.readForm() != null) {
-                if (rp.them_DV(this.readForm()) > 0) {
-                    JOptionPane.showMessageDialog(this, "thêm thành công");
-                    this.fillTable(rp.getAll_DV());
-                } else {
-                    JOptionPane.showMessageDialog(this, "thêm thất bại");
+        int chon = JOptionPane.showConfirmDialog(this, "Bạn Có Muốn Thêm Dịch Vụ Không ");
+        if (chon == JOptionPane.YES_OPTION) {
+            if(this.readForm() != null){
+                String maDV = txt_MaDV.getText().trim();
+                //kiểm tra trùng lặp
+                String errorMessage = rp.checkTrung(maDV);
+                if(errorMessage != null){
+                    JOptionPane.showMessageDialog(this, errorMessage);
                 }
-
-            }
+                else{
+                    //Thực hiện thêm NV
+                    if(rp.them_DV(this.readForm())>0){
+                        JOptionPane.showMessageDialog(this, "Thêm Thành Công");
+                        this.fillTable(rp.getAll_DV());
+                       
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(this, "Thêm Thất Bại");
+                    }
+                }
+            }        
         }
+
 
     }//GEN-LAST:event_tbn_ThemDVActionPerformed
 
