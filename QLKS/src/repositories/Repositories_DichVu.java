@@ -122,5 +122,25 @@ public class Repositories_DichVu {
             return null;
         }
     }
-//check trùng ở bảng 
+//check trùng ở bảng DV
+     public String checkTrung(String maDV_moi){
+       sql = "select MADV,TenDichVu,Gia,MoTa,LoaiDichVu from DICHVU where MADV like ?";
+     
+       try {
+            con = dbconnect.DBconnect.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, maDV_moi);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                if(rs.getString("MaDV").equals(maDV_moi)){
+                    return "Mã Dịch Vụ Đã Tồn Tại !";
+                }
+            }
+            return null;         
+       } catch (Exception e) {
+           e.printStackTrace();
+           return null;
+       }
+   }
 }
