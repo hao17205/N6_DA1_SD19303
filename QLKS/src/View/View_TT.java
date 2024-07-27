@@ -75,7 +75,7 @@ public class View_TT extends javax.swing.JFrame {
             Object[] rowData = x.toDataRow_HD();
             for (int i = 0; i < rowData.length; i++) {
                 if (rowData[i] == null) {
-                    rowData[i] = ""; // Thay thế giá trị null bằng chuỗi trống
+                    rowData[i] = "";
                 }
             }
             mol.addRow(rowData);
@@ -89,7 +89,7 @@ public class View_TT extends javax.swing.JFrame {
             Object[] rowData = x.toDataRow_HDCT();
             for (int i = 0; i < rowData.length; i++) {
                 if (rowData[i] == null) {
-                    rowData[i] = ""; // Thay thế giá trị null bằng chuỗi trống
+                    rowData[i] = "";
                 }
             }
             mol.addRow(rowData);
@@ -103,7 +103,7 @@ public class View_TT extends javax.swing.JFrame {
             Object[] rowData = x.toDataRow_HDCT();
             for (int i = 0; i < rowData.length; i++) {
                 if (rowData[i] == null) {
-                    rowData[i] = ""; // Thay thế giá trị null bằng chuỗi trống
+                    rowData[i] = "";
                 }
             }
             model.addRow(rowData);
@@ -144,7 +144,7 @@ public class View_TT extends javax.swing.JFrame {
             Object[] rowData = x.toDataRow_TT();
             for (int i = 0; i < rowData.length; i++) {
                 if (rowData[i] == null) {
-                    rowData[i] = ""; // Thay thế giá trị null bằng chuỗi trống
+                    rowData[i] = "";
                 }
             }
             mol.addRow(rowData);
@@ -158,7 +158,7 @@ public class View_TT extends javax.swing.JFrame {
             Object[] rowData = x.toDataRow_TT_DV();
             for (int i = 0; i < rowData.length; i++) {
                 if (rowData[i] == null) {
-                    rowData[i] = ""; // Thay thế giá trị null bằng chuỗi trống
+                    rowData[i] = "";
                 }
             }
             mol.addRow(rowData);
@@ -172,7 +172,7 @@ public class View_TT extends javax.swing.JFrame {
             Object[] rowData = x.toDataRow_TT_P();
             for (int i = 0; i < rowData.length; i++) {
                 if (rowData[i] == null) {
-                    rowData[i] = ""; // Thay thế giá trị null bằng chuỗi trống
+                    rowData[i] = "";
                 }
             }
             mol.addRow(rowData);
@@ -1781,24 +1781,36 @@ public class View_TT extends javax.swing.JFrame {
         cbo_KM.setSelectedItem(tbl_HD.getValueAt(i, 7).toString());
         txt_TTDV.setText(tbl_HD.getValueAt(i, 8).toString());
         txt_TTP.setText(tbl_HD.getValueAt(i, 9).toString());
-        if (tbl_HD.getValueAt(i, 10).toString().equalsIgnoreCase("Đã Thanh Toán")) {
+
+        String trangThai = tbl_HD.getValueAt(i, 10).toString();
+        if (trangThai.equalsIgnoreCase("Đã Thanh Toán")) {
             rdo_DTT.setSelected(true);
         } else {
             rdo_CTT.setSelected(true);
         }
-        try {
-            Date ngayXuatDon = new SimpleDateFormat("yyyy-MM-dd").parse(tbl_HD.getValueAt(i, 11).toString());
-            jdc_NXD.setDate(ngayXuatDon);
-        } catch (ParseException e) {
-            e.printStackTrace();
+
+        String ngayXuatDonStr = tbl_HD.getValueAt(i, 11).toString();
+        if (!ngayXuatDonStr.isEmpty()) {
+            try {
+                Date ngayXuatDon = new SimpleDateFormat("yyyy-MM-dd").parse(ngayXuatDonStr);
+                jdc_NXD.setDate(ngayXuatDon);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(this, "Lỗi định dạng ngày xuất đơn: " + e.getMessage());
+                e.printStackTrace();
+            }
         }
 
-        try {
-            Date ngayThanhToan = new SimpleDateFormat("yyyy-MM-dd").parse(tbl_HD.getValueAt(i, 12).toString());
-            jdc_NTT.setDate(ngayThanhToan);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        String ngayThanhToanStr = tbl_HD.getValueAt(i, 12).toString();
+        if (!ngayThanhToanStr.isEmpty()) {
+            try {
+                Date ngayThanhToan = new SimpleDateFormat("yyyy-MM-dd").parse(ngayThanhToanStr);
+                jdc_NTT.setDate(ngayThanhToan);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(this, "Lỗi định dạng ngày thanh toán: " + e.getMessage());
+                e.printStackTrace();
+            }
         }
+
         txt_T.setText(tbl_HD.getValueAt(i, 13).toString());
         txt_TC.setText(tbl_HD.getValueAt(i, 14).toString());
         txt_TT.setText(tbl_HD.getValueAt(i, 15).toString());
@@ -1809,18 +1821,29 @@ public class View_TT extends javax.swing.JFrame {
         txt_MaHDCT.setText(tbl_HDCT.getValueAt(i, 0).toString());
         txt_MaHD1.setText(tbl_HDCT.getValueAt(i, 1).toString());
         txt_MaP.setText(tbl_HDCT.getValueAt(i, 2).toString());
-        try {
-            Date checkIn = new SimpleDateFormat("yyyy-MM-dd").parse(tbl_HDCT.getValueAt(i, 3).toString());
-            jdc_CI.setDate(checkIn);
-        } catch (ParseException e) {
-            e.printStackTrace();
+
+        String checkInStr = tbl_HDCT.getValueAt(i, 3).toString();
+        if (!checkInStr.isEmpty()) {
+            try {
+                Date checkIn = new SimpleDateFormat("yyyy-MM-dd").parse(checkInStr);
+                jdc_CI.setDate(checkIn);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(this, "Lỗi định dạng ngày check-in: " + e.getMessage());
+                e.printStackTrace();
+            }
         }
-        try {
-            Date checkOut = new SimpleDateFormat("yyyy-MM-dd").parse(tbl_HDCT.getValueAt(i, 4).toString());
-            jdc_CO.setDate(checkOut);
-        } catch (ParseException e) {
-            e.printStackTrace();
+
+        String checkOutStr = tbl_HDCT.getValueAt(i, 4).toString();
+        if (!checkOutStr.isEmpty()) {
+            try {
+                Date checkOut = new SimpleDateFormat("yyyy-MM-dd").parse(checkOutStr);
+                jdc_CO.setDate(checkOut);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(this, "Lỗi định dạng ngày check-out: " + e.getMessage());
+                e.printStackTrace();
+            }
         }
+
         txt_TP.setText(tbl_HDCT.getValueAt(i, 5).toString());
     }
 
@@ -1831,14 +1854,18 @@ public class View_TT extends javax.swing.JFrame {
         txt_SDT2.setText(tbl_ThanhToan.getValueAt(i, 3).toString());
         txt_DC.setText(tbl_ThanhToan.getValueAt(i, 4).toString());
 
-        try {
-            Date ngayXuatDon = new SimpleDateFormat("yyyy-MM-dd").parse(tbl_ThanhToan.getValueAt(i, 5).toString());
-            jdc_NXD1.setDate(ngayXuatDon);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        String ngayXuatDonStr = tbl_ThanhToan.getValueAt(i, 5).toString();
+        if (!ngayXuatDonStr.isEmpty()) {
+            try {
+                Date ngayXuatDon = new SimpleDateFormat("yyyy-MM-dd").parse(ngayXuatDonStr);
+                jdc_NXD1.setDate(ngayXuatDon);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(this, "Lỗi định dạng ngày xuất đơn: " + e.getMessage());
+                e.printStackTrace();
+            }
         }
 
-        txt_KM_T.setText(tbl_ThanhToan.getValueAt(i, 6).toString());
+        txt_TC2.setText(tbl_ThanhToan.getValueAt(i, 6).toString());
     }
 
     void showData_TT_DV(int i) {
@@ -1852,142 +1879,142 @@ public class View_TT extends javax.swing.JFrame {
     }
 
     private Model_TT readForm() {
-    String maHD;
-    String maKH;
-    String maNV;
-    String diaChi;
-    String soDienThoai;
-    int soPhongDat;
-    Date ngayXuatDon;
-    Date ngayThanhToan;
-    String trangThai;
-    double tongTienPhong;
-    double tongTienDV;
-    int khuyenMai;
-    double giaBanDau;
-    double tongTienHoaDon;
-    double tienCoc;
-    double soTienCanThanhToan;
+        String maHD;
+        String maKH;
+        String maNV;
+        String diaChi;
+        String soDienThoai;
+        int soPhongDat;
+        Date ngayXuatDon;
+        Date ngayThanhToan;
+        String trangThai;
+        double tongTienPhong;
+        double tongTienDV;
+        int khuyenMai;
+        double giaBanDau;
+        double tongTienHoaDon;
+        double tienCoc;
+        double soTienCanThanhToan;
 
-    maHD = txt_MaHD2.getText().trim();
-    if (maHD.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Mã Hóa Đơn");
-        return null;
-    }
+        maHD = txt_MaHD2.getText().trim();
+        if (maHD.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Mã Hóa Đơn");
+            return null;
+        }
 
-    maKH = txt_MaKH.getText().trim();
-    if (maKH.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Mã KH");
-        return null;
-    }
+        maKH = txt_MaKH.getText().trim();
+        if (maKH.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Mã KH");
+            return null;
+        }
 
-    maNV = txt_MaNV.getText().trim();
-    if (maNV.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Mã NV");
-        return null;
-    }
+        maNV = txt_MaNV.getText().trim();
+        if (maNV.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Mã NV");
+            return null;
+        }
 
-    soDienThoai = txt_SDT2.getText().trim();
-    if (soDienThoai.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Số Điện Thoại");
-        return null;
-    }
+        soDienThoai = txt_SDT2.getText().trim();
+        if (soDienThoai.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Số Điện Thoại");
+            return null;
+        }
 
-    if (soDienThoai.length() != 10 || !soDienThoai.matches("\\d+")) {
-        JOptionPane.showMessageDialog(this, "Số điện thoại phải có đúng 10 ký tự và phải là số.");
-        txt_SDT2.requestFocus();
-        return null;
-    }
+        if (soDienThoai.length() != 10 || !soDienThoai.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "Số điện thoại phải có đúng 10 ký tự và phải là số.");
+            txt_SDT2.requestFocus();
+            return null;
+        }
 
-    diaChi = txt_DC.getText().trim();
-    if (diaChi.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Địa Chỉ");
-        return null;
-    }
+        diaChi = txt_DC.getText().trim();
+        if (diaChi.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Địa Chỉ");
+            return null;
+        }
 
-    ngayXuatDon = jdc_NXD1.getDate();
-    if (ngayXuatDon == null) {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Ngày Xuất Đơn");
-        return null;
-    }
+        ngayXuatDon = jdc_NXD1.getDate();
+        if (ngayXuatDon == null) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Ngày Xuất Đơn");
+            return null;
+        }
 
-    ngayThanhToan = jdc_NTT1.getDate();
-    if (ngayThanhToan == null) {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Ngày Thanh Toán");
-        return null;
-    }
+        ngayThanhToan = jdc_NTT1.getDate();
+        if (ngayThanhToan == null) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Ngày Thanh Toán");
+            return null;
+        }
 
-    if (rdo_DTT1.isSelected()) {
-        trangThai = "DTT"; // Đã Thanh Toán
-    } else if (rdo_CTT1.isSelected()) {
-        trangThai = "CTT"; // Chưa Thanh Toán
-    } else {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Chọn Trạng Thái");
-        return null;
-    }
+        if (rdo_DTT1.isSelected()) {
+            trangThai = "DTT"; // Đã Thanh Toán
+        } else if (rdo_CTT1.isSelected()) {
+            trangThai = "CTT"; // Chưa Thanh Toán
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Chọn Trạng Thái");
+            return null;
+        }
 
-    khuyenMai = cbo_KM1.getSelectedIndex(); 
-    if (khuyenMai == -1) {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Chọn Khuyến Mãi");
-        return null;
-    }
+        khuyenMai = cbo_KM1.getSelectedIndex();
+        if (khuyenMai == -1) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Chọn Khuyến Mãi");
+            return null;
+        }
 
-    String soPhongDatStr = txt_SPD.getText().trim();
-    if (soPhongDatStr.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Số Phòng Đặt");
-        return null;
-    }
+        String soPhongDatStr = txt_SPD.getText().trim();
+        if (soPhongDatStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Số Phòng Đặt");
+            return null;
+        }
 
-    String tienCocStr = txt_TC2.getText().trim();
-    String tongTienPhongStr = txt_TTP1.getText().trim();
-    String tongTienDVStr = txt_TTDV1.getText().trim();
-    String giaBanDauStr = txt_GBD1.getText().trim();
-    String tongTienHoaDonStr = txt_TTHD.getText().trim();
-    String soTienCanThanhToanStr = txt_STCTT1.getText().trim();
+        String tienCocStr = txt_TC2.getText().trim();
+        String tongTienPhongStr = txt_TTP1.getText().trim();
+        String tongTienDVStr = txt_TTDV1.getText().trim();
+        String giaBanDauStr = txt_GBD1.getText().trim();
+        String tongTienHoaDonStr = txt_TTHD.getText().trim();
+        String soTienCanThanhToanStr = txt_STCTT1.getText().trim();
 
-    if (tienCocStr.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Tiền Cọc");
-        return null;
-    }
-    if (tongTienPhongStr.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Tổng Tiền Phòng");
-        return null;
-    }
-    if (tongTienDVStr.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Tổng Tiền Dịch Vụ");
-        return null;
-    }
-    if (giaBanDauStr.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Giá Bán Đầu");
-        return null;
-    }
-    if (tongTienHoaDonStr.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Tổng Tiền Hóa Đơn");
-        return null;
-    }
-    if (soTienCanThanhToanStr.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Số Tiền Cần Thanh Toán");
-        return null;
-    }
-    if (soPhongDatStr.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Số Phòng Đặt");
-        return null;
-    }
+        if (tienCocStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Tiền Cọc");
+            return null;
+        }
+        if (tongTienPhongStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Tổng Tiền Phòng");
+            return null;
+        }
+        if (tongTienDVStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Tổng Tiền Dịch Vụ");
+            return null;
+        }
+        if (giaBanDauStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Giá Bán Đầu");
+            return null;
+        }
+        if (tongTienHoaDonStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Tổng Tiền Hóa Đơn");
+            return null;
+        }
+        if (soTienCanThanhToanStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Số Tiền Cần Thanh Toán");
+            return null;
+        }
+        if (soPhongDatStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Số Phòng Đặt");
+            return null;
+        }
 
-    try {
-        tienCoc = Double.parseDouble(tienCocStr);
-        tongTienPhong = Double.parseDouble(tongTienPhongStr);
-        tongTienDV = Double.parseDouble(tongTienDVStr);
-        giaBanDau = Double.parseDouble(giaBanDauStr);
-        tongTienHoaDon = Double.parseDouble(tongTienHoaDonStr);
-        soTienCanThanhToan = Double.parseDouble(soTienCanThanhToanStr);
-        soPhongDat = Integer.parseInt(soPhongDatStr);
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng định dạng số cho các trường Tiền Cọc, Tổng Tiền Phòng, Tổng Tiền Dịch Vụ, Giá Bán Đầu, Tổng Tiền Hóa Đơn, và Số Tiền Cần Thanh Toán");
-        return null;
-    }
+        try {
+            tienCoc = Double.parseDouble(tienCocStr);
+            tongTienPhong = Double.parseDouble(tongTienPhongStr);
+            tongTienDV = Double.parseDouble(tongTienDVStr);
+            giaBanDau = Double.parseDouble(giaBanDauStr);
+            tongTienHoaDon = Double.parseDouble(tongTienHoaDonStr);
+            soTienCanThanhToan = Double.parseDouble(soTienCanThanhToanStr);
+            soPhongDat = Integer.parseInt(soPhongDatStr);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng định dạng số cho các trường Tiền Cọc, Tổng Tiền Phòng, Tổng Tiền Dịch Vụ, Giá Bán Đầu, Tổng Tiền Hóa Đơn, và Số Tiền Cần Thanh Toán");
+            return null;
+        }
 
-    return new Model_TT(maHD, maNV, maKH, soDienThoai, diaChi, soPhongDat, giaBanDau, khuyenMai, tongTienDV, tongTienPhong, trangThai, ngayXuatDon, ngayThanhToan, tienCoc, tienCoc, tongTienDV, soTienCanThanhToan, maHD, maHD, maNV, ngayXuatDon, ngayXuatDon, tienCoc);
-}
+        return new Model_TT(maHD, maNV, maKH, soDienThoai, diaChi, soPhongDat, giaBanDau, khuyenMai, tongTienDV, tongTienPhong, trangThai, ngayXuatDon, ngayThanhToan, tienCoc, tienCoc, tongTienDV, soTienCanThanhToan, maHD, maHD, maNV, ngayXuatDon, ngayXuatDon, tienCoc);
+    }
 
 }

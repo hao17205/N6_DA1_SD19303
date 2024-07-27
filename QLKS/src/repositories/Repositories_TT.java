@@ -31,7 +31,7 @@ public class Repositories_TT {
                 Date ngayXuatDon = rs.getDate("NgayXuatDon");
                 double tienCoc = rs.getDouble("TienCoc");
 
-                Model_TT tt = new Model_TT(maHD, maNV, maKH, soDienThoai, diaChi, 0, 0, 0, 0, 0, "", ngayXuatDon, null, 0, tienCoc, 0, 0, null, null, null, null, null, 0);
+                Model_TT tt = new Model_TT(maHD, maNV, maKH, soDienThoai, diaChi, 0, tienCoc, 0, tienCoc, tienCoc, diaChi, ngayXuatDon, ngayXuatDon, tienCoc, tienCoc, tienCoc, tienCoc, maHD, maHD, maNV, ngayXuatDon, ngayXuatDon, tienCoc);
                 listHoaDon.add(tt);
             }
         } catch (Exception e) {
