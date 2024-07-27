@@ -14,32 +14,21 @@ public class Model_DP3 {
     private String ma_HDCT;
     private String maHD;
     private String maPhong;
-    private String maKH;
-    private String maNV;
-    private String soDienThoai;
-    private String diaChi;
     private Date checkIn;
     private Date checkOut;
-    private double tienCoc;
+    private double tienPhong;
 
     public Model_DP3() {
     }
 
-   
-
-    public Model_DP3(String ma_HDCT, String maHD, String maPhong, String maKH, String maNV, String soDienThoai, String diaChi, Date checkIn, Date checkOut, double tienCoc) {
+    public Model_DP3(String ma_HDCT, String maHD, String maPhong, Date checkIn, Date checkOut, double tienPhong) {
         this.ma_HDCT = ma_HDCT;
         this.maHD = maHD;
         this.maPhong = maPhong;
-        this.maKH = maKH;
-        this.maNV = maNV;
-        this.soDienThoai = soDienThoai;
-        this.diaChi = diaChi;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
-        this.tienCoc = tienCoc;
+        this.tienPhong = tienPhong;
     }
-    
 
     public String getMa_HDCT() {
         return ma_HDCT;
@@ -65,38 +54,6 @@ public class Model_DP3 {
         this.maPhong = maPhong;
     }
 
-    public String getMaKH() {
-        return maKH;
-    }
-
-    public void setMaKH(String maKH) {
-        this.maKH = maKH;
-    }
-
-    public String getMaNV() {
-        return maNV;
-    }
-
-    public void setMaNV(String maNV) {
-        this.maNV = maNV;
-    }
-
-    public String getSoDienThoai() {
-        return soDienThoai;
-    }
-
-    public void setSoDienThoai(String soDienThoai) {
-        this.soDienThoai = soDienThoai;
-    }
-
-    public String getDiaChi() {
-        return diaChi;
-    }
-
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
-    }
-
     public Date getCheckIn() {
         return checkIn;
     }
@@ -113,13 +70,18 @@ public class Model_DP3 {
         this.checkOut = checkOut;
     }
 
-    public double getTienCoc() {
-        return tienCoc;
+    public double getTienPhong() {
+        return tienPhong;
     }
 
-    public void setTienCoc(double tienCoc) {
-        this.tienCoc = tienCoc;
+    public void setTienPhong(double tienPhong) {
+        this.tienPhong = tienPhong;
     }
+    
+    
+    
+    
+ 
     
     
 }
