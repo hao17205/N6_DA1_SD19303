@@ -252,23 +252,61 @@ public class Model_TT {
         this.tienPhong = tienPhong;
     }
 
-    
-    
-
- public Object[] toDataRow_HD() {
+    public Object[] toDataRow_HD() {
         return new Object[]{
-            this.getMaHD(), this.getTenNV(), this.getTenKH(), this.getSoDienThoai(), this.getDiaChi(),
-            this.getSoPhongDat(), this.getGiaBanDau(),this.getKhuyenMai(), this.getTongTienDichVu(), this.getTongTienPhong(),
-            this.getTrangThai(), this.getNgayXuatDon(), this.getNgayThanhToan(), this.getThue(),
-            this.getTienCoc(), this.getTongTien(), this.getSoTienCanThanhToan()
+            this.getMaHD() == null ? "" : this.getMaHD(),
+            this.getTenNV() == null ? "" : this.getTenNV(),
+            this.getTenKH() == null ? "" : this.getTenKH(),
+            this.getSoDienThoai() == null ? "" : this.getSoDienThoai(),
+            this.getDiaChi() == null ? "" : this.getDiaChi(),
+            this.getSoPhongDat(),
+            this.getGiaBanDau(),
+            this.getKhuyenMai(),
+            this.getTongTienDichVu(),
+            this.getTongTienPhong(),
+            this.getTrangThai() == null ? "" : this.getTrangThai(),
+            this.getNgayXuatDon() == null ? "" : this.getNgayXuatDon().toString(),
+            this.getNgayThanhToan() == null ? "" : this.getNgayThanhToan().toString(),
+            this.getThue(),
+            this.getTienCoc(),
+            this.getTongTien(),
+            this.getSoTienCanThanhToan()
         };
     }
 
     public Object[] toDataRow_HDCT() {
         return new Object[]{
-            this.getMaHDCT(), this.getMaHD_HDCT(), this.getMaP(), this.getCheckIn(),
-            this.getCheckOut(), this.getTienPhong()
+            this.getMaHDCT() == null ? "" : this.getMaHDCT(),
+            this.getMaHD_HDCT() == null ? "" : this.getMaHD_HDCT(),
+            this.getMaP() == null ? "" : this.getMaP(),
+            this.getCheckIn() == null ? "" : this.getCheckIn().toString(),
+            this.getCheckOut() == null ? "" : this.getCheckOut().toString(),
+            this.getTienPhong()
         };
     }
 
+    public Object[] toDataRow_TT() {
+        return new Object[]{
+            this.getMaHD() == null ? "" : this.getMaHD(),
+            this.getTenNV() == null ? "" : this.getTenNV(),
+            this.getTenKH() == null ? "" : this.getTenKH(),
+            this.getSoDienThoai() == null ? "" : this.getSoDienThoai(),
+            this.getDiaChi() == null ? "" : this.getDiaChi(),
+            this.getNgayXuatDon() == null ? "" : this.getNgayXuatDon().toString(),
+            this.getThue()
+        };
+    }
+
+    public Object[] toDataRow_TT_DV() {
+        return new Object[]{
+            this.getTongTienDichVu()
+        };
+    }
+
+    public Object[] toDataRow_TT_P() {
+        return new Object[]{
+            this.getSoPhongDat(),
+            this.getTongTienPhong()
+        };
+    }
 }
