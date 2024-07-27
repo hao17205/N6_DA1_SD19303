@@ -503,7 +503,7 @@
                                   <Component id="cbo_thang" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace pref="37" max="32767" attributes="0"/>
-                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                              <Component id="tbn_XNNam" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -517,7 +517,7 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                              <Component id="tbn_XNNam" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -526,12 +526,12 @@
                   <SubComponents>
                     <Component class="com.toedter.calendar.JYearChooser" name="jyc_nam">
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton2">
+                    <Component class="javax.swing.JButton" name="tbn_XNNam">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="X&#xe1;c Nh&#x1ead;n"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tbn_XNNamActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cbo_thang">
@@ -778,27 +778,30 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jYearChooser5" min="-2" pref="73" max="-2" attributes="0"/>
+                                  <Component id="jyc_Nam1" min="-2" pref="73" max="-2" attributes="0"/>
                                   <EmptySpace pref="73" max="32767" attributes="0"/>
-                                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tbn_XNY" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jYearChooser5" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jyc_Nam1" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="tbn_XNY" min="-2" max="-2" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="com.toedter.calendar.JYearChooser" name="jYearChooser5">
+                        <Component class="com.toedter.calendar.JYearChooser" name="jyc_Nam1">
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButton3">
+                        <Component class="javax.swing.JButton" name="tbn_XNY">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="X&#xe1;c Nh&#x1ead;n"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tbn_XNYActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
