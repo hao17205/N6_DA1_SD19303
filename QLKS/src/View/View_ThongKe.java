@@ -44,7 +44,11 @@ public class View_ThongKe extends javax.swing.JFrame {
         this.fillTable_TTHD1T(rp.getAll_TTHD1T());
         // thông tin các hóa đơn trong tháng
         this.fillTable_TTHDNam(rp.getAll_TTHDNam());
-        
+        // 
+        cbo_thang.removeAllItems();
+        for (int i = 1; i <= 12; i++) {
+            cbo_thang.addItem(String.valueOf(i));
+        }
     }
     //fill table tổng hóa đơn trong 1 ngày
     private void fillTable_THD1N(ArrayList<Model.Model_TK> list){
@@ -149,9 +153,9 @@ public class View_ThongKe extends javax.swing.JFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         tbl_THD1T = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
-        jMonthChooser1 = new com.toedter.calendar.JMonthChooser();
-        jYearChooser1 = new com.toedter.calendar.JYearChooser();
+        jyc_nam = new com.toedter.calendar.JYearChooser();
         jButton2 = new javax.swing.JButton();
+        cbo_thang = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -364,15 +368,22 @@ public class View_ThongKe extends javax.swing.JFrame {
             }
         });
 
+        cbo_thang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbo_thang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_thangActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jyc_nam, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                    .addComponent(cbo_thang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(24, 24, 24))
@@ -380,10 +391,9 @@ public class View_ThongKe extends javax.swing.JFrame {
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(cbo_thang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(jyc_nam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
@@ -582,25 +592,32 @@ public class View_ThongKe extends javax.swing.JFrame {
     private void tbl_1NCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbl_1NCTActionPerformed
         // TODO add your handling code here:
        Date ngayThanhToan = jdc_1NCD.getDate();
-        
         if (ngayThanhToan == null) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập thông tin ngày xuất hóa đơn vào ô trống");
-        }else{
-           ArrayList<Model_TK> KQTK = rp.TimKiem_THD1N(ngayThanhToan);
-           ArrayList<Model_TK> KQTK_TDT = rp.TimKiem_TDT1N(ngayThanhToan);
-            if (KQTK.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "không có hóa đơn nào trong ngày này");
-            }else{
-                JOptionPane.showMessageDialog(this, "Đang thống kê.....");
-                this.fillTable_THD1N(KQTK);
-               this.fillTable_TDT1N(KQTK);
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập ngày muốn thống kê");
+        } else {
+            ArrayList<Model_TK> TDT1N = rp.TimKiem_TDT1N(ngayThanhToan);
+            ArrayList<Model_TK> THD1N = rp.TimKiem_THD1N(ngayThanhToan);
+            ArrayList<Model_TK> TTHD1N = rp.TimKiem_TTHD1N(ngayThanhToan);
+            if (TDT1N == null) {
+                JOptionPane.showMessageDialog(this, "Không Thu Được gì trong ngày này");
+            } else {
+                JOptionPane.showMessageDialog(this, "Đang Thống KÊ......");
+                this.fillTable_THD1N(THD1N);
+                this.fillTable_TDT1N(TDT1N);
+                this.fillTable_TTHD1N(TTHD1N);
             }
+
         }
     }//GEN-LAST:event_tbl_1NCTActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cbo_thangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_thangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbo_thangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -638,9 +655,9 @@ public class View_ThongKe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbo_thang;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private com.toedter.calendar.JMonthChooser jMonthChooser1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -659,9 +676,9 @@ public class View_ThongKe extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private com.toedter.calendar.JYearChooser jYearChooser1;
     private com.toedter.calendar.JYearChooser jYearChooser5;
     private com.toedter.calendar.JDateChooser jdc_1NCD;
+    private com.toedter.calendar.JYearChooser jyc_nam;
     private javax.swing.JButton tbl_1NCT;
     private javax.swing.JTable tbl_TDT1N;
     private javax.swing.JTable tbl_TDT1T;
