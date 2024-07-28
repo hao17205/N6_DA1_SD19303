@@ -156,7 +156,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel32" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel31" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -168,7 +168,7 @@
                               <Component id="txt_SDT2" max="32767" attributes="0"/>
                               <Component id="txt_SPD" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" pref="69" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel33" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -178,7 +178,7 @@
                               <Component id="jdc_NXD1" pref="274" max="32767" attributes="0"/>
                               <Component id="jdc_NTT1" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="62" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -427,7 +427,7 @@
                                           <Component id="txt_TTP1" min="-2" pref="200" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="101" max="32767" attributes="0"/>
+                                  <EmptySpace pref="104" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
@@ -603,6 +603,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="T&#xed;nh To&#xe1;n"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_TT1ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_TC2">
                 </Component>
@@ -647,7 +650,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jScrollPane2" max="32767" attributes="0"/>
-                              <Component id="txt_TK3" pref="1036" max="32767" attributes="0"/>
+                              <Component id="txt_TK3" pref="1056" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -1071,19 +1074,19 @@
                                   <Component id="txt_TenKH" min="-2" pref="292" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="94" max="32767" attributes="0"/>
+                          <EmptySpace pref="95" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" pref="105" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" pref="106" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txt_SoPD" min="-2" pref="292" max="-2" attributes="0"/>
                               <Component id="txt_DiaChi" min="-2" pref="292" max="-2" attributes="0"/>
                               <Component id="txt_SDT" min="-2" pref="292" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="130" max="32767" attributes="0"/>
+                          <EmptySpace pref="131" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2187,7 +2190,7 @@
                           <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                           <Component id="txt_TP" min="-2" pref="1004" max="-2" attributes="0"/>
-                          <EmptySpace pref="276" max="32767" attributes="0"/>
+                          <EmptySpace pref="279" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2242,7 +2245,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txt_TK1" pref="1238" max="32767" attributes="0"/>
+                          <Component id="txt_TK1" pref="1258" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btn_TK1" min="-2" pref="160" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -2309,7 +2312,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane6" pref="1441" max="32767" attributes="0"/>
+                          <Component id="jScrollPane6" pref="1461" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
