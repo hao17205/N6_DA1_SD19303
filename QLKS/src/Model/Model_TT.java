@@ -264,7 +264,7 @@ public class Model_TT {
             this.getKhuyenMai(),
             this.getTongTienDichVu(),
             this.getTongTienPhong(),
-            this.getTrangThai() == null ? "" : this.getTrangThai(),
+            this.getTrangThai(),
             this.getNgayXuatDon() == null ? "" : this.getNgayXuatDon().toString(),
             this.getNgayThanhToan() == null ? "" : this.getNgayThanhToan().toString(),
             this.getThue(),

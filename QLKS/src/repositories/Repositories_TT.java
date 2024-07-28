@@ -201,4 +201,37 @@ public class Repositories_TT {
             return 0;
         }
     }
+
+    public int HD_TT(String maHD) {
+        String sql_HDCT = "DELETE FROM HoaDonChiTiet WHERE MaHD = ?";
+        String sql_DDV = "DELETE FROM DatDichVu WHERE MaHD = ?";
+        String sql_HD = "DELETE FROM HoaDon WHERE MaHD = ?";
+
+        try {
+            con = DBconnect.getConnection();
+            con.setAutoCommit(false);
+
+            // Xóa các bản ghi trong bảng HoaDonChiTiet
+            pr = con.prepareStatement(sql_HDCT);
+            pr.setObject(1, maHD);
+            pr.executeUpdate();
+
+            // Xóa các bản ghi trong bảng DatDichVu
+            pr = con.prepareStatement(sql_DDV);
+            pr.setObject(1, maHD);
+            pr.executeUpdate();
+
+            // Xóa bản ghi trong bảng HoaDon
+            pr = con.prepareStatement(sql_HD);
+            pr.setObject(1, maHD);
+            int result = pr.executeUpdate();
+
+            con.commit(); // Commit transaction
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
 }
