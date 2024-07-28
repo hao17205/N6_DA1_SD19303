@@ -1678,14 +1678,14 @@ public class View_TT extends javax.swing.JFrame {
 
     private void btn_TTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TTActionPerformed
         // TODO add your handling code here:
-        int i = tbl_HD.getSelectedRow();
+        int i = tbl_ThanhToan.getSelectedRow();
         int chon = JOptionPane.showConfirmDialog(this, "Bạn có muốn thanh toán không?");
         if (chon == 0) {
             if (i == -1) {
                 JOptionPane.showMessageDialog(this, "Bạn chưa chọn dòng để thanh toán");
             } else {
                 if (this.readForm() != null) {
-                    String maHD = tbl_HD.getValueAt(i, 0).toString();
+                    String maHD = tbl_ThanhToan.getValueAt(i, 0).toString();
                     if (rp_TT.TT_HD(maHD, this.readForm()) > 0) {
                         JOptionPane.showMessageDialog(this, "Thanh toán thành công");
                         this.fillTable_TTTT(rp_TT.get_TTTT());
@@ -2043,9 +2043,9 @@ public class View_TT extends javax.swing.JFrame {
 
         // Kiểm tra và đọc giá trị của TrangThai
         if (rdo_DTT1.isSelected()) {
-            trangThai = "DTT"; // Đã Thanh Toán
+            trangThai = "Đã Thanh Toán"; // Đã Thanh Toán
         } else if (rdo_CTT1.isSelected()) {
-            trangThai = "CTT"; // Chưa Thanh Toán
+            trangThai = null; // Chưa Thanh Toán
         } else {
             JOptionPane.showMessageDialog(this, "Bạn Chưa Chọn Trạng Thái");
             return null;
