@@ -177,34 +177,29 @@ public class Repositories_TT {
         }
     }
 
-//    public int TT_HD(String maHD, Model_TT s) {
-//        sql = "UPDATE HOADON SET MaNV = ?, MAKH = ?, SoDienThoai = ?, DiaChi = ?, SoPhongDat = ?, GiaBanDau = ?, KhuyenMai = ?, TongTienDV = ?, TongTienPhong = ?, TrangThai = ?, NgayXuatDon = ?, NgayThanhToan = ?, TienCoc = ?, TongTien = ?, SoTienCanThanhToan = ? WHERE MAHD = ?";
-//
-//        try {
-//            con = DBconnect.getConnection();
-//            pr = con.prepareStatement(sql);
-//
-//            pr.setString(1, s.getTenNV());
-//            pr.setString(2, s.getTenKH());
-//            pr.setString(3, s.getSoDienThoai());
-//            pr.setString(4, s.getDiaChi());
-//            pr.setInt(5, s.getSoPhongDat());
-//            pr.setDouble(6, s.getGiaBanDau());
-//            pr.setInt(7, s.getKhuyenMai());
-//            pr.setDouble(8, s.getTongTienDichVu());
-//            pr.setDouble(9, s.getTongTienPhong());
-//            pr.setString(10, s.getTrangThai());
-//            pr.setDate(11, new java.sql.Date(s.getNgayXuatDon().getTime()));
-//            pr.setDate(12, new java.sql.Date(s.getNgayThanhToan().getTime()));
-//            pr.setDouble(13, s.getTienCoc());
-//            pr.setDouble(14, s.getTongTien());
-//            pr.setDouble(15, s.getSoTienCanThanhToan());
-//            pr.setString(16, maHD);
-//
-//            return pr.executeUpdate();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return 0;
-//        }
-//    }
+    public int TT_HD(String maHD, Model_TT s) {
+        sql = "UPDATE HOADON\n" +
+"SET  SoPhongDat = ?, GiaBanDau = ?, KhuyenMai = ?, TrangThai = ?,  NgayThanhToan = ?,  TongTien = ?, SoTienCanThanhToan = ?, TongTienDV = ?, TongTienPhong = ? \n" +
+"WHERE MAHD = ?";
+
+       try {
+            con = DBconnect.getConnection();
+            pr = con.prepareStatement(sql);
+            pr.setObject(1, s.getSoPhongDat());
+            pr.setObject(2, s.getGiaBanDau());
+            pr.setObject(3, s.getKhuyenMai());
+            pr.setObject(4, s.getTrangThai());
+            pr.setObject(5, s.getNgayThanhToan());
+            pr.setObject(6, s.getTongTien());
+            pr.setObject(7, s.getSoTienCanThanhToan());
+            pr.setObject(8, s.getTongTienDichVu());
+            pr.setObject(9, s.getTongTienPhong());
+            pr.setObject(10, maHD);
+
+            return pr.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+   }
 }
