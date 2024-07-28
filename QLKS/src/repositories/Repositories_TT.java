@@ -196,11 +196,37 @@ public class Repositories_TT {
             pr.setObject(10, s.getThue());
             pr.setObject(11, maHD);
 
-            return pr.executeUpdate();
+            int result = pr.executeUpdate();
+
+            if (result > 0) {
+                // Giả sử bạn cần lấy Ma_P từ bảng HOADONCHITIET hoặc bảng khác
+                String maP = getMaPFromHoaDonChiTiet(maHD);
+                if (maP != null) {
+                    Repositories_TTPhong rp_TTPhong = new Repositories_TTPhong();
+                    rp_TTPhong.sua_TT(maP, "Trống");
+                }
+            }
+
+            return result;
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
         }
+    }
+
+    private String getMaPFromHoaDonChiTiet(String maHD) {
+        String sql = "SELECT Ma_P FROM HOADONCHITIET WHERE MaHD = ?";
+        try {
+            pr = con.prepareStatement(sql);
+            pr.setObject(1, maHD);
+            rs = pr.executeQuery();
+            if (rs.next()) {
+                return rs.getString("Ma_P");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public int HD_TT(String maHD) {
@@ -211,6 +237,9 @@ public class Repositories_TT {
         try {
             con = DBconnect.getConnection();
             con.setAutoCommit(false);
+
+            // Lấy Ma_P từ bảng HOADONCHITIET
+            String maP = getMaPFromHoaDonChiTiet(maHD);
 
             // Xóa các bản ghi trong bảng HoaDonChiTiet
             pr = con.prepareStatement(sql_HDCT);
@@ -227,6 +256,11 @@ public class Repositories_TT {
             pr.setObject(1, maHD);
             int result = pr.executeUpdate();
 
+            if (result > 0 && maP != null) {
+                Repositories_TTPhong rp_TTPhong = new Repositories_TTPhong();
+                rp_TTPhong.sua_TT(maP, "Trống"); // Giả sử bạn cần cập nhật trạng thái về "Trống" khi hóa đơn bị xóa
+            }
+
             con.commit(); // Commit transaction
             return result;
         } catch (Exception e) {
@@ -234,5 +268,4 @@ public class Repositories_TT {
             return 0;
         }
     }
-
 }
