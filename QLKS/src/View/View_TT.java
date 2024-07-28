@@ -896,7 +896,7 @@ public class View_TT extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(txt_TenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_SoPD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 204));
@@ -993,7 +993,7 @@ public class View_TT extends javax.swing.JFrame {
         });
 
         jLabel20.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel20.setText("Thuế:");
+        jLabel20.setText("Khuyến Mại Tiền:");
 
         jLabel21.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel21.setText("Tiền Cọc:");
@@ -1033,7 +1033,7 @@ public class View_TT extends javax.swing.JFrame {
         );
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel15.setText("Khuyến Mại:");
+        jLabel15.setText("Khuyến Mại %:");
 
         cbo_KM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -1153,7 +1153,7 @@ public class View_TT extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã HD", "Tên NV", "Tên KH", "SDT", "Địa Chỉ", "Số PD", "Giá BD", "Khuyến Mại", "Tổng TDV", "Tổng TP", "Trạng Thái", "Ngày XD", "Ngày TT", "Thuế", "Tiền Cọc", "Tổng Tiền", "Số Tiền Cần TT"
+                "Mã HD", "Tên NV", "Tên KH", "SDT", "Địa Chỉ", "Số PD", "Giá BD", "Khuyến Mại %", "Tổng TDV", "Tổng TP", "Trạng Thái", "Ngày XD", "Ngày TT", "Khuyến Mại Tiền", "Tiền Cọc", "Tổng Tiền", "Số Tiền Cần TT"
             }
         ) {
             Class[] types = new Class [] {
@@ -2098,6 +2098,7 @@ public class View_TT extends javax.swing.JFrame {
         double soTienCanThanhToan;
         double tongTienDV;
         double tongTienPhong;
+        double ggT;
 
         // Kiểm tra và đọc giá trị của SoPhongDat
         String soPhongDatStr = txt_SPD.getText().trim();
@@ -2201,8 +2202,9 @@ public class View_TT extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Số Tiền Cần Thanh Toán phải là một số thực.");
             return null;
         }
+         ggT = Double.parseDouble(txt_KM_T.getText().trim());
 
-        return new Model_TT(trangThai, trangThai, trangThai, trangThai, trangThai, soPhongDat, giaBanDau, khuyenMai, tongTienDV, tongTienPhong, trangThai, ngayThanhToan, ngayThanhToan, tongTien, tongTienDV, tongTien, soTienCanThanhToan, trangThai, trangThai, trangThai, ngayThanhToan, ngayThanhToan, tongTienPhong);
+        return new Model_TT(trangThai, trangThai, trangThai, trangThai, trangThai, soPhongDat, giaBanDau, khuyenMai, tongTienDV, tongTienPhong, trangThai, ngayThanhToan, ngayThanhToan, ggT, ggT, tongTien, soTienCanThanhToan, trangThai, trangThai, trangThai, ngayThanhToan, ngayThanhToan, tongTienPhong);
 
     }
 

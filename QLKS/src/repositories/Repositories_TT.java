@@ -177,9 +177,9 @@ public class Repositories_TT {
     }
 
     public int TT_HD(String maHD, Model_TT s) {
-        sql = "UPDATE HOADON\n"
-                + "SET  SoPhongDat = ?, GiaBanDau = ?, KhuyenMai = ?, TrangThai = ?,  NgayThanhToan = ?,  TongTien = ?, SoTienCanThanhToan = ?, TongTienDV = ?, TongTienPhong = ? \n"
-                + "WHERE MAHD = ?";
+        sql = "UPDATE HOADON\n" +
+"SET  SoPhongDat = ?, GiaBanDau = ?, KhuyenMai = ?, TrangThai = ?,  NgayThanhToan = ?,  TongTien = ?, SoTienCanThanhToan = ?, TongTienDV = ?, TongTienPhong = ?, Thue = ?\n" +
+"WHERE MAHD = ?";
 
         try {
             con = DBconnect.getConnection();
@@ -193,7 +193,8 @@ public class Repositories_TT {
             pr.setObject(7, s.getSoTienCanThanhToan());
             pr.setObject(8, s.getTongTienDichVu());
             pr.setObject(9, s.getTongTienPhong());
-            pr.setObject(10, maHD);
+            pr.setObject(10, s.getThue());
+            pr.setObject(11, maHD);
 
             return pr.executeUpdate();
         } catch (Exception e) {
