@@ -202,7 +202,7 @@ public class Repositories_TT {
                 String maP = getMaPFromHoaDonChiTiet(maHD);
                 if (maP != null) {
                     Repositories_TTPhong rp_TTPhong = new Repositories_TTPhong();
-                    rp_TTPhong.sua_TT(maP, "Đang sử dụng");
+                    rp_TTPhong.sua_TT(maP, "Trống");
                 }
             }
 
