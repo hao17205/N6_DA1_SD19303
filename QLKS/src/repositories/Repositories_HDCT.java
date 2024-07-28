@@ -26,8 +26,7 @@ public class Repositories_HDCT {
     public ArrayList<Model_TT> getAll_HDCT() {
         sql = "SELECT HDCT.MA_HDCT, HDCT.MAHD, HDCT.MA_P, HDCT.CheckIn, HDCT.CheckOut, HDCT.TienPhong \n"
                 + "FROM HOADONCHITIET HDCT \n"
-                + "JOIN HOADON HD ON HDCT.MAHD = HD.MAHD \n"
-                + "WHERE HD.TrangThai = 'Đã Thanh Toán';";
+                + "JOIN HOADON HD ON HDCT.MAHD = HD.MAHD \n";
         ArrayList<Model_TT> listHoaDonChiTiet = new ArrayList<>();
         try {
             con = DBconnect.getConnection();
@@ -54,8 +53,7 @@ public class Repositories_HDCT {
         String sql = "SELECT HDCT.MA_HDCT, HDCT.MAHD, HDCT.MA_P, HDCT.CheckIn, HDCT.CheckOut, HDCT.TienPhong \n"
                 + "FROM HOADONCHITIET HDCT \n"
                 + "JOIN HOADON HD ON HDCT.MAHD = HD.MAHD \n"
-                + "WHERE (HDCT.MA_HDCT LIKE ? OR HDCT.MAHD LIKE ? OR HDCT.MA_P LIKE ?) \n"
-                + "AND HD.TrangThai = 'Đã Thanh Toán';";
+                + "WHERE (HDCT.MA_HDCT LIKE ? OR HDCT.MAHD LIKE ? OR HDCT.MA_P LIKE ?) \n";
 
         ArrayList<Model_TT> listHoaDonChiTiet = new ArrayList<>();
         try {
@@ -87,8 +85,7 @@ public class Repositories_HDCT {
         sql = "SELECT HDCT.MA_HDCT, HDCT.MAHD, HDCT.MA_P, HDCT.CheckIn, HDCT.CheckOut, HDCT.TienPhong \n"
                 + "FROM HOADONCHITIET HDCT \n"
                 + "JOIN HOADON HD ON HDCT.MAHD = HD.MAHD \n"
-                + "WHERE HDCT.MAHD = ? \n"
-                + "AND HD.TrangThai = 'Đã Thanh Toán';";
+                + "WHERE HDCT.MAHD = ? \n";
 
         ArrayList<Model_TT> listHoaDonChiTiet = new ArrayList<>();
         try {

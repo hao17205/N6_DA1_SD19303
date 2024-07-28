@@ -117,7 +117,6 @@ public class Repositories_TT {
         }
     }
 
-
     public ArrayList<Model_TT> getTongTienDV_HD() {
         sql = "SELECT SUM(ddv.TongTien) AS TongTienDV FROM HOADON hd JOIN HOADONCHITIET hdct ON hd.MAHD = hdct.MAHD JOIN DatDichVu ddv ON hd.MAHD = ddv.MaHD WHERE hd.TrangThai is Null GROUP BY hd.MAHD;";
         ArrayList<Model_TT> listHoaDon = new ArrayList<>();
@@ -178,11 +177,11 @@ public class Repositories_TT {
     }
 
     public int TT_HD(String maHD, Model_TT s) {
-        sql = "UPDATE HOADON\n" +
-"SET  SoPhongDat = ?, GiaBanDau = ?, KhuyenMai = ?, TrangThai = ?,  NgayThanhToan = ?,  TongTien = ?, SoTienCanThanhToan = ?, TongTienDV = ?, TongTienPhong = ? \n" +
-"WHERE MAHD = ?";
+        sql = "UPDATE HOADON\n"
+                + "SET  SoPhongDat = ?, GiaBanDau = ?, KhuyenMai = ?, TrangThai = ?,  NgayThanhToan = ?,  TongTien = ?, SoTienCanThanhToan = ?, TongTienDV = ?, TongTienPhong = ? \n"
+                + "WHERE MAHD = ?";
 
-       try {
+        try {
             con = DBconnect.getConnection();
             pr = con.prepareStatement(sql);
             pr.setObject(1, s.getSoPhongDat());
@@ -201,5 +200,38 @@ public class Repositories_TT {
             e.printStackTrace();
             return 0;
         }
-   }
+    }
+
+    public int HD_TT(String maHD) {
+        String sql_HDCT = "DELETE FROM HoaDonChiTiet WHERE MaHD = ?";
+        String sql_DDV = "DELETE FROM DatDichVu WHERE MaHD = ?";
+        String sql_HD = "DELETE FROM HoaDon WHERE MaHD = ?";
+
+        try {
+            con = DBconnect.getConnection();
+            con.setAutoCommit(false);
+
+            // Xóa các bản ghi trong bảng HoaDonChiTiet
+            pr = con.prepareStatement(sql_HDCT);
+            pr.setObject(1, maHD);
+            pr.executeUpdate();
+
+            // Xóa các bản ghi trong bảng DatDichVu
+            pr = con.prepareStatement(sql_DDV);
+            pr.setObject(1, maHD);
+            pr.executeUpdate();
+
+            // Xóa bản ghi trong bảng HoaDon
+            pr = con.prepareStatement(sql_HD);
+            pr.setObject(1, maHD);
+            int result = pr.executeUpdate();
+
+            con.commit(); // Commit transaction
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
 }
