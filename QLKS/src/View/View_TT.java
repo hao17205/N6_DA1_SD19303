@@ -52,13 +52,7 @@ public class View_TT extends javax.swing.JFrame {
         for (int j = 0; j <= 100; j++) {
             cbo_KM1.addItem(String.valueOf(j));
         }
-        i = rp_HD.getAll_HD().size();
-        this.showData_HD(i - 1);
-        tbl_HD.setRowSelectionInterval(i - 1, i - 1);
 
-        i = rp_HDCT.getAll_HDCT().size();
-        this.showData_HDCT(i - 1);
-        tbl_HDCT.setRowSelectionInterval(i - 1, i - 1);
     }
 
     void fillTable_HD(ArrayList<Model_TT> list_HD) {
@@ -808,7 +802,7 @@ public class View_TT extends javax.swing.JFrame {
                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Thanh Toán", jPanel15);
@@ -908,7 +902,6 @@ public class View_TT extends javax.swing.JFrame {
 
         buttonGroup1.add(rdo_DTT);
         rdo_DTT.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        rdo_DTT.setSelected(true);
         rdo_DTT.setText("Đã Thanh Toán");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -1267,7 +1260,7 @@ public class View_TT extends javax.swing.JFrame {
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Hóa Đơn", jPanel1);
@@ -1538,7 +1531,7 @@ public class View_TT extends javax.swing.JFrame {
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Hóa Đơn Chi Tiết", jPanel2);
@@ -1987,15 +1980,10 @@ public class View_TT extends javax.swing.JFrame {
 
         String trangThai = tbl_HD.getValueAt(i, 10) != null ? tbl_HD.getValueAt(i, 10).toString().trim() : "";
 
-        if (trangThai.equalsIgnoreCase("Đã Thanh Toán")) {
-            rdo_DTT.setSelected(true);
-            rdo_CTT.setSelected(false);
-        } else if (trangThai.equalsIgnoreCase("Chưa Thanh Toán") || trangThai.isEmpty()) {
-            rdo_DTT.setSelected(false);
+        if (trangThai.equalsIgnoreCase("Chưa Thanh Toán") || trangThai.isEmpty()) {
             rdo_CTT.setSelected(true);
         } else {
-            rdo_DTT.setSelected(false);
-            rdo_CTT.setSelected(false);
+            rdo_DTT.setSelected(true);
         }
 
         String ngayXuatDonStr = tbl_HD.getValueAt(i, 11).toString();
@@ -2202,7 +2190,7 @@ public class View_TT extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Số Tiền Cần Thanh Toán phải là một số thực.");
             return null;
         }
-         ggT = Double.parseDouble(txt_KM_T.getText().trim());
+        ggT = Double.parseDouble(txt_KM_T.getText().trim());
 
         return new Model_TT(trangThai, trangThai, trangThai, trangThai, trangThai, soPhongDat, giaBanDau, khuyenMai, tongTienDV, tongTienPhong, trangThai, ngayThanhToan, ngayThanhToan, ggT, ggT, tongTien, soTienCanThanhToan, trangThai, trangThai, trangThai, ngayThanhToan, ngayThanhToan, tongTienPhong);
 
