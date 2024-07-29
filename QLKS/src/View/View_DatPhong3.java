@@ -398,7 +398,7 @@ public class View_DatPhong3 extends javax.swing.JFrame {
                 }else{
                     if(rp_DP3.them_DP3(dp3) > 0){
                         JOptionPane.showMessageDialog(this, "Thêm thành công");
-                        //this.fillTable_TTPhong(rp_DSP.getALL_TTSD());
+                        this.fillTable_TTPhong(rp_DSP.getALL_TTSD());
                     }else{
                         JOptionPane.showMessageDialog(this, "thêm thất bại");
                     }

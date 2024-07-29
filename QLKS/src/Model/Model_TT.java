@@ -309,16 +309,13 @@ public class Model_TT {
 //            this.getTongTienPhong()
 //        };
 //    }
-    
-    
-    
     // ok 
     // star
     private String maKH;
     private String maNV;
     private String sDT;
 
-    public Model_TT(String maHD,String maKH,String maNV, String soDienThoai, String diaChi, Date ngayXuatDon, double tienCoc  ) {
+    public Model_TT(String maHD, String maKH, String maNV, String soDienThoai, String diaChi, Date ngayXuatDon, double tienCoc) {
         this.maHD = maHD;
         this.soDienThoai = soDienThoai;
         this.diaChi = diaChi;
@@ -327,7 +324,8 @@ public class Model_TT {
         this.maKH = maKH;
         this.maNV = maNV;
     }
-    public Object[] toDaTaRow_TTTT(){
+
+    public Object[] toDaTaRow_TTTT() {
         return new Object[]{this.maHD, this.maKH, this.maNV, this.soDienThoai, this.diaChi, this.ngayXuatDon, this.tienCoc};
     }
     // cho bảng tổng dịch vụ
@@ -336,7 +334,8 @@ public class Model_TT {
     public Model_TT(double tongTDV) {
         this.tongTDV = tongTDV;
     }
-    public Object[] toDaTaRow_TTDV(){
+
+    public Object[] toDaTaRow_TTDV() {
         return new Object[]{this.tongTDV};
     }
     // cho bảng tổng tiền phòng
@@ -347,7 +346,35 @@ public class Model_TT {
         this.soLP = soLP;
         this.tongTP = tongTP;
     }
-    public Object[] toDaTaRow_TTP(){
+
+    public Object[] toDaTaRow_TTP() {
         return new Object[]{this.soLP, this.tongTP};
+    }
+
+    //HDDDV
+    private String maHD_HDDDV;
+    private String maDDDV;
+    private String maP_HDDDV;
+    private String maDV;
+    private String tenDV;
+    private int soLuong;
+    private double gia;
+    private Date ngayDat;
+    private double tongTien_HDDDV;
+
+    public Model_TT(String maHD_HDDDV, String maDDDV, String maP_HDDDV, String maDV, String tenDV, int soLuong, double gia, Date ngayDat, double tongTien_HDDDV) {
+        this.maHD_HDDDV = maHD_HDDDV;
+        this.maDDDV = maDDDV;
+        this.maP_HDDDV = maP_HDDDV;
+        this.maDV = maDV;
+        this.tenDV = tenDV;
+        this.soLuong = soLuong;
+        this.gia = gia;
+        this.ngayDat = ngayDat;
+        this.tongTien_HDDDV = tongTien_HDDDV;
+    }
+
+    public Object[] toDaTaRow_HDDDV() {
+        return new Object[]{maHD_HDDDV, maDDDV, maP_HDDDV, maDV, tenDV, soLuong, gia, ngayDat, tongTien_HDDDV};
     }
 }

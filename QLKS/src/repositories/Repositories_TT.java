@@ -177,9 +177,9 @@ public class Repositories_TT {
     }
 
     public int TT_HD(String maHD, Model_TT s) {
-        sql = "UPDATE HOADON\n" +
-"SET  SoPhongDat = ?, GiaBanDau = ?, KhuyenMai = ?, TrangThai = ?,  NgayThanhToan = ?,  TongTien = ?, SoTienCanThanhToan = ?, TongTienDV = ?, TongTienPhong = ?, Thue = ?\n" +
-"WHERE MAHD = ?";
+        sql = "UPDATE HOADON\n"
+                + "SET  SoPhongDat = ?, GiaBanDau = ?, KhuyenMai = ?, TrangThai = ?,  NgayThanhToan = ?,  TongTien = ?, SoTienCanThanhToan = ?, TongTienDV = ?, TongTienPhong = ?, Thue = ?\n"
+                + "WHERE MAHD = ?";
 
         try {
             con = DBconnect.getConnection();

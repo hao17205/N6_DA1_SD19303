@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import repositories.Repositories_HDDDV;
 import repositories.Repositories_TT;
 
 /**
@@ -20,11 +21,11 @@ import repositories.Repositories_TT;
  * @author ADMIN
  */
 public class View_TT extends javax.swing.JFrame {
-
+    
     private repositories.Repositories_HD rp_HD = new Repositories_HD();
     private repositories.Repositories_HDCT rp_HDCT = new Repositories_HDCT();
     private repositories.Repositories_TT rp_TT = new Repositories_TT();
-
+    private repositories.Repositories_HDDDV rp_HDDDV = new Repositories_HDDDV();
     private DefaultTableModel mol = new DefaultTableModel();
     private int i = -1;
 
@@ -43,6 +44,7 @@ public class View_TT extends javax.swing.JFrame {
         this.fillTable_TT_DV(rp_TT.getTongTienDV_HD());
         this.fillTable_TT_P(rp_TT.getTongTienPhong_HD());
         //
+        this.fillTable_HDDDV(rp_HDDDV.getAll_DatDichVu());
         cbo_KM.removeAllItems();
         for (int j = 0; j <= 100; j++) {
             cbo_KM.addItem(String.valueOf(j));
@@ -52,9 +54,9 @@ public class View_TT extends javax.swing.JFrame {
         for (int j = 0; j <= 100; j++) {
             cbo_KM1.addItem(String.valueOf(j));
         }
-
+        
     }
-
+    
     void fillTable_HD(ArrayList<Model_TT> list_HD) {
         mol = (DefaultTableModel) tbl_HD.getModel();
         mol.setRowCount(0);
@@ -68,7 +70,7 @@ public class View_TT extends javax.swing.JFrame {
             mol.addRow(rowData);
         }
     }
-
+    
     void fillTable_HDCT(ArrayList<Model_TT> list_HDCT) {
         mol = (DefaultTableModel) tbl_HDCT.getModel();
         mol.setRowCount(0);
@@ -82,7 +84,7 @@ public class View_TT extends javax.swing.JFrame {
             mol.addRow(rowData);
         }
     }
-
+    
     void fillTable_HDCT1(ArrayList<Model_TT> list_HDCT) {
         DefaultTableModel model = (DefaultTableModel) tbl_HDCT1.getModel();
         model.setRowCount(0);
@@ -96,11 +98,11 @@ public class View_TT extends javax.swing.JFrame {
             model.addRow(rowData);
         }
     }
-
+    
     void fillTable_HD1(ArrayList<Model_TT> listHD) {
         DefaultTableModel model = (DefaultTableModel) tbl_HD1.getModel();
         model.setRowCount(0);
-
+        
         for (Model_TT tt : listHD) {
             model.addRow(new Object[]{
                 tt.getMaHD(),
@@ -179,7 +181,7 @@ public class View_TT extends javax.swing.JFrame {
             mol.addRow(rowData);
         }
     }
-
+    
     void fillTable_TT_P(ArrayList<Model_TT> list_TT) {
         mol = (DefaultTableModel) tbl_P.getModel();
         mol.setRowCount(0);
@@ -191,6 +193,48 @@ public class View_TT extends javax.swing.JFrame {
                 }
             }
             mol.addRow(rowData);
+        }
+    }
+    
+    private void fillTable_HDDDV(ArrayList<Model_TT> list) {
+        mol = (DefaultTableModel) tbl_DDV.getModel();
+        mol.setRowCount(0);
+        
+        for (Model_TT x : list) {
+            Object[] rowData = x.toDaTaRow_HDDDV();
+            for (int i = 0; i < rowData.length; i++) {
+                if (rowData[i] == null) {
+                    rowData[i] = ""; // Thay thế giá trị null bằng chuỗi rỗng
+                }
+            }
+            mol.addRow(rowData); // Thêm hàng mới vào bảng
+        }
+    }
+    
+    void fillTable_HD2(ArrayList<Model_TT> listHD) {
+        DefaultTableModel model = (DefaultTableModel) tbl_HD2.getModel();
+        model.setRowCount(0);
+        
+        for (Model_TT tt : listHD) {
+            model.addRow(new Object[]{
+                tt.getMaHD(),
+                tt.getTenNV(),
+                tt.getTenKH(),
+                tt.getSoDienThoai(),
+                tt.getDiaChi(),
+                tt.getSoPhongDat(),
+                tt.getGiaBanDau(),
+                tt.getKhuyenMai(),
+                tt.getTongTienDichVu(),
+                tt.getTongTienPhong(),
+                tt.getTrangThai(),
+                tt.getNgayXuatDon(),
+                tt.getNgayThanhToan(),
+                tt.getThue(),
+                tt.getTienCoc(),
+                tt.getTongTien(),
+                tt.getSoTienCanThanhToan()
+            });
         }
     }
 
@@ -330,6 +374,36 @@ public class View_TT extends javax.swing.JFrame {
         jPanel21 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbl_HD1 = new javax.swing.JTable();
+        jPanel24 = new javax.swing.JPanel();
+        jPanel25 = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        txt_MaDDV = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        txt_MaPDDV = new javax.swing.JTextField();
+        txt_MaHDDDV = new javax.swing.JTextField();
+        jLabel43 = new javax.swing.JLabel();
+        txt_MaDV = new javax.swing.JTextField();
+        jLabel44 = new javax.swing.JLabel();
+        txt_TenDV = new javax.swing.JTextField();
+        jLabel45 = new javax.swing.JLabel();
+        txt_SLDDV = new javax.swing.JTextField();
+        jPanel26 = new javax.swing.JPanel();
+        jLabel42 = new javax.swing.JLabel();
+        txt_G = new javax.swing.JTextField();
+        jLabel46 = new javax.swing.JLabel();
+        txt_TTDDV = new javax.swing.JTextField();
+        jLabel47 = new javax.swing.JLabel();
+        jdc_ND = new com.toedter.calendar.JDateChooser();
+        jPanel27 = new javax.swing.JPanel();
+        txt_TK2 = new javax.swing.JTextField();
+        btn_TK2 = new javax.swing.JButton();
+        jPanel28 = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tbl_DDV = new javax.swing.JTable();
+        jPanel29 = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        tbl_HD2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -451,7 +525,6 @@ public class View_TT extends javax.swing.JFrame {
 
         buttonGroup2.add(rdo_CTT1);
         rdo_CTT1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        rdo_CTT1.setSelected(true);
         rdo_CTT1.setText("Chưa Thanh Toán");
 
         rdo_DTT1.setBackground(new java.awt.Color(255, 255, 255));
@@ -1536,6 +1609,288 @@ public class View_TT extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Hóa Đơn Chi Tiết", jPanel2);
 
+        jPanel24.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel25.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel25.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Hóa Đơn Đặt Dịch Vụ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 24), new java.awt.Color(0, 204, 0))); // NOI18N
+
+        jLabel37.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel37.setText("Mã Hóa Đơn:");
+
+        jLabel38.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel38.setText("Mã Đặt Dịch Vụ:");
+
+        jLabel39.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel39.setText("Mã Phòng:");
+
+        jLabel43.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel43.setText("Mã Dịch Vụ:");
+
+        jLabel44.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel44.setText("Tên Dịch Vụ:");
+
+        jLabel45.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel45.setText("Số Lượng:");
+
+        javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
+        jPanel25.setLayout(jPanel25Layout);
+        jPanel25Layout.setHorizontalGroup(
+            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel25Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel37)
+                    .addComponent(jLabel38)
+                    .addComponent(jLabel39))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_MaDDV, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                    .addComponent(txt_MaPDDV)
+                    .addComponent(txt_MaHDDDV))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel44)
+                    .addComponent(jLabel43)
+                    .addComponent(jLabel45))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txt_TenDV, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_MaDV, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_SLDDV, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(222, 222, 222))
+        );
+        jPanel25Layout.setVerticalGroup(
+            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel25Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37)
+                    .addComponent(txt_MaHDDDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel43)
+                        .addComponent(txt_MaDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(txt_MaDDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel44)
+                        .addComponent(txt_TenDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel39)
+                    .addComponent(txt_MaPDDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel45)
+                        .addComponent(txt_SLDDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        jPanel26.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel26.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Giá", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 24), new java.awt.Color(0, 204, 51))); // NOI18N
+
+        jLabel42.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel42.setText("Giá:");
+
+        jLabel46.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel46.setText("Tổng Tiền:");
+
+        jLabel47.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel47.setText("Ngày Đặt:");
+
+        jdc_ND.setDateFormatString("yyyy-MM-dd");
+
+        javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
+        jPanel26.setLayout(jPanel26Layout);
+        jPanel26Layout.setHorizontalGroup(
+            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel26Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel47)
+                .addGap(18, 18, 18)
+                .addComponent(jdc_ND, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(jLabel42)
+                .addGap(18, 18, 18)
+                .addComponent(txt_G, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(jLabel46)
+                .addGap(18, 18, 18)
+                .addComponent(txt_TTDDV, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(215, 215, 215))
+        );
+        jPanel26Layout.setVerticalGroup(
+            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel26Layout.createSequentialGroup()
+                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel46)
+                        .addComponent(txt_TTDDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_G, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel47)
+                        .addComponent(jLabel42))
+                    .addComponent(jdc_ND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 20, Short.MAX_VALUE))
+        );
+
+        jPanel27.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel27.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Tìm Kiếm Hóa Đơn Chi Tiết", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 24), new java.awt.Color(0, 204, 0))); // NOI18N
+
+        btn_TK2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btn_TK2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search.png"))); // NOI18N
+        btn_TK2.setText("Tìm Kiếm");
+        btn_TK2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TK2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
+        jPanel27.setLayout(jPanel27Layout);
+        jPanel27Layout.setHorizontalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel27Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txt_TK2, javax.swing.GroupLayout.DEFAULT_SIZE, 1258, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_TK2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
+        );
+        jPanel27Layout.setVerticalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel27Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_TK2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_TK2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel28.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Đặt Dịch Vụ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 24), new java.awt.Color(0, 204, 0))); // NOI18N
+
+        tbl_DDV.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        tbl_DDV.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Mã HD", "Mã DDV", "Mã P", "Mã DV", "Tên DV", "Số Lượng", "Giá", "Ngày Đặt", "Tổng Tiền"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Object.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tbl_DDV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_DDVMouseClicked(evt);
+            }
+        });
+        jScrollPane8.setViewportView(tbl_DDV);
+
+        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
+        jPanel28.setLayout(jPanel28Layout);
+        jPanel28Layout.setHorizontalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel28Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1461, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel28Layout.setVerticalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel28Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel29.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel29.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Hóa Đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 24), new java.awt.Color(0, 204, 0))); // NOI18N
+
+        tbl_HD2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        tbl_HD2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Mã HD", "Tên NV", "Tên KH", "SDT", "Địa Chỉ", "Số PD", "Giá BD", "Khuyến Mại", "Tổng TDV", "Tổng TP", "Trạng Thái", "Ngày XD", "Ngày TT", "Thuế", "Tiền Cọc", "Tổng Tiền", "Số Tiền Cần TT"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tbl_HD2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_HD2MouseClicked(evt);
+            }
+        });
+        jScrollPane9.setViewportView(tbl_HD2);
+
+        javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
+        jPanel29.setLayout(jPanel29Layout);
+        jPanel29Layout.setHorizontalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel29Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane9)
+                .addContainerGap())
+        );
+        jPanel29Layout.setVerticalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel29Layout.createSequentialGroup()
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 5, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
+        jPanel24.setLayout(jPanel24Layout);
+        jPanel24Layout.setHorizontalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel24Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel28, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel29, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel24Layout.setVerticalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel24Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(103, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Hóa Đơn Đặt Dịch Vụ", jPanel24);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1556,98 +1911,139 @@ public class View_TT extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_TTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TTPActionPerformed
+    private void tbl_HD1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_HD1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_TTPActionPerformed
+    }//GEN-LAST:event_tbl_HD1MouseClicked
 
-    private void tbl_HDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_HDMouseClicked
+    private void tbl_HDCTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_HDCTMouseClicked
         // TODO add your handling code here:
-        i = tbl_HD.getSelectedRow();
-        this.showData_HD(i);
-        String maHD = tbl_HD.getValueAt(i, 0).toString();
-
-        fillTable_HDCT1(rp_HDCT.getHDCTByMaHD(maHD));
-    }//GEN-LAST:event_tbl_HDMouseClicked
-
-    private void btn_TKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TKActionPerformed
-        // TODO add your handling code here:
-        String searchTerm = txt_TK.getText().trim();
-
-        if (searchTerm.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập thông tin để tìm kiếm.");
-            return;
-        }
-
-        ArrayList<Model_TT> results = rp_HD.timkiem_MHD(searchTerm);
-
-        if (results.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Không tìm thấy kết quả.");
+        int i = tbl_HDCT.getSelectedRow();
+        
+        if (i >= 0) {
+            String maHDCT = tbl_HDCT.getValueAt(i, 0).toString();
+            
+            ArrayList<Model_TT> list_HD = rp_HD.getHDByMaHDCT(maHDCT);
+            
+            this.fillTable_HD1(list_HD);
         } else {
-            JOptionPane.showMessageDialog(this, "Tìm thấy kết quả - KQ in trên bảng");
-            fillTable_HD(results);
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn một dòng hợp lệ.");
         }
-
-    }//GEN-LAST:event_btn_TKActionPerformed
+    }//GEN-LAST:event_tbl_HDCTMouseClicked
 
     private void btn_TK1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TK1ActionPerformed
         // TODO add your handling code here:
         String searchTerm = txt_TK1.getText().trim();
-
+        
         if (searchTerm.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập thông tin để tìm kiếm.");
             return;
         }
-
+        
         ArrayList<Model_TT> results = rp_HDCT.timkiem_MHDCT(searchTerm);
-
+        
         if (results.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Không tìm thấy kết quả.");
         } else {
             JOptionPane.showMessageDialog(this, "Tìm thấy kết quả - KQ in trên bảng");
             this.fillTable_HDCT(results);
         }
-
     }//GEN-LAST:event_btn_TK1ActionPerformed
 
     private void tbl_HDCT1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_HDCT1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tbl_HDCT1MouseClicked
 
-    private void txt_TTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TTActionPerformed
+    private void tbl_HDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_HDMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_TTActionPerformed
+        i = tbl_HD.getSelectedRow();
+        this.showData_HD(i);
+        String maHD = tbl_HD.getValueAt(i, 0).toString();
+        
+        fillTable_HDCT1(rp_HDCT.getHDCTByMaHD(maHD));
+    }//GEN-LAST:event_tbl_HDMouseClicked
+
+    private void btn_TKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TKActionPerformed
+        // TODO add your handling code here:
+        String searchTerm = txt_TK.getText().trim();
+        
+        if (searchTerm.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập thông tin để tìm kiếm.");
+            return;
+        }
+        
+        ArrayList<Model_TT> results = rp_HD.timkiem_MHD(searchTerm);
+        
+        if (results.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không tìm thấy kết quả.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Tìm thấy kết quả - KQ in trên bảng");
+            fillTable_HD(results);
+        }
+    }//GEN-LAST:event_btn_TKActionPerformed
 
     private void txt_STCTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_STCTTActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_STCTTActionPerformed
 
-    private void tbl_HDCTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_HDCTMouseClicked
+    private void txt_TTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TTActionPerformed
         // TODO add your handling code here:
-        int i = tbl_HDCT.getSelectedRow();
+    }//GEN-LAST:event_txt_TTActionPerformed
 
-        if (i >= 0) {
-            String maHDCT = tbl_HDCT.getValueAt(i, 0).toString();
+    private void txt_TTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TTPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_TTPActionPerformed
 
-            ArrayList<Model_TT> list_HD = rp_HD.getHDByMaHDCT(maHDCT);
+    private void btn_RS3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RS3ActionPerformed
+        // TODO add your handling code here:
+        txt_MaHD2.setText("");
+        txt_MaNV.setText("");
+        txt_MaKH.setText("");
+        txt_SDT2.setText("");
+        txt_DC.setText("");
+        txt_SPD.setText("");
+        jdc_NXD1.setDate(null);
+        jdc_NTT1.setDate(null);
+        rdo_DTT.setSelected(false);
+        rdo_CTT.setSelected(false);
+        txt_TTP1.setText("");
+        txt_GBD1.setText("");
+        txt_TTDV1.setText("");
+        txt_TTHD.setText("");
+        txt_TC2.setText("");
+        txt_STCTT1.setText("");
+        cbo_KM.setSelectedIndex(-1);
+        this.fillTable_TTTT(rp_TT.get_TTTT());
+        this.fillTable_TT_DV(rp_TT.getTongTienDV_HD());
+        this.fillTable_TT_P(rp_TT.getTongTienPhong_HD());
+    }//GEN-LAST:event_btn_RS3ActionPerformed
 
-            this.fillTable_HD1(list_HD);
-        } else {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn một dòng hợp lệ.");
+    private void btn_HDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_HDActionPerformed
+        // TODO add your handling code here:
+        int i = tbl_ThanhToan.getSelectedRow();
+        int chon = JOptionPane.showConfirmDialog(this, "Bạn có muốn hủy đơn này không?");
+        if (chon == 0) {
+            if (i == -1) {
+                JOptionPane.showMessageDialog(this, "Bạn chưa chọn dòng để hủy đơn");
+            } else {
+                String maHD = tbl_ThanhToan.getValueAt(i, 0).toString();
+                if (rp_TT.HD_TT(maHD) > 0) {
+                    JOptionPane.showMessageDialog(this, "Hủy hóa đơn thành công");
+                    this.fillTable_TTTT(rp_TT.get_TTTT());
+                    resetFormAndTable_HD();
+                    resetFormAndTable_HDCT();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Hủy hóa đơn thất bại");
+                }
+            }
         }
+    }//GEN-LAST:event_btn_HDActionPerformed
 
-    }//GEN-LAST:event_tbl_HDCTMouseClicked
-
-    private void tbl_HD1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_HD1MouseClicked
+    private void btn_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbl_HD1MouseClicked
-
-    private void tbl_DVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_DVMouseClicked
-        // TODO add your handling code here:
-        int i = tbl_DV.getSelectedRow();
-        this.showData_TT_DV(i);
-        txt_TTDV1.disable();
-        txt_KM_T.setText("0");
-    }//GEN-LAST:event_tbl_DVMouseClicked
+        View_TrangChu tt5 = new View_TrangChu();
+        tt5.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_CActionPerformed
 
     private void tbl_PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_PMouseClicked
         // TODO add your handling code here:
@@ -1657,6 +2053,18 @@ public class View_TT extends javax.swing.JFrame {
         txt_TTP1.disable();
         txt_KM_T.setText("0");
     }//GEN-LAST:event_tbl_PMouseClicked
+
+    private void tbl_DVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_DVMouseClicked
+        // TODO add your handling code here:
+        int i = tbl_DV.getSelectedRow();
+        this.showData_TT_DV(i);
+        txt_TTDV1.disable();
+        txt_KM_T.setText("0");
+    }//GEN-LAST:event_tbl_DVMouseClicked
+
+    private void tbl_ThanhToanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_ThanhToanMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbl_ThanhToanMouseEntered
 
     private void tbl_ThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_ThanhToanMouseClicked
         // TODO add your handling code here:
@@ -1675,17 +2083,13 @@ public class View_TT extends javax.swing.JFrame {
         txt_KM_T.setText("0");
     }//GEN-LAST:event_tbl_ThanhToanMouseClicked
 
-    private void tbl_ThanhToanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_ThanhToanMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbl_ThanhToanMouseEntered
-
     private void btn_Tk3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Tk3ActionPerformed
         // TODO add your handling code here:
         String maTK = txt_TK3.getText().trim();
         if (maTK.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập thông tin vào ô tìm kiếm");
         } else {
-
+            
             ArrayList<Model_TT> KQTK_TTTT = rp_TT.timKiem_TTTT(maTK);
             if (KQTK_TTTT.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Không có thông tin muốn tìm");
@@ -1717,63 +2121,10 @@ public class View_TT extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "Thanh toán thất bại");
                     }
                 }
-
+                
             }
         }
     }//GEN-LAST:event_btn_TTActionPerformed
-
-    private void btn_HDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_HDActionPerformed
-        // TODO add your handling code here:
-        int i = tbl_ThanhToan.getSelectedRow();
-        int chon = JOptionPane.showConfirmDialog(this, "Bạn có muốn hủy đơn này không?");
-        if (chon == 0) {
-            if (i == -1) {
-                JOptionPane.showMessageDialog(this, "Bạn chưa chọn dòng để hủy đơn");
-            } else {
-                String maHD = tbl_ThanhToan.getValueAt(i, 0).toString();
-                if (rp_TT.HD_TT(maHD) > 0) {
-                    JOptionPane.showMessageDialog(this, "Hủy hóa đơn thành công");
-                    this.fillTable_TTTT(rp_TT.get_TTTT());
-                    resetFormAndTable_HD();
-                    resetFormAndTable_HDCT();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Hủy hóa đơn thất bại");
-                }
-            }
-        }
-
-    }//GEN-LAST:event_btn_HDActionPerformed
-
-    private void btn_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CActionPerformed
-        // TODO add your handling code here:
-        View_TrangChu tt5 = new View_TrangChu();
-        tt5.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btn_CActionPerformed
-
-    private void btn_RS3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RS3ActionPerformed
-        // TODO add your handling code here:
-        txt_MaHD2.setText("");
-        txt_MaNV.setText("");
-        txt_MaKH.setText("");
-        txt_SDT2.setText("");
-        txt_DC.setText("");
-        txt_SPD.setText("");
-        jdc_NXD1.setDate(null);
-        jdc_NTT1.setDate(null);
-        rdo_DTT.setSelected(false);
-        rdo_CTT.setSelected(false);
-        txt_TTP1.setText("");
-        txt_GBD1.setText("");
-        txt_TTDV1.setText("");
-        txt_TTHD.setText("");
-        txt_TC2.setText("");
-        txt_STCTT1.setText("");
-        cbo_KM.setSelectedIndex(-1);
-        this.fillTable_TTTT(rp_TT.get_TTTT());
-        this.fillTable_TT_DV(rp_TT.getTongTienDV_HD());
-        this.fillTable_TT_P(rp_TT.getTongTienPhong_HD());
-    }//GEN-LAST:event_btn_RS3ActionPerformed
 
     private void btn_TT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TT1ActionPerformed
         // TODO add your handling code here:
@@ -1782,23 +2133,60 @@ public class View_TT extends javax.swing.JFrame {
         String strPhanTramKM = cbo_KM1.getSelectedItem() != null ? cbo_KM1.getSelectedItem().toString() : "";
         String strTienKM = txt_KM_T.getText();
         String strTienCoc = txt_TC2.getText();
-
+        
         double TTP = strTTP.isEmpty() ? 0 : Double.parseDouble(strTTP);
         double TTDV = strTTDV.isEmpty() ? 0 : Double.parseDouble(strTTDV);
         int phanTramKM = strPhanTramKM.isEmpty() ? 0 : Integer.parseInt(strPhanTramKM);
         double tienKM = strTienKM.isEmpty() ? 0 : Double.parseDouble(strTienKM);
         double tienCoc = strTienCoc.isEmpty() ? 0 : Double.parseDouble(strTienCoc);
-
+        
         double giaBD = TTP + TTDV;
         txt_GBD1.setText(String.valueOf(giaBD));
-
+        
         double tongTHD = (TTP + TTDV) - (((TTP + TTDV) * phanTramKM) / 100) - tienKM;
         txt_TTHD.setText(String.valueOf(tongTHD));
-
+        
         double soTPT = ((TTP + TTDV) - (((TTP + TTDV) * phanTramKM) / 100) - tienKM) - tienCoc;
         txt_STCTT1.setText(String.valueOf(soTPT));
-
     }//GEN-LAST:event_btn_TT1ActionPerformed
+
+    private void btn_TK2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TK2ActionPerformed
+        // TODO add your handling code here:
+        String searchTerm = txt_TK2.getText().trim();
+        
+        if (searchTerm.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập thông tin để tìm kiếm.");
+            return;
+        }
+        
+        ArrayList<Model_TT> results = rp_HDDDV.timkiem_DatDichVu(searchTerm);
+        
+        if (results.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không tìm thấy kết quả.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Tìm thấy kết quả - KQ in trên bảng");
+            this.fillTable_HDDDV(results);
+        }
+    }//GEN-LAST:event_btn_TK2ActionPerformed
+
+    private void tbl_HD2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_HD2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbl_HD2MouseClicked
+
+    private void tbl_DDVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_DDVMouseClicked
+        // TODO add your handling code here:
+        int i = tbl_DDV.getSelectedRow();
+        this.showData_HDDDV(i);
+        if (i >= 0) {
+            String maHD = tbl_DDV.getValueAt(i, 0).toString();
+            
+            ArrayList<Model_TT> list_HD = rp_HD.getHDByHDDDV(maHD);
+            
+            this.fillTable_HD2(list_HD);
+        } else {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn một dòng hợp lệ.");
+        }
+    }//GEN-LAST:event_tbl_DDVMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1843,6 +2231,7 @@ public class View_TT extends javax.swing.JFrame {
     private javax.swing.JButton btn_RS3;
     private javax.swing.JButton btn_TK;
     private javax.swing.JButton btn_TK1;
+    private javax.swing.JButton btn_TK2;
     private javax.swing.JButton btn_TT;
     private javax.swing.JButton btn_TT1;
     private javax.swing.JButton btn_Tk3;
@@ -1880,7 +2269,16 @@ public class View_TT extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1900,6 +2298,12 @@ public class View_TT extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1914,9 +2318,12 @@ public class View_TT extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private com.toedter.calendar.JDateChooser jdc_CI;
     private com.toedter.calendar.JDateChooser jdc_CO;
+    private com.toedter.calendar.JDateChooser jdc_ND;
     private com.toedter.calendar.JDateChooser jdc_NTT;
     private com.toedter.calendar.JDateChooser jdc_NTT1;
     private com.toedter.calendar.JDateChooser jdc_NXD;
@@ -1925,27 +2332,35 @@ public class View_TT extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdo_CTT1;
     private javax.swing.JRadioButton rdo_DTT;
     private javax.swing.JRadioButton rdo_DTT1;
+    private javax.swing.JTable tbl_DDV;
     private javax.swing.JTable tbl_DV;
     private javax.swing.JTable tbl_HD;
     private javax.swing.JTable tbl_HD1;
+    private javax.swing.JTable tbl_HD2;
     private javax.swing.JTable tbl_HDCT;
     private javax.swing.JTable tbl_HDCT1;
     private javax.swing.JTable tbl_P;
     private javax.swing.JTable tbl_ThanhToan;
     private javax.swing.JTextField txt_DC;
     private javax.swing.JTextField txt_DiaChi;
+    private javax.swing.JTextField txt_G;
     private javax.swing.JTextField txt_GBD;
     private javax.swing.JTextField txt_GBD1;
     private javax.swing.JTextField txt_KM_T;
+    private javax.swing.JTextField txt_MaDDV;
+    private javax.swing.JTextField txt_MaDV;
     private javax.swing.JTextField txt_MaHD;
     private javax.swing.JTextField txt_MaHD1;
     private javax.swing.JTextField txt_MaHD2;
     private javax.swing.JTextField txt_MaHDCT;
+    private javax.swing.JTextField txt_MaHDDDV;
     private javax.swing.JTextField txt_MaKH;
     private javax.swing.JTextField txt_MaNV;
     private javax.swing.JTextField txt_MaP;
+    private javax.swing.JTextField txt_MaPDDV;
     private javax.swing.JTextField txt_SDT;
     private javax.swing.JTextField txt_SDT2;
+    private javax.swing.JTextField txt_SLDDV;
     private javax.swing.JTextField txt_SPD;
     private javax.swing.JTextField txt_STCTT;
     private javax.swing.JTextField txt_STCTT1;
@@ -1955,14 +2370,17 @@ public class View_TT extends javax.swing.JFrame {
     private javax.swing.JTextField txt_TC2;
     private javax.swing.JTextField txt_TK;
     private javax.swing.JTextField txt_TK1;
+    private javax.swing.JTextField txt_TK2;
     private javax.swing.JTextField txt_TK3;
     private javax.swing.JTextField txt_TP;
     private javax.swing.JTextField txt_TT;
+    private javax.swing.JTextField txt_TTDDV;
     private javax.swing.JTextField txt_TTDV;
     private javax.swing.JTextField txt_TTDV1;
     private javax.swing.JTextField txt_TTHD;
     private javax.swing.JTextField txt_TTP;
     private javax.swing.JTextField txt_TTP1;
+    private javax.swing.JTextField txt_TenDV;
     private javax.swing.JTextField txt_TenKH;
     private javax.swing.JTextField txt_TenNV;
     // End of variables declaration//GEN-END:variables
@@ -1977,15 +2395,15 @@ public class View_TT extends javax.swing.JFrame {
         cbo_KM.setSelectedItem(tbl_HD.getValueAt(i, 7).toString());
         txt_TTDV.setText(tbl_HD.getValueAt(i, 8).toString());
         txt_TTP.setText(tbl_HD.getValueAt(i, 9).toString());
-
+        
         String trangThai = tbl_HD.getValueAt(i, 10) != null ? tbl_HD.getValueAt(i, 10).toString().trim() : "";
-
+        
         if (trangThai.equalsIgnoreCase("Chưa Thanh Toán") || trangThai.isEmpty()) {
             rdo_CTT.setSelected(true);
         } else {
             rdo_DTT.setSelected(true);
         }
-
+        
         String ngayXuatDonStr = tbl_HD.getValueAt(i, 11).toString();
         if (!ngayXuatDonStr.isEmpty()) {
             try {
@@ -1996,7 +2414,7 @@ public class View_TT extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-
+        
         String ngayThanhToanStr = tbl_HD.getValueAt(i, 12).toString();
         if (!ngayThanhToanStr.isEmpty()) {
             try {
@@ -2007,18 +2425,18 @@ public class View_TT extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-
+        
         txt_T.setText(tbl_HD.getValueAt(i, 13).toString());
         txt_TC.setText(tbl_HD.getValueAt(i, 14).toString());
         txt_TT.setText(tbl_HD.getValueAt(i, 15).toString());
         txt_STCTT.setText(tbl_HD.getValueAt(i, 16).toString());
     }
-
+    
     void showData_HDCT(int i) {
         txt_MaHDCT.setText(tbl_HDCT.getValueAt(i, 0).toString());
         txt_MaHD1.setText(tbl_HDCT.getValueAt(i, 1).toString());
         txt_MaP.setText(tbl_HDCT.getValueAt(i, 2).toString());
-
+        
         String checkInStr = tbl_HDCT.getValueAt(i, 3).toString();
         if (!checkInStr.isEmpty()) {
             try {
@@ -2029,7 +2447,7 @@ public class View_TT extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-
+        
         String checkOutStr = tbl_HDCT.getValueAt(i, 4).toString();
         if (!checkOutStr.isEmpty()) {
             try {
@@ -2040,7 +2458,7 @@ public class View_TT extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-
+        
         txt_TP.setText(tbl_HDCT.getValueAt(i, 5).toString());
     }
 
@@ -2051,7 +2469,7 @@ public class View_TT extends javax.swing.JFrame {
         txt_MaKH.setText(tbl_ThanhToan.getValueAt(i, 2).toString());
         txt_SDT2.setText(tbl_ThanhToan.getValueAt(i, 3).toString());
         txt_DC.setText(tbl_ThanhToan.getValueAt(i, 4).toString());
-
+        
         String ngayXuatDonStr = tbl_ThanhToan.getValueAt(i, 5).toString();
         if (!ngayXuatDonStr.isEmpty()) {
             try {
@@ -2062,26 +2480,51 @@ public class View_TT extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-
+        
         txt_TC2.setText(tbl_ThanhToan.getValueAt(i, 6).toString());
     }
-
+    
     void showData_TT_DV(int i) {
         txt_TTDV1.setText(tbl_DV.getValueAt(i, 0).toString());
-
+        
     }
-
+    
     void showData_TT_P(int i) {
         txt_SPD.setText(tbl_P.getValueAt(i, 0).toString());
         txt_TTP1.setText(tbl_P.getValueAt(i, 1).toString());
     }
+    
+    void showData_HDDDV(int i) {
+        txt_MaHDDDV.setText(tbl_DDV.getValueAt(i, 0).toString());
+        txt_MaDDV.setText(tbl_DDV.getValueAt(i, 1).toString());
+        txt_MaPDDV.setText(tbl_DDV.getValueAt(i, 2).toString());
+        txt_MaDV.setText(tbl_DDV.getValueAt(i, 3).toString());
+        txt_TenDV.setText(tbl_DDV.getValueAt(i, 4).toString());
+        txt_SLDDV.setText(tbl_DDV.getValueAt(i, 5).toString());
+        txt_G.setText(tbl_DDV.getValueAt(i, 6).toString());
+        
+        String ngayDatStr = tbl_DDV.getValueAt(i, 7).toString();
+        if (!ngayDatStr.isEmpty()) {
+            try {
+                Date ngayDat = new SimpleDateFormat("yyyy-MM-dd").parse(ngayDatStr);
+                jdc_ND.setDate(ngayDat);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(this, "Lỗi định dạng ngày đặt: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+        
+        txt_TTDDV.setText(tbl_DDV.getValueAt(i, 8).toString());
+    }
+    
+    boolean isDateNotificationDisplayed = false; // Cờ để đảm bảo thông báo chỉ xuất hiện một lần
 
     Model_TT readForm() {
         int soPhongDat;
         double giaBanDau;
         int khuyenMai;
         String trangThai;
-        Date ngayThanhToan = null;
+        Date ngayThanhToan;
         double tongTien;
         double soTienCanThanhToan;
         double tongTienDV;
@@ -2126,7 +2569,7 @@ public class View_TT extends javax.swing.JFrame {
         if (rdo_DTT1.isSelected()) {
             trangThai = "Đã Thanh Toán"; // Đã Thanh Toán
         } else if (rdo_CTT1.isSelected()) {
-            trangThai = null; // Chưa Thanh Toán
+            trangThai = "Chưa Thanh Toán"; // Chưa Thanh Toán
         } else {
             JOptionPane.showMessageDialog(this, "Bạn Chưa Chọn Trạng Thái");
             return null;
@@ -2135,8 +2578,11 @@ public class View_TT extends javax.swing.JFrame {
         // Kiểm tra và đọc giá trị của NgayThanhToan
         ngayThanhToan = jdc_NTT1.getDate();
         if (ngayThanhToan == null) {
-            JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Ngày Thanh Toán");
-            return null;
+            ngayThanhToan = new Date(); // Thiết lập NgayThanhToan là ngày hiện tại
+            if (!isDateNotificationDisplayed) {
+                JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Ngày Thanh Toán. Mặc định sẽ là ngày hiện tại.");
+                isDateNotificationDisplayed = true; // Đặt cờ sau khi thông báo được hiển thị
+            }
         }
 
         // Kiểm tra và đọc giá trị của TongTienPhong
@@ -2190,12 +2636,12 @@ public class View_TT extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Số Tiền Cần Thanh Toán phải là một số thực.");
             return null;
         }
+        
         ggT = Double.parseDouble(txt_KM_T.getText().trim());
-
+        
         return new Model_TT(trangThai, trangThai, trangThai, trangThai, trangThai, soPhongDat, giaBanDau, khuyenMai, tongTienDV, tongTienPhong, trangThai, ngayThanhToan, ngayThanhToan, ggT, ggT, tongTien, soTienCanThanhToan, trangThai, trangThai, trangThai, ngayThanhToan, ngayThanhToan, tongTienPhong);
-
     }
-
+    
     void resetFormAndTable_HDCT() {
         // Đặt lại các trường nhập liệu
         txt_MaHDCT.setText("");
@@ -2208,7 +2654,7 @@ public class View_TT extends javax.swing.JFrame {
         // Làm mới bảng tbl_HDCT
         this.fillTable_HDCT(rp_HDCT.getAll_HDCT());
     }
-
+    
     void resetFormAndTable_HD() {
         // Đặt lại các trường nhập liệu
         txt_MaHD.setText("");
@@ -2233,5 +2679,5 @@ public class View_TT extends javax.swing.JFrame {
         // Làm mới bảng tbl_HD
         this.fillTable_HD(rp_HD.getAll_HD());
     }
-
+    
 }
