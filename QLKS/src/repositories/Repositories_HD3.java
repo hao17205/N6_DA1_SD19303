@@ -18,7 +18,8 @@ public class Repositories_HD3 {
     private String sql = null;
     
     public int them_HD3(Model_HD3 hd3){
-        sql = "insert into HOADON(MAHD,MANV,MAKH,SoDienThoai,DiaChi,TienCoc) values(?,?,?,?,?,?)";
+        sql = "INSERT INTO HOADON(MAHD,MANV,MAKH,SoDienThoai,DiaChi,TienCoc, NgayXuatDon) \n" +
+"values(?,?,?,?,?,?, GETDATE())";
         
         try {
             con = DBconnect.getConnection();
