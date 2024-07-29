@@ -264,7 +264,7 @@ public class Model_TT {
             this.getKhuyenMai(),
             this.getTongTienDichVu(),
             this.getTongTienPhong(),
-            this.getTrangThai() == null ? "" : this.getTrangThai(),
+            this.getTrangThai(),
             this.getNgayXuatDon() == null ? "" : this.getNgayXuatDon().toString(),
             this.getNgayThanhToan() == null ? "" : this.getNgayThanhToan().toString(),
             this.getThue(),
@@ -285,28 +285,69 @@ public class Model_TT {
         };
     }
 
-    public Object[] toDataRow_TT() {
-        return new Object[]{
-            this.getMaHD() == null ? "" : this.getMaHD(),
-            this.getTenNV() == null ? "" : this.getTenNV(),
-            this.getTenKH() == null ? "" : this.getTenKH(),
-            this.getSoDienThoai() == null ? "" : this.getSoDienThoai(),
-            this.getDiaChi() == null ? "" : this.getDiaChi(),
-            this.getNgayXuatDon() == null ? "" : this.getNgayXuatDon().toString(),
-            this.getThue()
-        };
-    }
+//    public Object[] toDataRow_TT() {
+//        return new Object[]{
+//            this.getMaHD() == null ? "" : this.getMaHD(),
+//            this.getTenNV() == null ? "" : this.getTenNV(),
+//            this.getTenKH() == null ? "" : this.getTenKH(),
+//            this.getSoDienThoai() == null ? "" : this.getSoDienThoai(),
+//            this.getDiaChi() == null ? "" : this.getDiaChi(),
+//            this.getNgayXuatDon() == null ? "" : this.getNgayXuatDon().toString(),
+//            this.getThue()
+//        };
+//    }
+//
+//    public Object[] toDataRow_TT_DV() {
+//        return new Object[]{
+//            this.getTongTienDichVu()
+//        };
+//    }
+//
+//    public Object[] toDataRow_TT_P() {
+//        return new Object[]{
+//            this.getSoPhongDat(),
+//            this.getTongTienPhong()
+//        };
+//    }
+    
+    
+    
+    // ok 
+    // star
+    private String maKH;
+    private String maNV;
+    private String sDT;
 
-    public Object[] toDataRow_TT_DV() {
-        return new Object[]{
-            this.getTongTienDichVu()
-        };
+    public Model_TT(String maHD,String maKH,String maNV, String soDienThoai, String diaChi, Date ngayXuatDon, double tienCoc  ) {
+        this.maHD = maHD;
+        this.soDienThoai = soDienThoai;
+        this.diaChi = diaChi;
+        this.ngayXuatDon = ngayXuatDon;
+        this.tienCoc = tienCoc;
+        this.maKH = maKH;
+        this.maNV = maNV;
     }
+    public Object[] toDaTaRow_TTTT(){
+        return new Object[]{this.maHD, this.maKH, this.maNV, this.soDienThoai, this.diaChi, this.ngayXuatDon, this.tienCoc};
+    }
+    // cho bảng tổng dịch vụ
+    private double tongTDV;
 
-    public Object[] toDataRow_TT_P() {
-        return new Object[]{
-            this.getSoPhongDat(),
-            this.getTongTienPhong()
-        };
+    public Model_TT(double tongTDV) {
+        this.tongTDV = tongTDV;
+    }
+    public Object[] toDaTaRow_TTDV(){
+        return new Object[]{this.tongTDV};
+    }
+    // cho bảng tổng tiền phòng
+    private int soLP;
+    private double tongTP;
+
+    public Model_TT(int soLP, double tongTP) {
+        this.soLP = soLP;
+        this.tongTP = tongTP;
+    }
+    public Object[] toDaTaRow_TTP(){
+        return new Object[]{this.soLP, this.tongTP};
     }
 }
