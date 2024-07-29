@@ -22,6 +22,7 @@ import repositories.Repositories_TT;
  */
 public class View_TT extends javax.swing.JFrame {
     
+    
     private repositories.Repositories_HD rp_HD = new Repositories_HD();
     private repositories.Repositories_HDCT rp_HDCT = new Repositories_HDCT();
     private repositories.Repositories_TT rp_TT = new Repositories_TT();
@@ -54,9 +55,9 @@ public class View_TT extends javax.swing.JFrame {
         for (int j = 0; j <= 100; j++) {
             cbo_KM1.addItem(String.valueOf(j));
         }
-        
+
     }
-    
+
     void fillTable_HD(ArrayList<Model_TT> list_HD) {
         mol = (DefaultTableModel) tbl_HD.getModel();
         mol.setRowCount(0);
@@ -70,7 +71,7 @@ public class View_TT extends javax.swing.JFrame {
             mol.addRow(rowData);
         }
     }
-    
+
     void fillTable_HDCT(ArrayList<Model_TT> list_HDCT) {
         mol = (DefaultTableModel) tbl_HDCT.getModel();
         mol.setRowCount(0);
@@ -84,7 +85,7 @@ public class View_TT extends javax.swing.JFrame {
             mol.addRow(rowData);
         }
     }
-    
+
     void fillTable_HDCT1(ArrayList<Model_TT> list_HDCT) {
         DefaultTableModel model = (DefaultTableModel) tbl_HDCT1.getModel();
         model.setRowCount(0);
@@ -98,11 +99,11 @@ public class View_TT extends javax.swing.JFrame {
             model.addRow(rowData);
         }
     }
-    
+
     void fillTable_HD1(ArrayList<Model_TT> listHD) {
         DefaultTableModel model = (DefaultTableModel) tbl_HD1.getModel();
         model.setRowCount(0);
-        
+
         for (Model_TT tt : listHD) {
             model.addRow(new Object[]{
                 tt.getMaHD(),
@@ -181,7 +182,7 @@ public class View_TT extends javax.swing.JFrame {
             mol.addRow(rowData);
         }
     }
-    
+
     void fillTable_TT_P(ArrayList<Model_TT> list_TT) {
         mol = (DefaultTableModel) tbl_P.getModel();
         mol.setRowCount(0);
@@ -195,11 +196,11 @@ public class View_TT extends javax.swing.JFrame {
             mol.addRow(rowData);
         }
     }
-    
+
     private void fillTable_HDDDV(ArrayList<Model_TT> list) {
         mol = (DefaultTableModel) tbl_DDV.getModel();
         mol.setRowCount(0);
-        
+
         for (Model_TT x : list) {
             Object[] rowData = x.toDaTaRow_HDDDV();
             for (int i = 0; i < rowData.length; i++) {
@@ -210,11 +211,11 @@ public class View_TT extends javax.swing.JFrame {
             mol.addRow(rowData); // Thêm hàng mới vào bảng
         }
     }
-    
+
     void fillTable_HD2(ArrayList<Model_TT> listHD) {
         DefaultTableModel model = (DefaultTableModel) tbl_HD2.getModel();
         model.setRowCount(0);
-        
+
         for (Model_TT tt : listHD) {
             model.addRow(new Object[]{
                 tt.getMaHD(),
@@ -431,6 +432,12 @@ public class View_TT extends javax.swing.JFrame {
         jLabel32.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel32.setText("Số Điện Thoại:");
 
+        txt_DC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_DCActionPerformed(evt);
+            }
+        });
+
         jLabel33.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel33.setText("Ngày Xuất Đơn:");
 
@@ -440,6 +447,12 @@ public class View_TT extends javax.swing.JFrame {
         jLabel35.setText("Ngày Thanh Toán:");
 
         jdc_NTT1.setDateFormatString("yyyy-MM-dd");
+        jdc_NTT1.setDate(new Date());
+        jdc_NTT1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jdc_NTT1PropertyChange(evt);
+            }
+        });
 
         jLabel36.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel36.setText("Số Phòng Đặt:");
@@ -1663,26 +1676,29 @@ public class View_TT extends javax.swing.JFrame {
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel25Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel37)
-                    .addComponent(txt_MaHDDDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel43)
-                        .addComponent(txt_MaDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_MaDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel37)
+                        .addComponent(txt_MaHDDDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel38)
-                    .addComponent(txt_MaDDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel44)
-                        .addComponent(txt_TenDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_TenDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel38)
+                        .addComponent(txt_MaDDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel39)
-                    .addComponent(txt_MaPDDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel45)
-                        .addComponent(txt_SLDDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_SLDDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel39)
+                        .addComponent(txt_MaPDDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -1918,12 +1934,12 @@ public class View_TT extends javax.swing.JFrame {
     private void tbl_HDCTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_HDCTMouseClicked
         // TODO add your handling code here:
         int i = tbl_HDCT.getSelectedRow();
-        
+
         if (i >= 0) {
             String maHDCT = tbl_HDCT.getValueAt(i, 0).toString();
-            
+
             ArrayList<Model_TT> list_HD = rp_HD.getHDByMaHDCT(maHDCT);
-            
+
             this.fillTable_HD1(list_HD);
         } else {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn một dòng hợp lệ.");
@@ -1933,14 +1949,14 @@ public class View_TT extends javax.swing.JFrame {
     private void btn_TK1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TK1ActionPerformed
         // TODO add your handling code here:
         String searchTerm = txt_TK1.getText().trim();
-        
+
         if (searchTerm.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập thông tin để tìm kiếm.");
             return;
         }
-        
+
         ArrayList<Model_TT> results = rp_HDCT.timkiem_MHDCT(searchTerm);
-        
+
         if (results.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Không tìm thấy kết quả.");
         } else {
@@ -1958,21 +1974,21 @@ public class View_TT extends javax.swing.JFrame {
         i = tbl_HD.getSelectedRow();
         this.showData_HD(i);
         String maHD = tbl_HD.getValueAt(i, 0).toString();
-        
+
         fillTable_HDCT1(rp_HDCT.getHDCTByMaHD(maHD));
     }//GEN-LAST:event_tbl_HDMouseClicked
 
     private void btn_TKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TKActionPerformed
         // TODO add your handling code here:
         String searchTerm = txt_TK.getText().trim();
-        
+
         if (searchTerm.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập thông tin để tìm kiếm.");
             return;
         }
-        
+
         ArrayList<Model_TT> results = rp_HD.timkiem_MHD(searchTerm);
-        
+
         if (results.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Không tìm thấy kết quả.");
         } else {
@@ -2076,6 +2092,7 @@ public class View_TT extends javax.swing.JFrame {
         txt_SDT2.disable();
         txt_DC.disable();
         jdc_NXD1.setEnabled(false);
+        jdc_NTT1.setEnabled(false);
         txt_TC2.disable();
         txt_GBD1.disable();
         txt_TTHD.disable();
@@ -2089,7 +2106,7 @@ public class View_TT extends javax.swing.JFrame {
         if (maTK.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập thông tin vào ô tìm kiếm");
         } else {
-            
+
             ArrayList<Model_TT> KQTK_TTTT = rp_TT.timKiem_TTTT(maTK);
             if (KQTK_TTTT.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Không có thông tin muốn tìm");
@@ -2121,7 +2138,7 @@ public class View_TT extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "Thanh toán thất bại");
                     }
                 }
-                
+
             }
         }
     }//GEN-LAST:event_btn_TTActionPerformed
@@ -2133,19 +2150,19 @@ public class View_TT extends javax.swing.JFrame {
         String strPhanTramKM = cbo_KM1.getSelectedItem() != null ? cbo_KM1.getSelectedItem().toString() : "";
         String strTienKM = txt_KM_T.getText();
         String strTienCoc = txt_TC2.getText();
-        
+
         double TTP = strTTP.isEmpty() ? 0 : Double.parseDouble(strTTP);
         double TTDV = strTTDV.isEmpty() ? 0 : Double.parseDouble(strTTDV);
         int phanTramKM = strPhanTramKM.isEmpty() ? 0 : Integer.parseInt(strPhanTramKM);
         double tienKM = strTienKM.isEmpty() ? 0 : Double.parseDouble(strTienKM);
         double tienCoc = strTienCoc.isEmpty() ? 0 : Double.parseDouble(strTienCoc);
-        
+
         double giaBD = TTP + TTDV;
         txt_GBD1.setText(String.valueOf(giaBD));
-        
+
         double tongTHD = (TTP + TTDV) - (((TTP + TTDV) * phanTramKM) / 100) - tienKM;
         txt_TTHD.setText(String.valueOf(tongTHD));
-        
+
         double soTPT = ((TTP + TTDV) - (((TTP + TTDV) * phanTramKM) / 100) - tienKM) - tienCoc;
         txt_STCTT1.setText(String.valueOf(soTPT));
     }//GEN-LAST:event_btn_TT1ActionPerformed
@@ -2153,14 +2170,14 @@ public class View_TT extends javax.swing.JFrame {
     private void btn_TK2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TK2ActionPerformed
         // TODO add your handling code here:
         String searchTerm = txt_TK2.getText().trim();
-        
+
         if (searchTerm.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập thông tin để tìm kiếm.");
             return;
         }
-        
+
         ArrayList<Model_TT> results = rp_HDDDV.timkiem_DatDichVu(searchTerm);
-        
+
         if (results.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Không tìm thấy kết quả.");
         } else {
@@ -2179,14 +2196,23 @@ public class View_TT extends javax.swing.JFrame {
         this.showData_HDDDV(i);
         if (i >= 0) {
             String maHD = tbl_DDV.getValueAt(i, 0).toString();
-            
+
             ArrayList<Model_TT> list_HD = rp_HD.getHDByHDDDV(maHD);
-            
+
             this.fillTable_HD2(list_HD);
         } else {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn một dòng hợp lệ.");
         }
     }//GEN-LAST:event_tbl_DDVMouseClicked
+
+    private void txt_DCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_DCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_DCActionPerformed
+
+    private void jdc_NTT1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdc_NTT1PropertyChange
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jdc_NTT1PropertyChange
 
     /**
      * @param args the command line arguments
@@ -2395,15 +2421,15 @@ public class View_TT extends javax.swing.JFrame {
         cbo_KM.setSelectedItem(tbl_HD.getValueAt(i, 7).toString());
         txt_TTDV.setText(tbl_HD.getValueAt(i, 8).toString());
         txt_TTP.setText(tbl_HD.getValueAt(i, 9).toString());
-        
+
         String trangThai = tbl_HD.getValueAt(i, 10) != null ? tbl_HD.getValueAt(i, 10).toString().trim() : "";
-        
+
         if (trangThai.equalsIgnoreCase("Chưa Thanh Toán") || trangThai.isEmpty()) {
             rdo_CTT.setSelected(true);
         } else {
             rdo_DTT.setSelected(true);
         }
-        
+
         String ngayXuatDonStr = tbl_HD.getValueAt(i, 11).toString();
         if (!ngayXuatDonStr.isEmpty()) {
             try {
@@ -2414,7 +2440,7 @@ public class View_TT extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-        
+
         String ngayThanhToanStr = tbl_HD.getValueAt(i, 12).toString();
         if (!ngayThanhToanStr.isEmpty()) {
             try {
@@ -2425,18 +2451,18 @@ public class View_TT extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-        
+
         txt_T.setText(tbl_HD.getValueAt(i, 13).toString());
         txt_TC.setText(tbl_HD.getValueAt(i, 14).toString());
         txt_TT.setText(tbl_HD.getValueAt(i, 15).toString());
         txt_STCTT.setText(tbl_HD.getValueAt(i, 16).toString());
     }
-    
+
     void showData_HDCT(int i) {
         txt_MaHDCT.setText(tbl_HDCT.getValueAt(i, 0).toString());
         txt_MaHD1.setText(tbl_HDCT.getValueAt(i, 1).toString());
         txt_MaP.setText(tbl_HDCT.getValueAt(i, 2).toString());
-        
+
         String checkInStr = tbl_HDCT.getValueAt(i, 3).toString();
         if (!checkInStr.isEmpty()) {
             try {
@@ -2447,7 +2473,7 @@ public class View_TT extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-        
+
         String checkOutStr = tbl_HDCT.getValueAt(i, 4).toString();
         if (!checkOutStr.isEmpty()) {
             try {
@@ -2458,7 +2484,7 @@ public class View_TT extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-        
+
         txt_TP.setText(tbl_HDCT.getValueAt(i, 5).toString());
     }
 
@@ -2469,7 +2495,7 @@ public class View_TT extends javax.swing.JFrame {
         txt_MaKH.setText(tbl_ThanhToan.getValueAt(i, 2).toString());
         txt_SDT2.setText(tbl_ThanhToan.getValueAt(i, 3).toString());
         txt_DC.setText(tbl_ThanhToan.getValueAt(i, 4).toString());
-        
+
         String ngayXuatDonStr = tbl_ThanhToan.getValueAt(i, 5).toString();
         if (!ngayXuatDonStr.isEmpty()) {
             try {
@@ -2480,20 +2506,20 @@ public class View_TT extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-        
+
         txt_TC2.setText(tbl_ThanhToan.getValueAt(i, 6).toString());
     }
-    
+
     void showData_TT_DV(int i) {
         txt_TTDV1.setText(tbl_DV.getValueAt(i, 0).toString());
-        
+
     }
-    
+
     void showData_TT_P(int i) {
         txt_SPD.setText(tbl_P.getValueAt(i, 0).toString());
         txt_TTP1.setText(tbl_P.getValueAt(i, 1).toString());
     }
-    
+
     void showData_HDDDV(int i) {
         txt_MaHDDDV.setText(tbl_DDV.getValueAt(i, 0).toString());
         txt_MaDDV.setText(tbl_DDV.getValueAt(i, 1).toString());
@@ -2502,7 +2528,7 @@ public class View_TT extends javax.swing.JFrame {
         txt_TenDV.setText(tbl_DDV.getValueAt(i, 4).toString());
         txt_SLDDV.setText(tbl_DDV.getValueAt(i, 5).toString());
         txt_G.setText(tbl_DDV.getValueAt(i, 6).toString());
-        
+
         String ngayDatStr = tbl_DDV.getValueAt(i, 7).toString();
         if (!ngayDatStr.isEmpty()) {
             try {
@@ -2513,10 +2539,10 @@ public class View_TT extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-        
+
         txt_TTDDV.setText(tbl_DDV.getValueAt(i, 8).toString());
     }
-    
+
     boolean isDateNotificationDisplayed = false; // Cờ để đảm bảo thông báo chỉ xuất hiện một lần
 
     Model_TT readForm() {
@@ -2578,11 +2604,8 @@ public class View_TT extends javax.swing.JFrame {
         // Kiểm tra và đọc giá trị của NgayThanhToan
         ngayThanhToan = jdc_NTT1.getDate();
         if (ngayThanhToan == null) {
-            ngayThanhToan = new Date(); // Thiết lập NgayThanhToan là ngày hiện tại
-            if (!isDateNotificationDisplayed) {
-                JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Ngày Thanh Toán. Mặc định sẽ là ngày hiện tại.");
-                isDateNotificationDisplayed = true; // Đặt cờ sau khi thông báo được hiển thị
-            }
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn ngày thanh toán.");
+            return null;
         }
 
         // Kiểm tra và đọc giá trị của TongTienPhong
@@ -2636,12 +2659,12 @@ public class View_TT extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Số Tiền Cần Thanh Toán phải là một số thực.");
             return null;
         }
-        
+
         ggT = Double.parseDouble(txt_KM_T.getText().trim());
-        
+
         return new Model_TT(trangThai, trangThai, trangThai, trangThai, trangThai, soPhongDat, giaBanDau, khuyenMai, tongTienDV, tongTienPhong, trangThai, ngayThanhToan, ngayThanhToan, ggT, ggT, tongTien, soTienCanThanhToan, trangThai, trangThai, trangThai, ngayThanhToan, ngayThanhToan, tongTienPhong);
     }
-    
+
     void resetFormAndTable_HDCT() {
         // Đặt lại các trường nhập liệu
         txt_MaHDCT.setText("");
@@ -2654,7 +2677,7 @@ public class View_TT extends javax.swing.JFrame {
         // Làm mới bảng tbl_HDCT
         this.fillTable_HDCT(rp_HDCT.getAll_HDCT());
     }
-    
+
     void resetFormAndTable_HD() {
         // Đặt lại các trường nhập liệu
         txt_MaHD.setText("");
@@ -2679,5 +2702,5 @@ public class View_TT extends javax.swing.JFrame {
         // Làm mới bảng tbl_HD
         this.fillTable_HD(rp_HD.getAll_HD());
     }
-    
+
 }
