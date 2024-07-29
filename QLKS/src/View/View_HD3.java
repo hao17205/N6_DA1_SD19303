@@ -216,6 +216,7 @@ public class View_HD3 extends javax.swing.JFrame {
     private void btn_CheckTTKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CheckTTKHActionPerformed
         // TODO add your handling code here:
         View_QLKH kh = new View_QLKH();
+        kh.setDefaultCloseOperation(kh.DISPOSE_ON_CLOSE);
         kh.setVisible(true);
     }//GEN-LAST:event_btn_CheckTTKHActionPerformed
 

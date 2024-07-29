@@ -381,7 +381,9 @@ public class View_NhanVien extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_themActionPerformed
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
-       
+        View_TrangChu tc = new View_TrangChu();
+        tc.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaActionPerformed

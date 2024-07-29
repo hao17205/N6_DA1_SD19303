@@ -177,9 +177,9 @@ public class Repositories_TT {
     }
 
     public int TT_HD(String maHD, Model_TT s) {
-        sql = "UPDATE HOADON\n" +
-"SET  SoPhongDat = ?, GiaBanDau = ?, KhuyenMai = ?, TrangThai = ?,  NgayThanhToan = ?,  TongTien = ?, SoTienCanThanhToan = ?, TongTienDV = ?, TongTienPhong = ?, Thue = ?\n" +
-"WHERE MAHD = ?";
+        sql = "UPDATE HOADON\n"
+                + "SET  SoPhongDat = ?, GiaBanDau = ?, KhuyenMai = ?, TrangThai = ?,  NgayThanhToan = ?,  TongTien = ?, SoTienCanThanhToan = ?, TongTienDV = ?, TongTienPhong = ?, Thue = ?\n"
+                + "WHERE MAHD = ?";
 
         try {
             con = DBconnect.getConnection();
@@ -200,10 +200,13 @@ public class Repositories_TT {
 
             if (result > 0) {
                 // Giả sử bạn cần lấy Ma_P từ bảng HOADONCHITIET hoặc bảng khác
-                String maP = getMaPFromHoaDonChiTiet(maHD);
-                if (maP != null) {
+                ArrayList<String> list_MP = getMaPFromHoaDonChiTiet(maHD);
+                if (list_MP != null) {
                     Repositories_TTPhong rp_TTPhong = new Repositories_TTPhong();
-                    rp_TTPhong.sua_TT(maP, "Trống");
+                    for (String x : list_MP) {
+                        rp_TTPhong.sua_TT(x, "Trống");
+                    }
+                    
                 }
             }
 
@@ -214,15 +217,17 @@ public class Repositories_TT {
         }
     }
 
-    private String getMaPFromHoaDonChiTiet(String maHD) {
+    private ArrayList<String> getMaPFromHoaDonChiTiet(String maHD) {
+        ArrayList<String> list_MP = new ArrayList<>();
         String sql = "SELECT Ma_P FROM HOADONCHITIET WHERE MaHD = ?";
         try {
             pr = con.prepareStatement(sql);
             pr.setObject(1, maHD);
             rs = pr.executeQuery();
-            if (rs.next()) {
-                return rs.getString("Ma_P");
+            while (rs.next()) {                
+                list_MP.add(rs.getString("Ma_P"));
             }
+            return list_MP;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -239,7 +244,7 @@ public class Repositories_TT {
             con.setAutoCommit(false);
 
             // Lấy Ma_P từ bảng HOADONCHITIET
-            String maP = getMaPFromHoaDonChiTiet(maHD);
+            ArrayList<String> list_MP = getMaPFromHoaDonChiTiet(maHD);
 
             // Xóa các bản ghi trong bảng HoaDonChiTiet
             pr = con.prepareStatement(sql_HDCT);
@@ -256,9 +261,12 @@ public class Repositories_TT {
             pr.setObject(1, maHD);
             int result = pr.executeUpdate();
 
-            if (result > 0 && maP != null) {
+            if (result > 0 && list_MP != null) {
                 Repositories_TTPhong rp_TTPhong = new Repositories_TTPhong();
-                rp_TTPhong.sua_TT(maP, "Trống"); // Giả sử bạn cần cập nhật trạng thái về "Trống" khi hóa đơn bị xóa
+                
+                for (String x : list_MP) {
+                        rp_TTPhong.sua_TT(x, "Trống");
+                    } 
             }
 
             con.commit(); // Commit transaction

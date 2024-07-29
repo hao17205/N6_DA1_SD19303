@@ -558,6 +558,7 @@ public class View_TrangChu extends javax.swing.JFrame {
     private void btn_datPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_datPhongActionPerformed
         // TODO add your handling code here:
         View_DatPhong3 dp3 = new View_DatPhong3();
+        dp3.setDefaultCloseOperation(dp3.DISPOSE_ON_CLOSE);
         dp3.setVisible(true);
         
         
@@ -634,6 +635,7 @@ public class View_TrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         View_ThongKe tk = new View_ThongKe();
         tk.setVisible(true);
+        this.dispose();
        
     }//GEN-LAST:event_lb_ThongKeMouseClicked
 

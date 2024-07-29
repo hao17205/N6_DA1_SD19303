@@ -5,13 +5,14 @@
         <group>
             <file>file:/D:/new_code/QLKS/src/View/View_TT.java</file>
             <file>file:/D:/new_code/QLKS/src/View/view_DichVu.java</file>
-            <file>file:/D:/new_code/QLKS/src/repositories/Repositories_TT.java</file>
+            <file>file:/D:/new_code/QLKS/src/View/View_Login.java</file>
+            <file>file:/D:/new_code/QLKS/src/View/View_NhanVien.java</file>
+            <file>file:/D:/new_code/QLKS/src/View/View_ThongKe.java</file>
+            <file>file:/D:/new_code/QLKS/src/View/View_QLKH.java</file>
             <file>file:/D:/new_code/QLKS/src/View/View_DatPhong3.java</file>
             <file>file:/D:/new_code/QLKS/src/View/View_KM.java</file>
             <file>file:/D:/new_code/QLKS/src/View/View_TrangChu.java</file>
-            <file>file:/D:/new_code/QLKS/src/Model/Model_DatPhong.java</file>
-            <file>file:/D:/new_code/QLKS/src/Model/Model_TT.java</file>
-            <file>file:/D:/new_code/QLKS/src/repositories/Repositories_KM.java</file>
+            <file>file:/D:/new_code/QLKS/src/View/View_HD3.java</file>
         </group>
     </open-files>
 </project-private>
