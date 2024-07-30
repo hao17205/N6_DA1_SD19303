@@ -106,39 +106,39 @@ public class Repositories_TTPhong {
     }
 }
    
-public ArrayList<Model_DSPhong> getALL_TTSD(){
-    sql = "select p.Tang,p.MA_P,p.TinhTrang,lp.LoaiPhong,lp.Gia,lp.SONGUOIO,lp.MoTa\n" +
-"from PHONG p join LOAIPHONG lp on p.MALP = lp.MALP";
-     ArrayList<Model_DSPhong> list_DSP = new ArrayList<>();
-     try {
-         con = DBconnect.getConnection();
-         ps = con.prepareStatement(sql);
-         rs = ps.executeQuery();
-         while(rs.next()){
-             int tang;
-             String maPhong;
-             String tinhTrang;
-             String loaiPhong;
-             double gia;
-             int soNguoio;
-             String moTa;
-             tang = rs.getInt(1);
-             maPhong = rs.getString(2);
-             tinhTrang = rs.getString(3);
-             loaiPhong = rs.getString(4);
-             gia = rs.getDouble(5);
-             soNguoio = rs.getInt(6);
-             moTa = rs.getString(7);
-             Model_DSPhong ttp = new Model_DSPhong(tang, maPhong, tinhTrang, loaiPhong, gia, soNguoio, moTa);
-             list_DSP.add(ttp);
-        }return list_DSP;
-        
-    } catch (Exception e) {
-        e.printStackTrace();
-        return null;
-    }
+//public ArrayList<Model_DSPhong> getALL_TTSD(){
+//    sql = "select p.Tang,p.MA_P,p.TinhTrang,lp.LoaiPhong,lp.Gia,lp.SONGUOIO,lp.MoTa\n" +
+//"from PHONG p join LOAIPHONG lp on p.MALP = lp.MALP";
+//     ArrayList<Model_DSPhong> list_DSP = new ArrayList<>();
+//     try {
+//         con = DBconnect.getConnection();
+//         ps = con.prepareStatement(sql);
+//         rs = ps.executeQuery();
+//         while(rs.next()){
+//             int tang;
+//             String maPhong;
+//             String tinhTrang;
+//             String loaiPhong;
+//             double gia;
+//             int soNguoio;
+//             String moTa;
+//             tang = rs.getInt(1);
+//             maPhong = rs.getString(2);
+//             tinhTrang = rs.getString(3);
+//             loaiPhong = rs.getString(4);
+//             gia = rs.getDouble(5);
+//             soNguoio = rs.getInt(6);
+//             moTa = rs.getString(7);
+//             Model_DSPhong ttp = new Model_DSPhong(tang, maPhong, tinhTrang, loaiPhong, gia, soNguoio, moTa);
+//             list_DSP.add(ttp);
+//        }return list_DSP;
+//        
+//    } catch (Exception e) {
+//        e.printStackTrace();
+//        return null;
+//    }
                 
-}
+//}
             
         
     

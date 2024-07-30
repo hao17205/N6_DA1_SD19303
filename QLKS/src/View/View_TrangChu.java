@@ -20,14 +20,14 @@ public class View_TrangChu extends javax.swing.JFrame {
     public View_TrangChu() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.fillTable_Phong(rp_TT.getAll());
+        this.fillTable_Phong(rp_TT.getAll_TrangChu());
         
     }
     private void fillTable_Phong(ArrayList<Model_TrangChu>list_TT){
         mol = (DefaultTableModel) tbl_Phong.getModel();
         mol.setRowCount(0);
         for (Model_TrangChu x : list_TT) {
-            mol.addRow(x.toDataRow_P());
+            mol.addRow(x.toData_TrangChu());
         }
     }
    
@@ -43,7 +43,6 @@ public class View_TrangChu extends javax.swing.JFrame {
         lb_home = new javax.swing.JLabel();
         lb_NhanVien = new javax.swing.JLabel();
         lb_KhachHang = new javax.swing.JLabel();
-        lb_KhuyenMai = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         lb_DichVu = new javax.swing.JLabel();
         lb_ThongKe = new javax.swing.JLabel();
@@ -119,10 +118,6 @@ public class View_TrangChu extends javax.swing.JFrame {
             }
         });
 
-        lb_KhuyenMai.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        lb_KhuyenMai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/sale.png"))); // NOI18N
-        lb_KhuyenMai.setText("KHUYẾN MẠI");
-
         lb_DichVu.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         lb_DichVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/dich vụ.png"))); // NOI18N
         lb_DichVu.setText("DỊCH VỤ");
@@ -175,7 +170,6 @@ public class View_TrangChu extends javax.swing.JFrame {
                     .addComponent(lb_DichVu, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lb_KhachHang)
-                    .addComponent(lb_KhuyenMai)
                     .addComponent(lb_home)
                     .addComponent(jLabel1))
                 .addContainerGap(27, Short.MAX_VALUE))
@@ -195,13 +189,11 @@ public class View_TrangChu extends javax.swing.JFrame {
                 .addComponent(lb_DichVu)
                 .addGap(33, 33, 33)
                 .addComponent(lb_KhachHang)
-                .addGap(33, 33, 33)
-                .addComponent(lb_KhuyenMai)
-                .addGap(33, 33, 33)
+                .addGap(38, 38, 38)
                 .addComponent(lb_ThanhToan)
-                .addGap(18, 18, 18)
+                .addGap(38, 38, 38)
                 .addComponent(lb_ThongKe)
-                .addGap(28, 28, 28)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel9)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -214,13 +206,13 @@ public class View_TrangChu extends javax.swing.JFrame {
 
         tbl_Phong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Mã Phòng", "Mã Loại Phòng", "Tình Trạng Phòng", "Tầng", "Giá", "Loại Phòng", "Số người ở", "Mô tả"
+                "Mã Phòng", "Tình Trạng Phòng", "Tầng"
             }
         ));
         tbl_Phong.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -538,21 +530,23 @@ public class View_TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_lb_NhanVienMouseClicked
 
     private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaActionPerformed
-//      i = tbl_Phong.getSelectedRow();
-//      
-//      if(i == -1){
-//          JOptionPane.showMessageDialog(this, "Bạn Chưa Chọn Dòng Để Xóa");
-//      }
-//      else{
-//          String maPhong = tbl_Phong.getValueAt(i, 0).toString();
-//          if(rp.xoa_TC(maPhong)>0){
-//              JOptionPane.showMessageDialog(this, "Xóa Thành Công");
-//              this.fillTable(rp.getAll_TC());
-//          }
-//          else{
-//            JOptionPane.showMessageDialog(this, "Xóa Thất Bại");      
-//                  }
-//      }
+        int chon = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa thông tin");
+        if(chon == 0){
+        i = tbl_Phong.getSelectedRow();
+        if(i == -1){
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Chọn Dòng Để Xóa");
+        }
+        else{
+          String maPhong = tbl_Phong.getValueAt(i, 0).toString();
+          if(rp_TT.xoa_TC(maPhong)>0){
+              JOptionPane.showMessageDialog(this, "Xóa Thành Công");
+              this.fillTable_Phong(rp_TT.getAll_TrangChu());
+          }
+          else{
+            JOptionPane.showMessageDialog(this, "Xóa Thất Bại");      
+                  }
+      }
+        }
     }//GEN-LAST:event_btn_xoaActionPerformed
 
     private void btn_datPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_datPhongActionPerformed
@@ -574,50 +568,59 @@ public class View_TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tbl_PhongMouseClicked
 
     private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
-       if(this.readForm_TT()== null){
+        int chon = JOptionPane.showConfirmDialog(this, "Bạn muốn thêm phòng?");
+        if(chon == 0){
+        if(this.readForm_TrangChu()== null){
            JOptionPane.showMessageDialog(this, "thêm thất bại");
        }else{
-           if(rp_TT.them_TC(this.readForm_TT())>0){
+           if(rp_TT.them_TC(this.readForm_TrangChu())>0){
                JOptionPane.showMessageDialog(this, "thêm thành công");
-               this.fillTable_Phong(rp_TT.getAll());
+               this.fillTable_Phong(rp_TT.getAll_TrangChu());
            }else{
                JOptionPane.showMessageDialog(this, "thêm thất bại");
            }
        }
+       }
     }//GEN-LAST:event_btn_themActionPerformed
 
     private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaActionPerformed
-//        i = tbl_Phong.getSelectedRow();
-//        if(i == -1){
-//          JOptionPane.showMessageDialog(this, "Bạn Chưa Chọn Dòng Để Sửa");
-//       }
-//        else{
-//            String maPhong = tbl_Phong.getValueAt(i, 0).toString();
-//             if(rp.sua_TC(maPhong, this.readFrom())> 0){
-//                JOptionPane.showMessageDialog(this, "Sửa Thành Công");
-//                 this.fillTable(rp.getAll_TC());
-//             }
-//             else{
-//                JOptionPane.showMessageDialog(this, "Sửa Thất Bại");  
-//                     }
-//                }
+        int chon = JOptionPane.showConfirmDialog(this, "Bạn muốn sửa thông tin");
+        if(chon == 0){
+        i = tbl_Phong.getSelectedRow();
+        if(i == -1){
+          JOptionPane.showMessageDialog(this, "Bạn Chưa Chọn Dòng Để Sửa");
+       }
+        else{
+            String maPhong = tbl_Phong.getValueAt(i, 0).toString();
+             if(rp_TT.sua_TC(maPhong, this.readForm_TrangChu())> 0){
+                JOptionPane.showMessageDialog(this, "Sửa Thành Công");
+                 this.fillTable_Phong(rp_TT.getAll_TrangChu());
+             }
+             else{
+                JOptionPane.showMessageDialog(this, "Sửa Thất Bại");  
+                     }
+                }
+        }
     }//GEN-LAST:event_btn_suaActionPerformed
 
     private void btn_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_timKiemActionPerformed
-//       String maPhong = txt_timKiem.getText().trim();
-//       if(maPhong.isEmpty()){
-//           JOptionPane.showMessageDialog(this, "Vui Lòng Nhập Mã Phòng Để Tìm Kiếm");
-//       }
-//       else{
-//           ArrayList<Model_TrangChu> TrangChu = rp.timKiem(maPhong);
-//           if(TrangChu.isEmpty()){
-//               JOptionPane.showMessageDialog(this, "Không Có Dữ Lệu!");
-//           }
-//           else{
-//               JOptionPane.showMessageDialog(this, "Đã Tìm Thấy Dữ Liệu");
-//               this.fillTable(TrangChu);
-//           }
-//       }
+        int chon = JOptionPane.showConfirmDialog(this, "Bạn muốn tìm kiếm thông tin ?");
+        if(chon == 0){
+        String maPhong = txt_timKiem.getText().trim();
+       if(maPhong.isEmpty()){
+           JOptionPane.showMessageDialog(this, "Vui Lòng Nhập Mã Phòng Để Tìm Kiếm");
+       }
+       else{
+           ArrayList<Model_TrangChu> TrangChu = rp_TT.timKiem(maPhong);
+           if(TrangChu.isEmpty()){
+               JOptionPane.showMessageDialog(this, "Không Có Dữ Lệu!");
+           }
+           else{
+               JOptionPane.showMessageDialog(this, "Đã Tìm Thấy Dữ Liệu");
+               this.fillTable_Phong(TrangChu);
+           }
+       }
+        }
     }//GEN-LAST:event_btn_timKiemActionPerformed
 
     private void lb_KhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_KhachHangMouseClicked
@@ -701,7 +704,6 @@ public class View_TrangChu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lb_DichVu;
     private javax.swing.JLabel lb_KhachHang;
-    private javax.swing.JLabel lb_KhuyenMai;
     private javax.swing.JLabel lb_NhanVien;
     private javax.swing.JLabel lb_ThanhToan;
     private javax.swing.JLabel lb_ThongKe;
@@ -720,48 +722,46 @@ public class View_TrangChu extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void showData(int i){
-        txt_maPhong.setText(tbl_Phong.getValueAt(i, 0).toString());
-        txt_MaLoaiPhong.setText(tbl_Phong.getValueAt(i, 1).toString());
-        String trangThai = tbl_Phong.getValueAt(i, 2).toString();
-        if(trangThai.equalsIgnoreCase("Đang sử dụng")){
-            rdo_DSD.setSelected(true);
-        }else{
-            rdo_Trong.setSelected(true);
-        }
-        txt_Tang.setText(tbl_Phong.getValueAt(i, 3).toString());
-        txt_Gia.setText(tbl_Phong.getValueAt(i, 4).toString());
-        txt_LoaiPhong.setText(tbl_Phong.getValueAt(i, 5).toString());
-        txt_soNguoiO.setText(tbl_Phong.getValueAt(i, 6).toString());
-        txt_MoTa.setText(tbl_Phong.getValueAt(i, 7).toString());
+       txt_maPhong.setText(tbl_Phong.getValueAt(i, 0).toString());
+       String trangThai = tbl_Phong.getValueAt(i, 1).toString();
+       if(trangThai.equalsIgnoreCase("Trống")){
+           rdo_Trong.setSelected(true);
+       }else{
+           rdo_DSD.setSelected(true);
+       }
+       txt_Tang.setText(tbl_Phong.getValueAt(i, 2).toString());
     }
-    private Model_TrangChu readForm_TT(){
+    private Model_TrangChu readForm_TrangChu(){
         String maPhong;
-        String maLoaiPhong;
         String tinhTrang;
         int tang;
-        double gia;
-        String loaiPhong;
-        int soNguoiO;
-        String moTa;
         maPhong = txt_maPhong.getText().trim();
-        maLoaiPhong = txt_MaLoaiPhong.getText().trim();
+        if(maPhong.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập mã phòng");
+            txt_maPhong.requestFocus();
+            return null;
+        }
         if(rdo_DSD.isSelected()){
-            tinhTrang = "Đã sử dụng";
+            tinhTrang = "Đang sử dụng";
         }else{
             tinhTrang = "Trống";
         }
         
-        tang = Integer.parseInt(txt_Tang.getText().trim());
-        
-        gia = Double.parseDouble(txt_Gia.getText().trim());
-        loaiPhong = txt_LoaiPhong.getText().trim();
-        soNguoiO = Integer.parseInt(txt_soNguoiO.getText().trim());
-        moTa = txt_MoTa.getText().trim();
-       
-        return new Model_TrangChu(maPhong, maLoaiPhong, tinhTrang, tang, gia, loaiPhong, soNguoiO, moTa);
-        
-        
+        try {
+            tang = Integer.parseInt(txt_Tang.getText().trim());
+            if(tang < 0){
+                JOptionPane.showMessageDialog(this, "số tầng phải lớn hơn 0");
+                txt_Tang.requestFocus();
+                return null;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "số tầng phải là số");
+            txt_Tang.requestFocus();
+            return null;
+        }
+        return new Model_TrangChu(maPhong, tinhTrang, tang);
     }
+  
   
     private void discope() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

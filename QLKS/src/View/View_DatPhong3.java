@@ -42,13 +42,41 @@ public class View_DatPhong3 extends javax.swing.JFrame {
             mol.addRow(dsp.toDaTa_DSPhong());
         }
     }
-    private void fillTable_TTPhong(ArrayList<Model_DSPhong> list_TTP){
-        mol = (DefaultTableModel) tbl_TTPhong.getModel();
-        mol.setRowCount(0);
-        for (Model_DSPhong tt : list_TTP) {
-            mol.addRow(tt.toDaTa_DSPhong());
-        }
+//    private void fillTable_TTPhong(ArrayList<Model_DSPhong> list_TTP){
+//        mol = (DefaultTableModel) tbl_TTPhong.getModel();
+//        mol.setRowCount(0);
+//        for (Model_DSPhong tt : list_TTP) {
+//            mol.addRow(tt.toDaTa_DSPhong());
+//        }
+//    }
+    
+    private void timKiem_TTP(String keyword) {
+    Repositories_TTPhong repo = new Repositories_TTPhong(); // Tạo đối tượng từ repositories
+    ArrayList<Model_DSPhong> list = repo.timKiem_TTPhong(keyword); // Gọi hàm tìm kiếm
+    
+    if (list.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Không tìm thấy phòng nào với từ khóa: " + keyword);
+    } else {
+        JOptionPane.showMessageDialog(null, "Đã tìm thấy " + list.size() + " phòng với từ khóa: " + keyword);
+        updateTable(list); // Cập nhật bảng dữ liệu dựa trên kết quả tìm kiếm
     }
+}
+
+private void updateTable(ArrayList<Model_DSPhong> list) {
+    DefaultTableModel model = (DefaultTableModel) tbl_TTPhong.getModel();
+    model.setRowCount(0);
+    for (Model_DSPhong item : list) {
+        model.addRow(new Object[]{
+            item.getTang(),
+            item.getMaPhong(),
+            item.getTinhTrang(),
+            item.getLoaiPhong(),
+            item.getGiaPhong(),
+            item.getSoNguoiO(),
+            item.getMoTa()
+        });
+    }
+}
 
 
     /**
@@ -89,6 +117,7 @@ public class View_DatPhong3 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_TTPhong = new javax.swing.JTable();
         btn_TimKiem = new javax.swing.JButton();
+        txt_timKiem = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -327,8 +356,11 @@ public class View_DatPhong3 extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_TimKiem)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(txt_timKiem)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_TimKiem))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(98, Short.MAX_VALUE))
         );
@@ -336,7 +368,9 @@ public class View_DatPhong3 extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btn_TimKiem)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_TimKiem)
+                    .addComponent(txt_timKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(52, Short.MAX_VALUE))
@@ -398,7 +432,7 @@ public class View_DatPhong3 extends javax.swing.JFrame {
                 }else{
                     if(rp_DP3.them_DP3(dp3) > 0){
                         JOptionPane.showMessageDialog(this, "Thêm thành công");
-                        this.fillTable_TTPhong(rp_DSP.getALL_TTSD());
+                        this.fillTable_DSPhong(rp_DSP.getAll_DSPhong());
                     }else{
                         JOptionPane.showMessageDialog(this, "thêm thất bại");
                     }
@@ -443,20 +477,13 @@ public class View_DatPhong3 extends javax.swing.JFrame {
 
     private void btn_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimKiemActionPerformed
         // TODO add your handling code here:
-        String maPhong = JOptionPane.showInputDialog(this,"Bạn muốn tìm kiếm thông tin");
-         if (maPhong != null && !maPhong.trim().isEmpty()) {
-        Repositories_TTPhong rp_DSP = new Repositories_TTPhong();
-        ArrayList<Model_DSPhong> ketQua = rp_DSP.timKiem_TTPhong(maPhong.trim());
-
-        if (ketQua.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Không tìm thấy thông tin");
-        } else {
-            JOptionPane.showMessageDialog(this, "Đã tìm thấy thông tin");
-            fillTable_DSPhong(ketQua); // Cập nhật bảng với kết quả tìm kiếm
+        int chon = JOptionPane.showConfirmDialog(this, "Bạn muốn tìm kiếm thông tin");
+        if(chon == 0){
+        String keyword = txt_timKiem.getText().trim();
+        JOptionPane.showMessageDialog(this, "Đã tìm thấy thông tin");
+        timKiem_TTP(keyword);
         }
-    } else {
-        JOptionPane.showMessageDialog(this, "Vui lòng nhập từ khóa tìm kiếm");
-    }
+      
         
 
     }//GEN-LAST:event_btn_TimKiemActionPerformed
@@ -540,6 +567,7 @@ public class View_DatPhong3 extends javax.swing.JFrame {
     private javax.swing.JTextField txt_maHDCT;
     private javax.swing.JTextField txt_maPhong;
     private javax.swing.JTextField txt_soNguoiO;
+    private javax.swing.JTextField txt_timKiem;
     // End of variables declaration//GEN-END:variables
     void showData_DSP(int i){
         txt_GiaPhong1.setText(tbl_TTPhong.getValueAt(i, 4).toString());
@@ -585,6 +613,11 @@ public class View_DatPhong3 extends javax.swing.JFrame {
         if(checkOut == null){
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn ngày check Out");
             jdc_checkOut.requestFocus();
+            return null;
+        }
+        if(checkIn.after(checkOut)){
+            JOptionPane.showMessageDialog(this, "Dữ liệu ko hợp lệ, ngày check in phải trước ngày check out");
+            jdc_checkIn.requestFocus();
             return null;
         }
         
