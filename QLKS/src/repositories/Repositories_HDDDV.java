@@ -42,7 +42,7 @@ public class Repositories_HDDDV {
                 Date ngayDat = rs.getDate("NgayDat");
                 double tongTien = rs.getDouble("TongTien");
 
-                Model_TT ddv = new Model_TT(maHD, maDDV, maP, maDV, tenDichVu, soLuong, gia, ngayDat, tongTien);
+                Model_TT ddv = new Model_TT(maHD, maDV, tenDichVu, tenDichVu, maHD, soLuong, gia, tongTien, tongTien, tenDichVu, ngayDat, ngayDat, gia, tongTien, tongTien, maHD, maDDV, maP, ngayDat, ngayDat, tongTien, maDDV, maDDV, maDDV, maDV, maDV, soLuong, gia, ngayDat, tongTien, maDV, maDV, sql, tongTien, soLuong, tongTien);
                 listDatDichVu.add(ddv);
             }
         } catch (SQLException e) {
@@ -76,7 +76,7 @@ public class Repositories_HDDDV {
                 Date ngayDat = rs.getDate("NgayDat");
                 double tongTien = rs.getDouble("TongTien");
 
-                Model_TT ddv = new Model_TT(maHD, maDDV, maP, maDV, tenDichVu, soLuong, gia, ngayDat, tongTien);
+                Model_TT ddv = new Model_TT(maHD, maDV, tenDichVu, tenDichVu, maHD, soLuong, gia, tongTien, tongTien, tenDichVu, ngayDat, ngayDat, gia, tongTien, tongTien, maHD, maDDV, maP, ngayDat, ngayDat, tongTien, maDDV, maDDV, maDDV, maDV, maDV, soLuong, gia, ngayDat, tongTien, maDV, maDV, sql, tongTien, soLuong, tongTien);
                 listDatDichVu.add(ddv);
             }
         } catch (Exception e) {
@@ -84,4 +84,37 @@ public class Repositories_HDDDV {
         }
         return listDatDichVu;
     }
+
+    public ArrayList<Model_TT> getHDDDVbyMaHD(String maHD) {
+        String sql = "SELECT MaHD, Ma_DDV, MA_P, MADV, TenDichVu, SoLuong, Gia, NgayDat, TongTien FROM DatDichVu WHERE MaHD = ?";
+        ArrayList<Model_TT> listDatDichVu = new ArrayList<>();
+
+        try {
+            con = DBconnect.getConnection();
+            pr = con.prepareStatement(sql);
+            pr.setString(1, maHD);
+            rs = pr.executeQuery();
+
+            while (rs.next()) {
+                // Lấy dữ liệu từ ResultSet
+                String ma_DDV = rs.getString("Ma_DDV");
+                String ma_P = rs.getString("MA_P");
+                String maDV = rs.getString("MADV");
+                String tenDichVu = rs.getString("TenDichVu");
+                int soLuong = rs.getInt("SoLuong");
+                double gia = rs.getDouble("Gia");
+                Date ngayDat = rs.getDate("NgayDat");
+                double tongTien = rs.getDouble("TongTien");
+
+                Model_TT ddv = new Model_TT(maHD, maDV, tenDichVu, tenDichVu, maHD, soLuong, gia, tongTien, tongTien, tenDichVu, ngayDat, ngayDat, gia, tongTien, tongTien, maHD, ma_DDV, ma_P, ngayDat, ngayDat, tongTien, maHD, ma_DDV, ma_P, maDV, tenDichVu, soLuong, gia, ngayDat, tongTien, maDV, maDV, sql, tongTien, soLuong, tongTien);
+
+                // Thêm vào danh sách
+                listDatDichVu.add(ddv);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listDatDichVu;
+    }
+
 }

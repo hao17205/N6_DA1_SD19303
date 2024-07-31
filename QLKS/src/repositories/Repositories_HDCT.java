@@ -40,7 +40,7 @@ public class Repositories_HDCT {
                 Date checkOut = rs.getDate("CheckOut");
                 double tienPhong = rs.getDouble("TienPhong");
 
-                Model_TT tt = new Model_TT(maP, maP, maP, maP, maP, 0, tienPhong, 0, tienPhong, tienPhong, maP, checkOut, checkOut, tienPhong, tienPhong, tienPhong, tienPhong, maHDCT, maHD, maP, checkIn, checkOut, tienPhong);
+                Model_TT tt = new Model_TT(maHD, maP, maP, maP, maHD, 0, tienPhong, tienPhong, tienPhong, maHD, checkOut, checkOut, tienPhong, tienPhong, tienPhong, maHDCT, maHDCT, maP, checkIn, checkOut, tienPhong, maHD, maHD, maHD, maP, maHD, 0, tienPhong, checkOut, tienPhong, maP, maP, sql, tienPhong, 0, tienPhong);
                 listHoaDonChiTiet.add(tt);
             }
         } catch (Exception e) {
@@ -72,7 +72,7 @@ public class Repositories_HDCT {
                 Date checkOut = rs.getDate("CheckOut");
                 double tienPhong = rs.getDouble("TienPhong");
 
-                Model_TT tt = new Model_TT(maHD, maP, maP, searchTerm, maHD, 0, tienPhong, 0, tienPhong, tienPhong, maHD, checkOut, checkOut, tienPhong, tienPhong, tienPhong, tienPhong, maHDCT, maHDCT, maP, checkIn, checkOut, tienPhong);
+                Model_TT tt = new Model_TT(maHD, maP, maP, searchTerm, maHD, 0, tienPhong, tienPhong, tienPhong, maHD, checkOut, checkOut, tienPhong, tienPhong, tienPhong, maHDCT, maHDCT, maP, checkIn, checkOut, tienPhong, maHD, maHD, maHD, maP, maHD, 0, tienPhong, checkOut, tienPhong, maP, maP, sql, tienPhong, 0, tienPhong);
                 listHoaDonChiTiet.add(tt);
             }
         } catch (Exception e) {
@@ -100,7 +100,7 @@ public class Repositories_HDCT {
                 Date checkOut = rs.getDate("CheckOut");
                 double tienPhong = rs.getDouble("TienPhong");
 
-                Model_TT tt = new Model_TT(maHD, maP, maP, maP, maHD, 0, tienPhong, 0, tienPhong, tienPhong, maHD, checkOut, checkOut, tienPhong, tienPhong, tienPhong, tienPhong, maHDCT, maHD, maP, checkIn, checkOut, tienPhong);
+                Model_TT tt = new Model_TT(maHD, maP, maP, maP, maHD, 0, tienPhong, tienPhong, tienPhong, maHD, checkOut, checkOut, tienPhong, tienPhong, tienPhong, maHDCT, maHDCT, maP, checkIn, checkOut, tienPhong, maHDCT, maHDCT, maHDCT, maP, maHD, 0, tienPhong, checkOut, tienPhong, maP, maP, sql, tienPhong, 0, tienPhong);
                 listHoaDonChiTiet.add(tt);
             }
         } catch (Exception e) {

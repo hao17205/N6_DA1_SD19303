@@ -127,7 +127,7 @@ public class Repositories_TT {
             while (rs.next()) {
                 double tongTienDV = rs.getDouble("TongTienDV");
 
-                Model_TT tt = new Model_TT("", "", "", "", "", 0, 0, 0, tongTienDV, 0, "", null, null, 0, 0, 0, 0, null, null, null, null, null, 0);
+                Model_TT tt = new Model_TT(tongTienDV);
                 listHoaDon.add(tt);
             }
         } catch (Exception e) {
@@ -149,7 +149,7 @@ public class Repositories_TT {
                 int soLuongChiTiet = rs.getInt("SoLuongChiTiet");
                 double tongTienPhong = rs.getDouble("TongTienPhong");
 
-                Model_TT tt = new Model_TT("", "", "", "", "", soLuongChiTiet, 0, 0, 0, tongTienPhong, "", null, null, 0, 0, 0, 0, null, null, null, null, null, 0);
+                Model_TT tt = new Model_TT(soLuongChiTiet, tongTienPhong);
                 listHoaDon.add(tt);
             }
         } catch (Exception e) {
@@ -178,7 +178,7 @@ public class Repositories_TT {
 
     public int TT_HD(String maHD, Model_TT s) {
         sql = "UPDATE HOADON\n"
-                + "SET  SoPhongDat = ?, GiaBanDau = ?, KhuyenMai = ?, TrangThai = ?,  NgayThanhToan = ?,  TongTien = ?, SoTienCanThanhToan = ?, TongTienDV = ?, TongTienPhong = ?, Thue = ?\n"
+                + "SET  SoPhongDat = ?, GiaBanDau = ?, TrangThai = ?,  NgayThanhToan = ?,  TongTien = ?, SoTienCanThanhToan = ?, TongTienDV = ?, TongTienPhong = ?\n"
                 + "WHERE MAHD = ?";
 
         try {
@@ -186,15 +186,13 @@ public class Repositories_TT {
             pr = con.prepareStatement(sql);
             pr.setObject(1, s.getSoPhongDat());
             pr.setObject(2, s.getGiaBanDau());
-            pr.setObject(3, s.getKhuyenMai());
-            pr.setObject(4, s.getTrangThai());
-            pr.setObject(5, s.getNgayThanhToan());
-            pr.setObject(6, s.getTongTien());
-            pr.setObject(7, s.getSoTienCanThanhToan());
-            pr.setObject(8, s.getTongTienDichVu());
-            pr.setObject(9, s.getTongTienPhong());
-            pr.setObject(10, s.getThue());
-            pr.setObject(11, maHD);
+            pr.setObject(3, s.getTrangThai());
+            pr.setObject(4, s.getNgayThanhToan());
+            pr.setObject(5, s.getTongTien());
+            pr.setObject(6, s.getSoTienCanThanhToan());
+            pr.setObject(7, s.getTongTienDichVu());
+            pr.setObject(8, s.getTongTienPhong());
+            pr.setObject(9, maHD);
 
             int result = pr.executeUpdate();
 
