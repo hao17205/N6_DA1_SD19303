@@ -21,7 +21,7 @@ public class Repositories_HD {
     private String sql = null;
 
     public ArrayList<Model_TT> getAll_HD() {
-        sql = "SELECT HD.MAHD, NV.TenNV, KH.TenKhachHang, HD.SoDienThoai, HD.DiaChi, HD.SoPhongDat, HD.GiaBanDau, HD.TongTienDV, HD.TongTienPhong, HD.TrangThai, HD.NgayXuatDon, HD.NgayThanhToan, HD.TienCoc, HD.TongTien, HD.SoTienCanThanhToan\n"
+        sql = "SELECT HD.MAHD, NV.TenNV, KH.TenKhachHang, HD.SoDienThoai, HD.DiaChi, HD.SoPhongDat, HD.TongTienDV, HD.TongTienPhong, HD.TrangThai, HD.NgayXuatDon, HD.NgayThanhToan, HD.TienCoc, HD.TongTien, HD.SoTienCanThanhToan\n"
                 + "FROM HOADON HD \n"
                 + "JOIN KHACHHANG KH ON HD.MAKH = KH.MAKH \n"
                 + "JOIN NHANVIEN NV ON HD.MANV = NV.MANV \n";
@@ -37,7 +37,6 @@ public class Repositories_HD {
                 String soDienThoai = rs.getString("SoDienThoai");
                 String diaChi = rs.getString("DiaChi");
                 int soPhongDat = rs.getInt("SoPhongDat");
-                double giaBanDau = rs.getDouble("GiaBanDau");
                 double tongTienDV = rs.getDouble("TongTienDV");
                 double tongTienPhong = rs.getDouble("TongTienPhong");
                 String trangThai = rs.getString("TrangThai");
@@ -47,7 +46,7 @@ public class Repositories_HD {
                 double tongTien = rs.getDouble("TongTien");
                 double soTienCanThanhToan = rs.getDouble("SoTienCanThanhToan");
 
-                Model_TT tt = new Model_TT(maHD, tenNV, tenKH, soDienThoai, diaChi, soPhongDat, giaBanDau, tongTienDV, tongTienPhong, trangThai, ngayXuatDon, ngayThanhToan, tienCoc, tongTien, soTienCanThanhToan, maHD, maHD, maHD, ngayXuatDon, ngayXuatDon, tienCoc, maHD, maHD, maHD, maHD, tenNV, soPhongDat, tongTien, ngayXuatDon, tongTienDV, maHD, maHD, sql, tongTien, soPhongDat, tongTien);
+                Model_TT tt = new Model_TT(maHD, tenNV, tenKH, soDienThoai, diaChi, soPhongDat, tienCoc, tongTienDV, tongTienPhong, trangThai, ngayXuatDon, ngayThanhToan, tienCoc, tongTien, soTienCanThanhToan, maHD, maHD, maHD, ngayXuatDon, ngayXuatDon, tienCoc, maHD, maHD, maHD, maHD, tenNV, soPhongDat, tongTien, ngayXuatDon, tongTienDV, maHD, maHD, sql, tongTien, soPhongDat, tongTien);
                 listHoaDon.add(tt);
             }
         } catch (Exception e) {
@@ -57,7 +56,7 @@ public class Repositories_HD {
     }
 
     public ArrayList<Model_TT> timkiem_MHD(String searchTerm) {
-        sql = "SELECT HD.MAHD, NV.TenNV, KH.TenKhachHang, HD.SoDienThoai, HD.DiaChi, HD.SoPhongDat, HD.GiaBanDau, HD.TongTienDV, HD.TongTienPhong, HD.TrangThai, HD.NgayXuatDon, HD.NgayThanhToan, HD.TienCoc, HD.TongTien, HD.SoTienCanThanhToan\n"
+        sql = "SELECT HD.MAHD, NV.TenNV, KH.TenKhachHang, HD.SoDienThoai, HD.DiaChi, HD.SoPhongDat, HD.TongTienDV, HD.TongTienPhong, HD.TrangThai, HD.NgayXuatDon, HD.NgayThanhToan, HD.TienCoc, HD.TongTien, HD.SoTienCanThanhToan\n"
                 + "FROM HOADON HD\n"
                 + "JOIN KHACHHANG KH ON HD.MAKH = KH.MAKH\n"
                 + "JOIN NHANVIEN NV ON HD.MANV = NV.MANV\n"
@@ -78,7 +77,6 @@ public class Repositories_HD {
                 String soDienThoai = rs.getString("SoDienThoai");
                 String diaChi = rs.getString("DiaChi");
                 int soPhongDat = rs.getInt("SoPhongDat");
-                double giaBanDau = rs.getDouble("GiaBanDau");
                 double tongTienDV = rs.getDouble("TongTienDV");
                 double tongTienPhong = rs.getDouble("TongTienPhong");
                 String trangThai = rs.getString("TrangThai");
@@ -88,7 +86,7 @@ public class Repositories_HD {
                 double tongTien = rs.getDouble("TongTien");
                 double soTienCanThanhToan = rs.getDouble("SoTienCanThanhToan");
 
-                Model_TT tt = new Model_TT(maHD, tenNV, tenKH, soDienThoai, diaChi, soPhongDat, giaBanDau, tongTienDV, tongTienPhong, trangThai, ngayXuatDon, ngayThanhToan, tienCoc, tongTien, soTienCanThanhToan, maHD, maHD, maHD, ngayXuatDon, ngayXuatDon, tienCoc, maHD, maHD, maHD, maHD, tenNV, soPhongDat, tongTien, ngayXuatDon, tongTienDV, maHD, maHD, sql, tongTien, soPhongDat, tongTien);
+                Model_TT tt = new Model_TT(maHD, tenNV, tenKH, soDienThoai, diaChi, soPhongDat, tienCoc, tongTienDV, tongTienPhong, trangThai, ngayXuatDon, ngayThanhToan, tienCoc, tongTien, soTienCanThanhToan, maHD, maHD, maHD, ngayXuatDon, ngayXuatDon, tienCoc, maHD, maHD, maHD, maHD, tenNV, soPhongDat, tongTien, ngayXuatDon, tongTienDV, maHD, maHD, sql, tongTien, soPhongDat, tongTien);
                 listHoaDon.add(tt);
             }
         } catch (Exception e) {

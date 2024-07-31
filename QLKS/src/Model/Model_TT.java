@@ -19,7 +19,6 @@ public class Model_TT {
     private String soDienThoai;
     private String diaChi;
     private int soPhongDat;
-    private double giaBanDau;
     private double tongTienDichVu;
     private double tongTienPhong;
     private String trangThai;
@@ -58,7 +57,6 @@ public class Model_TT {
         this.soDienThoai = soDienThoai;
         this.diaChi = diaChi;
         this.soPhongDat = soPhongDat;
-        this.giaBanDau = giaBanDau;
         this.tongTienDichVu = tongTienDichVu;
         this.tongTienPhong = tongTienPhong;
         this.trangThai = trangThai;
@@ -136,14 +134,6 @@ public class Model_TT {
 
     public void setSoPhongDat(int soPhongDat) {
         this.soPhongDat = soPhongDat;
-    }
-
-    public double getGiaBanDau() {
-        return giaBanDau;
-    }
-
-    public void setGiaBanDau(double giaBanDau) {
-        this.giaBanDau = giaBanDau;
     }
 
     public double getTongTienDichVu() {
@@ -387,7 +377,6 @@ public class Model_TT {
             this.getSoDienThoai() == null ? "" : this.getSoDienThoai(),
             this.getDiaChi() == null ? "" : this.getDiaChi(),
             this.getSoPhongDat(),
-            this.getGiaBanDau(),
             this.getTongTienDichVu(),
             this.getTongTienPhong(),
             this.getTrangThai(),

@@ -185,14 +185,13 @@ public class Repositories_TT {
             con = DBconnect.getConnection();
             pr = con.prepareStatement(sql);
             pr.setObject(1, s.getSoPhongDat());
-            pr.setObject(2, s.getGiaBanDau());
-            pr.setObject(3, s.getTrangThai());
-            pr.setObject(4, s.getNgayThanhToan());
-            pr.setObject(5, s.getTongTien());
-            pr.setObject(6, s.getSoTienCanThanhToan());
-            pr.setObject(7, s.getTongTienDichVu());
-            pr.setObject(8, s.getTongTienPhong());
-            pr.setObject(9, maHD);
+            pr.setObject(2, s.getTrangThai());
+            pr.setObject(3, s.getNgayThanhToan());
+            pr.setObject(4, s.getTongTien());
+            pr.setObject(5, s.getSoTienCanThanhToan());
+            pr.setObject(6, s.getTongTienDichVu());
+            pr.setObject(7, s.getTongTienPhong());
+            pr.setObject(8, maHD);
 
             int result = pr.executeUpdate();
 
