@@ -207,11 +207,11 @@ public class Repositories_DichVu {
         try {
             con = dbconnect.DBconnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setObject(1, '%'+maTK+'%');
-            ps.setObject(2, '%'+maTK+'%');
-            ps.setObject(3, '%'+maTK+'%');
-            ps.setObject(4, '%'+maTK+'%');
-            ps.setObject(5, '%'+maTK+'%');
+            ps.setObject(1, '%' + maTK + '%');
+            ps.setObject(2, '%' + maTK + '%');
+            ps.setObject(3, '%' + maTK + '%');
+            ps.setObject(4, '%' + maTK + '%');
+            ps.setObject(5, '%' + maTK + '%');
             rs = ps.executeQuery();
             while (rs.next()) {
                 String maHD = rs.getString(1);
@@ -228,6 +228,7 @@ public class Repositories_DichVu {
             return null;
         }
     }
+
     public String checkTrung_DDV(String maDDV_moi) {
         sql = "select MA_DDV from DATDICHVU where MA_DDV like ?";
 
@@ -246,6 +247,87 @@ public class Repositories_DichVu {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public Repositories_DichVu() {
+    }
+
+    //FillTAble cho bảng hủy dv
+    public ArrayList<Model_DichVu> getALL_HDV() {
+        ArrayList<Model_DichVu> list_HDV = new ArrayList<>();
+        sql = "select MA_DDV, MA_P, MADV, TenDichVu, SoLuong, Gia, NgayDat, DATDICHVU.TongTien, DATDICHVU.MaHD from DATDICHVU, HOADON where DATDICHVU.MaHD = HOADON.MAHD and TrangThai is null";
+        try {
+            con = dbconnect.DBconnect.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String maDDV = rs.getString(1);
+                String maP = rs.getString(2);
+                String maDV = rs.getString(3);
+                String tenDV = rs.getString(4);
+                int soL = rs.getInt(5);
+                double gia = rs.getDouble(6);
+                Date ngayDat = rs.getDate(7);
+                double tongTien = rs.getDouble(8);
+                String maHD = rs.getString(9);
+                Model_DichVu m = new Model_DichVu(maDDV, maP, maDV, tenDV, soL, gia, ngayDat, tongTien, maHD);
+                list_HDV.add(m);
+            }
+            return list_HDV;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    // tìm kiếm cho bảng hủy dịch vụ
+    public ArrayList<Model_DichVu> timKiem_HDV(String maTK1) {
+        ArrayList<Model_DichVu> list_HDV = new ArrayList<>();
+        sql = "select MA_DDV, MA_P, MADV, TenDichVu, SoLuong, Gia, NgayDat, DATDICHVU.TongTien, DATDICHVU.MaHD from DATDICHVU, HOADON \n" +
+"where DATDICHVU.MaHD = HOADON.MAHD and TrangThai is null and (MA_DDV like ? or MA_P like ? or MADV like ? or TenDichVu like ? or SoLuong like ? or DATDICHVU.TongTien like ? or DATDICHVU.MaHD like ? or NgayDat like ?)";
+        try {
+            con = dbconnect.DBconnect.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setObject(1, '%' +maTK1+'%');
+            ps.setObject(2, '%' +maTK1+'%');
+            ps.setObject(3, '%' +maTK1+'%');
+            ps.setObject(4, '%' +maTK1+'%');
+            ps.setObject(5, '%' +maTK1+'%');
+            ps.setObject(6, '%' +maTK1+'%');
+            ps.setObject(7, '%' +maTK1+'%');
+            ps.setObject(8, '%' +maTK1+'%');
+            
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String maDDV = rs.getString(1);
+                String maP = rs.getString(2);
+                String maDV = rs.getString(3);
+                String tenDV = rs.getString(4);
+                int soL = rs.getInt(5);
+                double gia = rs.getDouble(6);
+                Date ngayDat = rs.getDate(7);
+                double tongTien = rs.getDouble(8);
+                String maHD = rs.getString(9);
+                Model_DichVu m = new Model_DichVu(maDDV, maP, maDV, tenDV, soL, gia, ngayDat, tongTien, maHD);
+                list_HDV.add(m);
+            }
+            return list_HDV;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    // Hủy Dịch Vụ
+    public int huyDV(String maDDV) {
+        sql = "delete from DATDICHVU where MA_DDV = ?";
+        try {
+            con = dbconnect.DBconnect.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setObject(1, maDDV);
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
         }
     }
 }
