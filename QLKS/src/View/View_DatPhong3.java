@@ -126,10 +126,13 @@ private void updateTable(ArrayList<Model_DSPhong> list) {
         jPanel2.setBackground(new java.awt.Color(102, 255, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông Tin Đặt Phòng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Mã HDCT:");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Mã Phòng:");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setText("Giá Phòng:");
 
         txt_GiaPhong1.addActionListener(new java.awt.event.ActionListener() {
@@ -138,8 +141,10 @@ private void updateTable(ArrayList<Model_DSPhong> list) {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Check In:");
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setText("Check Out:");
 
         jdc_checkIn.setDateFormatString("yyyy-MM-dd");
@@ -156,6 +161,7 @@ private void updateTable(ArrayList<Model_DSPhong> list) {
         });
 
         jButton2.setBackground(new java.awt.Color(204, 255, 204));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setText("Đặt DV");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,6 +178,7 @@ private void updateTable(ArrayList<Model_DSPhong> list) {
             }
         });
 
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel13.setText("Loại Phòng:");
 
         txt_LoaiPhong.addActionListener(new java.awt.event.ActionListener() {
@@ -180,8 +187,10 @@ private void updateTable(ArrayList<Model_DSPhong> list) {
             }
         });
 
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setText("Số Người ở:");
 
+        btn_TrangChu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_TrangChu.setText("Back");
         btn_TrangChu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,8 +198,10 @@ private void updateTable(ArrayList<Model_DSPhong> list) {
             }
         });
 
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel14.setText("Tổng Tiền Phòng:");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Mã HD:");
 
         btn_TaoHDCho.setBackground(new java.awt.Color(204, 255, 255));
