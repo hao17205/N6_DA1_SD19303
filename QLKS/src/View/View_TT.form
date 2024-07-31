@@ -2893,7 +2893,7 @@
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="T&#xec;m Ki&#x1ebf;m H&#xf3;a &#x110;&#x1a1;n Chi Ti&#x1ebf;t">
+                    <TitledBorder title="T&#xec;m Ki&#x1ebf;m &#x110;&#x1eb7;t D&#x1ecb;ch V&#x1ee5;">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder/>
                       </Border>
