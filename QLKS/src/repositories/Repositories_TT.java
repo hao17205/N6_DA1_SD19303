@@ -19,8 +19,9 @@ public class Repositories_TT {
 
     public ArrayList<Model_TT> get_TTTT() {
         ArrayList<Model_TT> list_TTTT = new ArrayList<>();
-        sql = "select MAHD, MAKH, MANV,SoDienThoai,DiaChi, NgayXuatDon, TienCoc from HOADON\n"
-                + "WHERE   TrangThai IS NULL";
+        sql = "SELECT MAHD, MAKH, MANV, SoDienThoai, DiaChi, NgayXuatDon, TienCoc \n"
+                + "FROM HOADON \n"
+                + "WHERE TrangThai IS NULL OR TrangThai = N'Chưa Thanh Toán'";
         try {
             con = DBconnect.getConnection();
             pr = con.prepareStatement(sql);
@@ -46,8 +47,10 @@ public class Repositories_TT {
     // tìm kiếm hóa đơn
     public ArrayList<Model_TT> timKiem_TTTT(String maHD_New) {
         ArrayList<Model_TT> list_TKTTTT = new ArrayList<>();
-        sql = "select MAHD, MAKH, MANV, SoDienThoai, DiaChi, NgayXuatDon, TienCoc from HOADON \n"
-                + "where (MAHD like ? or MAKH like ? or MANV LIKE ? or SoDienThoai LIKE ? or DiaChi like ?) AND TrangThai IS NULL";
+        sql = "SELECT MAHD, MAKH, MANV, SoDienThoai, DiaChi, NgayXuatDon, TienCoc \n"
+                + "FROM HOADON \n"
+                + "WHERE (MAHD LIKE ? OR MAKH LIKE ? OR MANV LIKE ? OR SoDienThoai LIKE ? OR DiaChi LIKE ?) \n"
+                + "AND (TrangThai IS NULL OR TrangThai = N'Chưa Thanh Toán')";
         try {
             con = DBconnect.getConnection();
             pr = con.prepareStatement(sql);
@@ -127,7 +130,7 @@ public class Repositories_TT {
             while (rs.next()) {
                 double tongTienDV = rs.getDouble("TongTienDV");
 
-                Model_TT tt = new Model_TT("", "", "", "", "", 0, 0, 0, tongTienDV, 0, "", null, null, 0, 0, 0, 0, null, null, null, null, null, 0);
+                Model_TT tt = new Model_TT(tongTienDV);
                 listHoaDon.add(tt);
             }
         } catch (Exception e) {
@@ -149,7 +152,7 @@ public class Repositories_TT {
                 int soLuongChiTiet = rs.getInt("SoLuongChiTiet");
                 double tongTienPhong = rs.getDouble("TongTienPhong");
 
-                Model_TT tt = new Model_TT("", "", "", "", "", soLuongChiTiet, 0, 0, 0, tongTienPhong, "", null, null, 0, 0, 0, 0, null, null, null, null, null, 0);
+                Model_TT tt = new Model_TT(soLuongChiTiet, tongTienPhong);
                 listHoaDon.add(tt);
             }
         } catch (Exception e) {
@@ -177,33 +180,33 @@ public class Repositories_TT {
     }
 
     public int TT_HD(String maHD, Model_TT s) {
-        sql = "UPDATE HOADON\n" +
-"SET  SoPhongDat = ?, GiaBanDau = ?, KhuyenMai = ?, TrangThai = ?,  NgayThanhToan = ?,  TongTien = ?, SoTienCanThanhToan = ?, TongTienDV = ?, TongTienPhong = ?, Thue = ?\n" +
-"WHERE MAHD = ?";
+        sql = "UPDATE HOADON\n"
+                + "SET  SoPhongDat = ?, TrangThai = ?,  NgayThanhToan = ?,  TongTien = ?, SoTienCanThanhToan = ?, TongTienDV = ?, TongTienPhong = ?\n"
+                + "WHERE MAHD = ?";
 
         try {
             con = DBconnect.getConnection();
             pr = con.prepareStatement(sql);
             pr.setObject(1, s.getSoPhongDat());
-            pr.setObject(2, s.getGiaBanDau());
-            pr.setObject(3, s.getKhuyenMai());
-            pr.setObject(4, s.getTrangThai());
-            pr.setObject(5, s.getNgayThanhToan());
-            pr.setObject(6, s.getTongTien());
-            pr.setObject(7, s.getSoTienCanThanhToan());
-            pr.setObject(8, s.getTongTienDichVu());
-            pr.setObject(9, s.getTongTienPhong());
-            pr.setObject(10, s.getThue());
-            pr.setObject(11, maHD);
+            pr.setObject(2, s.getTrangThai());
+            pr.setObject(3, s.getNgayThanhToan());
+            pr.setObject(4, s.getTongTien());
+            pr.setObject(5, s.getSoTienCanThanhToan());
+            pr.setObject(6, s.getTongTienDichVu());
+            pr.setObject(7, s.getTongTienPhong());
+            pr.setObject(8, maHD);
 
             int result = pr.executeUpdate();
 
             if (result > 0) {
                 // Giả sử bạn cần lấy Ma_P từ bảng HOADONCHITIET hoặc bảng khác
-                String maP = getMaPFromHoaDonChiTiet(maHD);
-                if (maP != null) {
+                ArrayList<String> list_MP = getMaPFromHoaDonChiTiet(maHD);
+                if (list_MP != null) {
                     Repositories_TTPhong rp_TTPhong = new Repositories_TTPhong();
-                    rp_TTPhong.sua_TT(maP, "Trống");
+                    for (String x : list_MP) {
+                        rp_TTPhong.sua_TT(x, "Trống");
+                    }
+
                 }
             }
 
@@ -214,15 +217,17 @@ public class Repositories_TT {
         }
     }
 
-    private String getMaPFromHoaDonChiTiet(String maHD) {
+    private ArrayList<String> getMaPFromHoaDonChiTiet(String maHD) {
+        ArrayList<String> list_MP = new ArrayList<>();
         String sql = "SELECT Ma_P FROM HOADONCHITIET WHERE MaHD = ?";
         try {
             pr = con.prepareStatement(sql);
             pr.setObject(1, maHD);
             rs = pr.executeQuery();
-            if (rs.next()) {
-                return rs.getString("Ma_P");
+            while (rs.next()) {
+                list_MP.add(rs.getString("Ma_P"));
             }
+            return list_MP;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -239,7 +244,7 @@ public class Repositories_TT {
             con.setAutoCommit(false);
 
             // Lấy Ma_P từ bảng HOADONCHITIET
-            String maP = getMaPFromHoaDonChiTiet(maHD);
+            ArrayList<String> list_MP = getMaPFromHoaDonChiTiet(maHD);
 
             // Xóa các bản ghi trong bảng HoaDonChiTiet
             pr = con.prepareStatement(sql_HDCT);
@@ -256,9 +261,12 @@ public class Repositories_TT {
             pr.setObject(1, maHD);
             int result = pr.executeUpdate();
 
-            if (result > 0 && maP != null) {
+            if (result > 0 && list_MP != null) {
                 Repositories_TTPhong rp_TTPhong = new Repositories_TTPhong();
-                rp_TTPhong.sua_TT(maP, "Trống"); // Giả sử bạn cần cập nhật trạng thái về "Trống" khi hóa đơn bị xóa
+
+                for (String x : list_MP) {
+                    rp_TTPhong.sua_TT(x, "Trống");
+                }
             }
 
             con.commit(); // Commit transaction

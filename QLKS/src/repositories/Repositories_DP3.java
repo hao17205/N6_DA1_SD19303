@@ -56,17 +56,17 @@ public class Repositories_DP3 {
 //        }
 //    }
     public int them_DP3(Model_DP3 dp3){
-        sql = "insert into HOADONCHITIET(MA_HDCT,MAHD,MA_P,CheckIn,CheckOut,TienPhong) values(?,?,?,?,?,?)";
+        sql = "insert into HOADONCHITIET(MA_HDCT,MAHD,MA_P,CheckIn,CheckOut,TienPhong) \n" +
+"values(SUBSTRING(CAST(NEWID() AS varchar(36)), 1, 8),?,?,?,?,?)";
         
         try {
             con = DBconnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setObject(1, dp3.getMa_HDCT());
-            ps.setObject(2, dp3.getMaHD());
-            ps.setObject(3, dp3.getMaPhong());
-            ps.setObject(4, dp3.getCheckIn());
-            ps.setObject(5, dp3.getCheckOut());
-            ps.setObject(6, dp3.getTienPhong());
+            ps.setObject(1, dp3.getMaHD());
+            ps.setObject(2, dp3.getMaPhong());
+            ps.setObject(3, dp3.getCheckIn());
+            ps.setObject(4, dp3.getCheckOut());
+            ps.setObject(5, dp3.getTienPhong());
             
             Repositories_TTPhong rp_TTPhong = new Repositories_TTPhong();
             rp_TTPhong.sua_TT(dp3.getMaPhong(), "Đang sử dụng");
