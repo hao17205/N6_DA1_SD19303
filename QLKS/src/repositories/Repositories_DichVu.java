@@ -153,7 +153,7 @@ public class Repositories_DichVu {
         ArrayList<Model_DichVu> list_HDDDV = new ArrayList<>();
         sql = "SELECT HOADON.MAHD, MA_P, TenKhachHang, HOADON.SoDienThoai, CCCD \n"
                 + "FROM HOADON, HOADONCHITIET, KHACHHANG \n"
-                + "WHERE HOADON.MAHD = HOADONCHITIET.MAHD and HOADON.MAKH = KHACHHANG.MAKH and TrangThai IS NULL";
+                + "WHERE HOADON.MAHD = HOADONCHITIET.MAHD and HOADON.MAKH = KHACHHANG.MAKH and TrangThai like N'%Chưa Thanh Toán%'";
 
         try {
             con = dbconnect.DBconnect.getConnection();
@@ -178,18 +178,18 @@ public class Repositories_DichVu {
 
     public int them_DDV(Model_DichVu m) {
         sql = "insert into DATDICHVU(MA_DDV, MA_P, MADV, TenDichVu, SoLuong ,Gia, NgayDat, TongTien, MaHD)\n"
-                + "values(?,?,?,?,?,?,GETDATE(),?,?)";
+                + "values(SUBSTRING(CAST(NEWID() AS varchar(36)), 1, 8),?,?,?,?,?,GETDATE(),?,?)";
         try {
             con = dbconnect.DBconnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setObject(1, m.getMaDDV());
-            ps.setObject(2, m.getMaP());
-            ps.setObject(3, m.getMaDV());
-            ps.setObject(4, m.getTenDV());
-            ps.setObject(5, m.getSoLuong());
-            ps.setObject(6, m.getGia());
-            ps.setObject(7, m.getTongTien());
-            ps.setObject(8, m.getMaHD());
+            
+            ps.setObject(1, m.getMaP());
+            ps.setObject(2, m.getMaDV());
+            ps.setObject(3, m.getTenDV());
+            ps.setObject(4, m.getSoLuong());
+            ps.setObject(5, m.getGia());
+            ps.setObject(6, m.getTongTien());
+            ps.setObject(7, m.getMaHD());
 
             return ps.executeUpdate();
         } catch (Exception e) {
@@ -203,7 +203,7 @@ public class Repositories_DichVu {
         ArrayList<Model_DichVu> list_TKHDTDDV = new ArrayList<>();
         sql = "SELECT HOADON.MAHD, MA_P, TenKhachHang, HOADON.SoDienThoai, CCCD \n"
                 + "FROM HOADON, HOADONCHITIET, KHACHHANG \n"
-                + "WHERE HOADON.MAHD = HOADONCHITIET.MAHD and HOADON.MAKH = KHACHHANG.MAKH and TrangThai IS NULL AND (HOADON.MAHD LIKE ? OR MA_P LIKE ? OR TenKhachHang LIKE ? OR HOADON.SoDienThoai LIKE ? OR CCCD LIKE ?)";
+                + "WHERE HOADON.MAHD = HOADONCHITIET.MAHD and HOADON.MAKH = KHACHHANG.MAKH and TrangThai TrangThai like N'%Chưa Thanh Toán%' AND (HOADON.MAHD LIKE ? OR MA_P LIKE ? OR TenKhachHang LIKE ? OR HOADON.SoDienThoai LIKE ? OR CCCD LIKE ?)";
         try {
             con = dbconnect.DBconnect.getConnection();
             ps = con.prepareStatement(sql);
@@ -256,7 +256,7 @@ public class Repositories_DichVu {
     //FillTAble cho bảng hủy dv
     public ArrayList<Model_DichVu> getALL_HDV() {
         ArrayList<Model_DichVu> list_HDV = new ArrayList<>();
-        sql = "select MA_DDV, MA_P, MADV, TenDichVu, SoLuong, Gia, NgayDat, DATDICHVU.TongTien, DATDICHVU.MaHD from DATDICHVU, HOADON where DATDICHVU.MaHD = HOADON.MAHD and TrangThai is null";
+        sql = "select MA_DDV, MA_P, MADV, TenDichVu, SoLuong, Gia, NgayDat, DATDICHVU.TongTien, DATDICHVU.MaHD from DATDICHVU, HOADON where DATDICHVU.MaHD = HOADON.MAHD and TrangThai like N'%Chưa Thanh Toán%'";
         try {
             con = dbconnect.DBconnect.getConnection();
             ps = con.prepareStatement(sql);
@@ -284,7 +284,7 @@ public class Repositories_DichVu {
     public ArrayList<Model_DichVu> timKiem_HDV(String maTK1) {
         ArrayList<Model_DichVu> list_HDV = new ArrayList<>();
         sql = "select MA_DDV, MA_P, MADV, TenDichVu, SoLuong, Gia, NgayDat, DATDICHVU.TongTien, DATDICHVU.MaHD from DATDICHVU, HOADON \n" +
-"where DATDICHVU.MaHD = HOADON.MAHD and TrangThai is null and (MA_DDV like ? or MA_P like ? or MADV like ? or TenDichVu like ? or SoLuong like ? or DATDICHVU.TongTien like ? or DATDICHVU.MaHD like ? or NgayDat like ?)";
+"where DATDICHVU.MaHD = HOADON.MAHD and  TrangThai like N'%Chưa Thanh Toán%' and (MA_DDV like ? or MA_P like ? or MADV like ? or TenDichVu like ? or SoLuong like ? or DATDICHVU.TongTien like ? or DATDICHVU.MaHD like ? or NgayDat like ?)";
         try {
             con = dbconnect.DBconnect.getConnection();
             ps = con.prepareStatement(sql);

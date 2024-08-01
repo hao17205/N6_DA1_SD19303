@@ -135,14 +135,12 @@ public class view_DichVu extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txt_maHD = new javax.swing.JTextField();
         txt_maDV = new javax.swing.JTextField();
-        txt_maDDV = new javax.swing.JTextField();
         txt_tenDV = new javax.swing.JTextField();
         txt_gia = new javax.swing.JTextField();
         txt_tongTien = new javax.swing.JTextField();
@@ -488,7 +486,7 @@ public class view_DichVu extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(txt_TKDV_DDV, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(tbn_TKCDV)
                 .addContainerGap())
         );
@@ -511,8 +509,6 @@ public class view_DichVu extends javax.swing.JFrame {
         jLabel8.setText("Mã DV:");
 
         jLabel9.setText("Tên Dịch Vụ:");
-
-        jLabel10.setText("Mã Đặt Dịch Vụ:");
 
         jLabel11.setText("Số Lượng:");
 
@@ -564,20 +560,21 @@ public class view_DichVu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel13))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_maHD, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                            .addComponent(txt_maHD)
                             .addComponent(txt_maDV)
-                            .addComponent(txt_maDDV)
-                            .addComponent(txt_tenDV)))
+                            .addComponent(txt_tenDV)
+                            .addComponent(txt_tongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(btn_luu, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_tinhToan)))
                 .addGap(110, 110, 110)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -585,14 +582,12 @@ public class view_DichVu extends javax.swing.JFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_maPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jsp_SL, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_gia, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_tongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txt_gia, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -615,17 +610,15 @@ public class view_DichVu extends javax.swing.JFrame {
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txt_maDDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_gia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_tenDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_tongTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
-                .addGap(33, 33, 33)
+                .addGap(27, 27, 27)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_cancel)
                     .addComponent(btn_tinhToan)
@@ -696,11 +689,9 @@ public class view_DichVu extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 15, Short.MAX_VALUE))
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1076,7 +1067,7 @@ public class view_DichVu extends javax.swing.JFrame {
         int chon = JOptionPane.showConfirmDialog(this, "Bạn chắn chắn muốn lưu thông tin này?");
         if (chon == 0) {
             if (this.readForm_DDV()!= null) {
-                String maDDV = txt_maDDV.getText().trim();
+                String maDDV = null;
                 //kiểm tra trùng lặp
                 String errorMessage = rp.checkTrung_DDV(maDDV);
                 if (errorMessage != null) {
@@ -1179,7 +1170,7 @@ public class view_DichVu extends javax.swing.JFrame {
         txt_maHD.setText("");
         txt_maDV.setText("");
         txt_gia.setText("");
-        txt_maDDV.setText("");
+        
         txt_maPhong.setText("");
         txt_tenDV.setText("");
         txt_tongTien.setText("");
@@ -1292,7 +1283,6 @@ public class view_DichVu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbo_LoaiDV;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -1355,7 +1345,6 @@ public class view_DichVu extends javax.swing.JFrame {
     private javax.swing.JTextField txt_TenDV;
     private javax.swing.JTextField txt_gia;
     private javax.swing.JTextField txt_gia1;
-    private javax.swing.JTextField txt_maDDV;
     private javax.swing.JTextField txt_maDDV1;
     private javax.swing.JTextField txt_maDV;
     private javax.swing.JTextField txt_maDV1;
@@ -1430,12 +1419,7 @@ public class view_DichVu extends javax.swing.JFrame {
     }
     
     private Model_DichVu readForm_DDV(){
-       String maDDV = txt_maDDV.getText().trim();
-        if (maDDV.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập mã đặt dịch vụ");
-            txt_maDDV.requestFocus();
-            return null;
-        }
+       
        String maDV = txt_maDV.getText().trim();
         if (maDV.isEmpty()) {
             JOptionPane.showMessageDialog(this, "bạn chưa chọn dịch vụ muốn đặt. Mời chọn dịch vụ ở phần chọn dịch vụ ở phần chọn dịch vụ");
@@ -1463,7 +1447,7 @@ public class view_DichVu extends javax.swing.JFrame {
            return null;
         }
         double tongTien = Double.parseDouble(txt_tongTien.getText().trim());
-       return new Model_DichVu(maDDV, maP, maDV, tenDV, sL, gia, tongTien, maHD);
+       return new Model_DichVu( maP, maDV, tenDV, sL, gia, tongTien, maHD);
     }
     // readform hủy dịch vụ
     

@@ -150,6 +150,17 @@ public class Model_DichVu {
         this.tongTien = tongTien;
     }
     
+    public Model_DichVu(String maP, String maDV, String tenDV, int soLuong, double gia,  double tongTien, String maHD) {
+        this.maDV = maDV;
+        this.tenDV = tenDV;
+        this.gia = gia;
+        this.maHD = maHD;
+        this.maP = maP;
+        
+        this.soLuong = soLuong;
+        
+        this.tongTien = tongTien;
+    }
 
     public String getMaDDV() {
         return maDDV;
