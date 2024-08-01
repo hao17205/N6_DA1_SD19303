@@ -19,8 +19,8 @@ public class Repositories_TT {
 
     public ArrayList<Model_TT> get_TTTT() {
         ArrayList<Model_TT> list_TTTT = new ArrayList<>();
-        sql = "select MAHD, MAKH, MANV,SoDienThoai,DiaChi, NgayXuatDon, TienCoc from HOADON\n"
-                + "WHERE   TrangThai IS NULL";
+        sql = "select MAHD, MAKH, MANV,SoDienThoai,DiaChi, NgayXuatDon, TienCoc from HOADON\n" +
+"WHERE   TrangThai like N'%Chưa Thanh Toán%'";
         try {
             con = DBconnect.getConnection();
             pr = con.prepareStatement(sql);
@@ -47,7 +47,7 @@ public class Repositories_TT {
     public ArrayList<Model_TT> timKiem_TTTT(String maHD_New) {
         ArrayList<Model_TT> list_TKTTTT = new ArrayList<>();
         sql = "select MAHD, MAKH, MANV, SoDienThoai, DiaChi, NgayXuatDon, TienCoc from HOADON \n"
-                + "where (MAHD like ? or MAKH like ? or MANV LIKE ? or SoDienThoai LIKE ? or DiaChi like ?) AND TrangThai IS NULL";
+                + "where (MAHD like ? or MAKH like ? or MANV LIKE ? or SoDienThoai LIKE ? or DiaChi like ?) AND TrangThai like N'%Chưa Thanh Toán%'";
         try {
             con = DBconnect.getConnection();
             pr = con.prepareStatement(sql);

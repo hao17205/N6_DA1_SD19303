@@ -1090,22 +1090,14 @@ public class View_TT extends javax.swing.JFrame {
 
     private void btn_TT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TT1ActionPerformed
         // TODO add your handling code here:
-//        String strTTP = txt_TTP1.getText();
-//        String strTTDV = txt_TTDV1.getText();
-//        String strTienCoc = txt_TC2.getText();
-//
-//        double TTP = strTTP.isEmpty() ? 0 : Double.parseDouble(strTTP);
-//        double TTDV = strTTDV.isEmpty() ? 0 : Double.parseDouble(strTTDV);
-//        double tienCoc = strTienCoc.isEmpty() ? 0 : Double.parseDouble(strTienCoc);
-//
-//        double giaBD = TTP + TTDV;
-//        txt_GBD1.setText(String.valueOf(giaBD));
-//
-//        double tongTHD = (TTP + TTDV) - ((TTP + TTDV) / 100);
-//        txt_TTHD.setText(String.valueOf(tongTHD));
-//
-//        double soTPT = (TTP + TTDV) - ((TTP + TTDV) / 100) - tienCoc;
-//        txt_STCTT1.setText(String.valueOf(soTPT));
+        double TTP = Double.parseDouble(txt_TTP1.getText().toString());
+        double TTDV = Double.parseDouble(txt_TTDV1.getText().toString());
+        double tienCoc = Double.parseDouble(txt_TC2.getText().toString());
+        double tongTien = TTP+TTDV;
+        double TPT = (TTP+TTDV) - tienCoc;
+        txt_TTHD.setText(String.valueOf(tongTien));
+        txt_STCTT1.setText(String.valueOf(TPT));
+     
     }//GEN-LAST:event_btn_TT1ActionPerformed
 
     private void txt_DCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_DCActionPerformed
