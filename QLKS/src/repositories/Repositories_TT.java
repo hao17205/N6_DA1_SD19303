@@ -19,8 +19,9 @@ public class Repositories_TT {
 
     public ArrayList<Model_TT> get_TTTT() {
         ArrayList<Model_TT> list_TTTT = new ArrayList<>();
-        sql = "select MAHD, MAKH, MANV,SoDienThoai,DiaChi, NgayXuatDon, TienCoc from HOADON\n" +
-"WHERE   TrangThai like N'%Chưa Thanh Toán%'";
+        sql = "SELECT MAHD, MAKH, MANV, SoDienThoai, DiaChi, NgayXuatDon, TienCoc \n"
+                + "FROM HOADON \n"
+                + "WHERE TrangThai IS NULL OR TrangThai = N'Chưa Thanh Toán'";
         try {
             con = DBconnect.getConnection();
             pr = con.prepareStatement(sql);
@@ -46,8 +47,10 @@ public class Repositories_TT {
     // tìm kiếm hóa đơn
     public ArrayList<Model_TT> timKiem_TTTT(String maHD_New) {
         ArrayList<Model_TT> list_TKTTTT = new ArrayList<>();
-        sql = "select MAHD, MAKH, MANV, SoDienThoai, DiaChi, NgayXuatDon, TienCoc from HOADON \n"
-                + "where (MAHD like ? or MAKH like ? or MANV LIKE ? or SoDienThoai LIKE ? or DiaChi like ?) AND TrangThai like N'%Chưa Thanh Toán%'";
+        sql = "SELECT MAHD, MAKH, MANV, SoDienThoai, DiaChi, NgayXuatDon, TienCoc \n"
+                + "FROM HOADON \n"
+                + "WHERE (MAHD LIKE ? OR MAKH LIKE ? OR MANV LIKE ? OR SoDienThoai LIKE ? OR DiaChi LIKE ?) \n"
+                + "AND (TrangThai IS NULL OR TrangThai = N'Chưa Thanh Toán')";
         try {
             con = DBconnect.getConnection();
             pr = con.prepareStatement(sql);
@@ -178,7 +181,7 @@ public class Repositories_TT {
 
     public int TT_HD(String maHD, Model_TT s) {
         sql = "UPDATE HOADON\n"
-                + "SET  SoPhongDat = ?, GiaBanDau = ?, TrangThai = ?,  NgayThanhToan = ?,  TongTien = ?, SoTienCanThanhToan = ?, TongTienDV = ?, TongTienPhong = ?\n"
+                + "SET  SoPhongDat = ?, TrangThai = ?,  NgayThanhToan = ?,  TongTien = ?, SoTienCanThanhToan = ?, TongTienDV = ?, TongTienPhong = ?\n"
                 + "WHERE MAHD = ?";
 
         try {
@@ -203,7 +206,7 @@ public class Repositories_TT {
                     for (String x : list_MP) {
                         rp_TTPhong.sua_TT(x, "Trống");
                     }
-                    
+
                 }
             }
 
@@ -221,7 +224,7 @@ public class Repositories_TT {
             pr = con.prepareStatement(sql);
             pr.setObject(1, maHD);
             rs = pr.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 list_MP.add(rs.getString("Ma_P"));
             }
             return list_MP;
@@ -260,10 +263,10 @@ public class Repositories_TT {
 
             if (result > 0 && list_MP != null) {
                 Repositories_TTPhong rp_TTPhong = new Repositories_TTPhong();
-                
+
                 for (String x : list_MP) {
-                        rp_TTPhong.sua_TT(x, "Trống");
-                    } 
+                    rp_TTPhong.sua_TT(x, "Trống");
+                }
             }
 
             con.commit(); // Commit transaction
