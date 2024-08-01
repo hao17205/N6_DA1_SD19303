@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -32,6 +33,27 @@ public class Repositories_LG {
         } catch (SQLException e) {
             e.printStackTrace();
             return false; // Nếu có lỗi xảy ra, xem như không thành công
+        }
+    }
+    public String getMNV(String taiKhoan, String matKhau1){
+        
+        sql = "select MANV from TAIKHOAN, NHANVIEN where TAIKHOAN.MATK = NHANVIEN.MATK and TenDangNhap like ? and MatKhau like ?";
+        String maNV = null;
+        try {
+            con = dbconnect.DBconnect.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setObject(1, '%'+taiKhoan+'%');
+            ps.setObject(2, '%'+matKhau1+'%');
+            rs =ps.executeQuery();
+            if (rs.next()) {               
+              maNV = rs.getString("MANV");
+     
+           }
+            return maNV;
+                
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

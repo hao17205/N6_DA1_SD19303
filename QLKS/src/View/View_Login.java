@@ -28,6 +28,14 @@ public class View_Login extends javax.swing.JFrame {
 
     }
 
+    public String layMNV(  ) {
+        String taiKhoan = txt_TaiKhoan.getText();
+        String matKhau = txt_MatKhau.getText();
+        String maNV = rp_LG.getMNV(taiKhoan, matKhau);
+       Model.Model_luuTru.setMaNV(maNV);
+       return maNV;    
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -221,7 +229,8 @@ public class View_Login extends javax.swing.JFrame {
         // Xác thực thông tin đăng nhập
         if (rp_LG.checkTrung_taiKhoan(tenDangNhap, matKhau)) {
             // Đăng nhập thành công
-            JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
+            JOptionPane.showMessageDialog(this, "Đăng nhập thành công "+ layMNV());
+            
             View_TrangChu home = new View_TrangChu(); // Thay thế bằng cửa sổ chính của bạn
             home.setVisible(true);
             this.dispose(); // Đóng cửa sổ đăng nhập
