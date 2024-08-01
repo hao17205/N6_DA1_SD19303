@@ -30,6 +30,15 @@ public class Model_DP3 {
         this.tienPhong = tienPhong;
     }
 
+    public Model_DP3(String maHD, String maPhong, Date checkIn, Date checkOut, double tienPhong) {
+        this.maHD = maHD;
+        this.maPhong = maPhong;
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
+        this.tienPhong = tienPhong;
+    }
+    
+
     public String getMa_HDCT() {
         return ma_HDCT;
     }

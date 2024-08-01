@@ -40,7 +40,7 @@ public class Repositories_TTKH6 {
                 eMail = rs.getString(6);
                 gioiTinh = rs.getInt(7);
                 DiaChi = rs.getString(8);
-                Model_DatPhong dp = new Model_DatPhong(maKH, tenKH, ngaySinh, soCccd, DiaChi, eMail, gioiTinh, DiaChi);
+                Model_DatPhong dp = new Model_DatPhong(maKH, tenKH, ngaySinh, soCccd, sDT, eMail, gioiTinh, DiaChi);
                 list_KH.add(dp);
    
             }return list_KH;

@@ -489,9 +489,9 @@ public class View_TrangChu extends javax.swing.JFrame {
 
     private void btn_datPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_datPhongActionPerformed
         // TODO add your handling code here:
-        View_DatPhong3 dp3 = new View_DatPhong3();
-        dp3.setDefaultCloseOperation(dp3.DISPOSE_ON_CLOSE);
-        dp3.setVisible(true);
+        View_DatPhong6 dp6 = new View_DatPhong6();
+        dp6.setDefaultCloseOperation(dp6.DISPOSE_ON_CLOSE);
+        dp6.setVisible(true);
         
         
     }//GEN-LAST:event_btn_datPhongActionPerformed
