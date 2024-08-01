@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/repositories/Repositories_HD6.java</file>
             <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/repositories/Repositories_HD.java</file>
             <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/repositories/Repositories_NhanVien.java</file>
@@ -30,6 +31,10 @@
             <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/Model/Model_HDC6.java</file>
             <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/View/View_QLKH.java</file>
             <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/repositories/Repositories_HD3.java</file>
+=======
+            <file>file:/D:/source_01082024/QLKS/src/View/View_DatPhong6.java</file>
+            <file>file:/D:/source_01082024/QLKS/src/View/View_Login.java</file>
+>>>>>>> 052fd9afc892526e9cbddb87102d110a9abce082
         </group>
     </open-files>
 </project-private>

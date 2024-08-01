@@ -34,11 +34,13 @@ public class View_DatPhong6 extends javax.swing.JFrame {
     private Repositories_HDC6 rp_HDC = new Repositories_HDC6();
     private Repositories_HD6 rp_HD = new Repositories_HD6();
     private Repositories_DP3 rp_HDCT = new Repositories_DP3();
-    
+     private View.View_Login lg = new View_Login();
+    public String maNV = Model.Model_luuTru.getMaNV();
     
     /**
      * Creates new form View_DatPhong6
      */
+    
     public View_DatPhong6() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -47,6 +49,8 @@ public class View_DatPhong6 extends javax.swing.JFrame {
         this.fillTable_Dsp(rp_Dsp.getAll_DSPhong());
         this.fillTable_KH(rp_TTKH.getAll_KH());
         this.fillTable_HDC(rp_HDC.getAll_HDC6());
+       
+        txt_MaNV.setText(maNV);
     }
     private void fillTable_Dsp(ArrayList<Model_DSPhong> list_Dsp){
         mol_DP = (DefaultTableModel) tbl_Dsp.getModel();
