@@ -20,6 +20,7 @@ import java.time.temporal.ChronoUnit;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import Model.Model_DP3;
+import java.util.Calendar;
 import repositories.Repositories_DP3;
 import view.view_DichVu;
 /**
@@ -745,7 +746,32 @@ private void updateTable(ArrayList<Model_DSPhong> list) {
 
     private void btn_TinhTienPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TinhTienPhongActionPerformed
         // TODO add your handling code here:
-        int chon = JOptionPane.showConfirmDialog(this, "Bạn muốn tính tiền phòng");
+//        int chon = JOptionPane.showConfirmDialog(this, "Bạn muốn tính tiền phòng");
+//    if (chon == 0) {
+//        try {
+//            double giaPhong = Double.parseDouble(txt_GiaPhong.getText().trim());
+//            Date checkIn = jdc_CheckIn.getDate();
+//            Date checkOut = jdc_CheckOut.getDate();
+//
+//            if (checkIn != null && checkOut != null && !checkOut.before(checkIn)) {
+//                // Chuyển đổi từ Date sang LocalDate
+//                LocalDate checkInLocalDate = checkIn.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//                LocalDate checkOutLocalDate = checkOut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//
+//                // Tính số ngày giữa check-in và check-out
+//                long daysBetween = ChronoUnit.DAYS.between(checkInLocalDate, checkOutLocalDate);
+//                double tongTienPhong = giaPhong * daysBetween;
+//
+//                // Hiển thị tổng tiền phòng
+//                txt_TongTienPhong.setText(String.valueOf(tongTienPhong));
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Ngày check-out phải sau ngày check-in.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+//            }
+//        } catch (NumberFormatException e) {
+//            JOptionPane.showMessageDialog(this, "Giá phòng không hợp lệ.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
+ int chon = JOptionPane.showConfirmDialog(this, "Bạn muốn tính tiền phòng?");
     if (chon == 0) {
         try {
             double giaPhong = Double.parseDouble(txt_GiaPhong.getText().trim());
@@ -753,12 +779,8 @@ private void updateTable(ArrayList<Model_DSPhong> list) {
             Date checkOut = jdc_CheckOut.getDate();
 
             if (checkIn != null && checkOut != null && !checkOut.before(checkIn)) {
-                // Chuyển đổi từ Date sang LocalDate
-                LocalDate checkInLocalDate = checkIn.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                LocalDate checkOutLocalDate = checkOut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
                 // Tính số ngày giữa check-in và check-out
-                long daysBetween = ChronoUnit.DAYS.between(checkInLocalDate, checkOutLocalDate);
+                long daysBetween = getDaysBetweenDates(checkIn, checkOut);
                 double tongTienPhong = giaPhong * daysBetween;
 
                 // Hiển thị tổng tiền phòng
@@ -1022,10 +1044,20 @@ void reset_HDCT(){
     txt_SoNguoiO.setText("");
     txt_GiaPhong.setText("");
     txt_TongTienPhong.setText("");
-    jdc_CheckIn.setDate(null);
-    jdc_CheckOut.setDate(null);
+    //jdc_CheckIn.setDate(null);
+    //jdc_CheckOut.setDate(null);
 }
+private long getDaysBetweenDates(Date startDate, Date endDate) {
+    Calendar start = Calendar.getInstance();
+    start.setTime(startDate);
 
+    Calendar end = Calendar.getInstance();
+    end.setTime(endDate);
+
+    long diffInMillis = end.getTimeInMillis() - start.getTimeInMillis();
+    return diffInMillis / (24 * 60 * 60 * 1000); // Chia cho số millisecond trong một ngày
+}
+  
 
 
 }
