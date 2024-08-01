@@ -2,41 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-<<<<<<< HEAD
             <file>file:/D:/DA1_N6/QLKS/src/View/View_QLKH.java</file>
             <file>file:/D:/DA1_N6/QLKS/src/View/view_DichVu.java</file>
             <file>file:/D:/DA1_N6/QLKS/src/View/View_NhanVien.java</file>
             <file>file:/D:/DA1_N6/QLKS/src/repositories/Repositories_DichVu.java</file>
             <file>file:/D:/DA1_N6/QLKS/src/repositories/Repositories_HD.java</file>
-=======
-<<<<<<< HEAD
-            <file>file:/D:/new_code/QLKS/src/View/view_DichVu.java</file>
-            <file>file:/D:/new_code/QLKS/src/View/View_KM.java</file>
-            <file>file:/D:/new_code/QLKS/src/repositories/Repositories_DichVu.java</file>
-            <file>file:/D:/new_code/QLKS/src/repositories/Repositories_KM.java</file>
-=======
-            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/repositories/Repositories_HD.java</file>
-            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/Model/Model_TrangChu.java</file>
-            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/View/View_TrangChu.java</file>
-            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/Model/Model_DP3.java</file>
-            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/View/View_TT.java</file>
-            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/View/View_HD3.java</file>
-            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/repositories/Repositories_TTPhong.java</file>
-            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/repositories/Repositories_DP3.java</file>
-            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/View/View_Login.java</file>
-            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/Model/Model_DSPhong.java</file>
-            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/View/View_DatPhong3.java</file>
-            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/View/View_QLKH.java</file>
-            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/Model/Model_HD3.java</file>
-            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/repositories/Repositories_HD3.java</file>
-            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_Fpoly/QLKS/src/repositories/Repositories_TrangChu.java</file>
->>>>>>> d40460ed74a8d96b21f616bbdbb7c3f58f6342ed
->>>>>>> 0ff403774fe75f5f6a25565d1ebec418f7ca84cb
+            <file>file:/D:/DA1_N6/QLKS/src/View/View_TrangChu.java</file>
+            <file>file:/D:/DA1_N6/QLKS/src/repositories/Repositories_TrangChu.java</file>
         </group>
-=======
-        <group/>
->>>>>>> 47079009d6be4c8689816dd17e766926bf023602
     </open-files>
 </project-private>
