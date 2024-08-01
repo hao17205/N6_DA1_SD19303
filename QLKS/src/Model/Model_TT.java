@@ -19,14 +19,11 @@ public class Model_TT {
     private String soDienThoai;
     private String diaChi;
     private int soPhongDat;
-    private double giaBanDau;
-    private int khuyenMai;
     private double tongTienDichVu;
     private double tongTienPhong;
     private String trangThai;
     private Date ngayXuatDon;
     private Date ngayThanhToan;
-    private double thue;
     private double tienCoc;
     private double tongTien;
     private double soTienCanThanhToan;
@@ -39,24 +36,32 @@ public class Model_TT {
     private Date checkOut;
     private double tienPhong;
 
+    //HDDDV
+    private String maHD_HDDDV;
+    private String maDDDV;
+    private String maP_HDDDV;
+    private String maDV;
+    private String tenDV;
+    private int soLuong;
+    private double gia;
+    private Date ngayDat;
+    private double tongTien_HDDDV;
+
     public Model_TT() {
     }
 
-    public Model_TT(String maHD, String tenNV, String tenKH, String soDienThoai, String diaChi, int soPhongDat, double giaBanDau, int khuyenMai, double tongTienDichVu, double tongTienPhong, String trangThai, Date ngayXuatDon, Date ngayThanhToan, double thue, double tienCoc, double tongTien, double soTienCanThanhToan, String maHDCT, String maHD_HDCT, String maP, Date checkIn, Date checkOut, double tienPhong) {
+    public Model_TT(String maHD, String tenNV, String tenKH, String soDienThoai, String diaChi, int soPhongDat, double giaBanDau, double tongTienDichVu, double tongTienPhong, String trangThai, Date ngayXuatDon, Date ngayThanhToan, double tienCoc, double tongTien, double soTienCanThanhToan, String maHDCT, String maHD_HDCT, String maP, Date checkIn, Date checkOut, double tienPhong, String maHD_HDDDV, String maDDDV, String maP_HDDDV, String maDV, String tenDV, int soLuong, double gia, Date ngayDat, double tongTien_HDDDV, String maKH, String maNV, String sDT, double tongTDV, int soLP, double tongTP) {
         this.maHD = maHD;
         this.tenNV = tenNV;
         this.tenKH = tenKH;
         this.soDienThoai = soDienThoai;
         this.diaChi = diaChi;
         this.soPhongDat = soPhongDat;
-        this.giaBanDau = giaBanDau;
-        this.khuyenMai = khuyenMai;
         this.tongTienDichVu = tongTienDichVu;
         this.tongTienPhong = tongTienPhong;
         this.trangThai = trangThai;
         this.ngayXuatDon = ngayXuatDon;
         this.ngayThanhToan = ngayThanhToan;
-        this.thue = thue;
         this.tienCoc = tienCoc;
         this.tongTien = tongTien;
         this.soTienCanThanhToan = soTienCanThanhToan;
@@ -66,6 +71,21 @@ public class Model_TT {
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.tienPhong = tienPhong;
+        this.maHD_HDDDV = maHD_HDDDV;
+        this.maDDDV = maDDDV;
+        this.maP_HDDDV = maP_HDDDV;
+        this.maDV = maDV;
+        this.tenDV = tenDV;
+        this.soLuong = soLuong;
+        this.gia = gia;
+        this.ngayDat = ngayDat;
+        this.tongTien_HDDDV = tongTien_HDDDV;
+        this.maKH = maKH;
+        this.maNV = maNV;
+        this.sDT = sDT;
+        this.tongTDV = tongTDV;
+        this.soLP = soLP;
+        this.tongTP = tongTP;
     }
 
     public String getMaHD() {
@@ -116,22 +136,6 @@ public class Model_TT {
         this.soPhongDat = soPhongDat;
     }
 
-    public double getGiaBanDau() {
-        return giaBanDau;
-    }
-
-    public void setGiaBanDau(double giaBanDau) {
-        this.giaBanDau = giaBanDau;
-    }
-
-    public int getKhuyenMai() {
-        return khuyenMai;
-    }
-
-    public void setKhuyenMai(int khuyenMai) {
-        this.khuyenMai = khuyenMai;
-    }
-
     public double getTongTienDichVu() {
         return tongTienDichVu;
     }
@@ -170,14 +174,6 @@ public class Model_TT {
 
     public void setNgayThanhToan(Date ngayThanhToan) {
         this.ngayThanhToan = ngayThanhToan;
-    }
-
-    public double getThue() {
-        return thue;
-    }
-
-    public void setThue(double thue) {
-        this.thue = thue;
     }
 
     public double getTienCoc() {
@@ -252,6 +248,127 @@ public class Model_TT {
         this.tienPhong = tienPhong;
     }
 
+    public String getMaHD_HDDDV() {
+        return maHD_HDDDV;
+    }
+
+    public void setMaHD_HDDDV(String maHD_HDDDV) {
+        this.maHD_HDDDV = maHD_HDDDV;
+    }
+
+    public String getMaDDDV() {
+        return maDDDV;
+    }
+
+    public void setMaDDDV(String maDDDV) {
+        this.maDDDV = maDDDV;
+    }
+
+    public String getMaP_HDDDV() {
+        return maP_HDDDV;
+    }
+
+    public void setMaP_HDDDV(String maP_HDDDV) {
+        this.maP_HDDDV = maP_HDDDV;
+    }
+
+    public String getMaDV() {
+        return maDV;
+    }
+
+    public void setMaDV(String maDV) {
+        this.maDV = maDV;
+    }
+
+    public String getTenDV() {
+        return tenDV;
+    }
+
+    public void setTenDV(String tenDV) {
+        this.tenDV = tenDV;
+    }
+
+    public int getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
+    }
+
+    public double getGia() {
+        return gia;
+    }
+
+    public void setGia(double gia) {
+        this.gia = gia;
+    }
+
+    public Date getNgayDat() {
+        return ngayDat;
+    }
+
+    public void setNgayDat(Date ngayDat) {
+        this.ngayDat = ngayDat;
+    }
+
+    public double getTongTien_HDDDV() {
+        return tongTien_HDDDV;
+    }
+
+    public void setTongTien_HDDDV(double tongTien_HDDDV) {
+        this.tongTien_HDDDV = tongTien_HDDDV;
+    }
+
+    public String getMaKH() {
+        return maKH;
+    }
+
+    public void setMaKH(String maKH) {
+        this.maKH = maKH;
+    }
+
+    public String getMaNV() {
+        return maNV;
+    }
+
+    public void setMaNV(String maNV) {
+        this.maNV = maNV;
+    }
+
+    public String getsDT() {
+        return sDT;
+    }
+
+    public void setsDT(String sDT) {
+        this.sDT = sDT;
+    }
+
+    public double getTongTDV() {
+        return tongTDV;
+    }
+
+    public void setTongTDV(double tongTDV) {
+        this.tongTDV = tongTDV;
+    }
+
+    public int getSoLP() {
+        return soLP;
+    }
+
+    public void setSoLP(int soLP) {
+        this.soLP = soLP;
+    }
+
+    public double getTongTP() {
+        return tongTP;
+    }
+
+    public void setTongTP(double tongTP) {
+        this.tongTP = tongTP;
+    }
+    
+    
     public Object[] toDataRow_HD() {
         return new Object[]{
             this.getMaHD() == null ? "" : this.getMaHD(),
@@ -260,14 +377,11 @@ public class Model_TT {
             this.getSoDienThoai() == null ? "" : this.getSoDienThoai(),
             this.getDiaChi() == null ? "" : this.getDiaChi(),
             this.getSoPhongDat(),
-            this.getGiaBanDau(),
-            this.getKhuyenMai(),
             this.getTongTienDichVu(),
             this.getTongTienPhong(),
             this.getTrangThai(),
             this.getNgayXuatDon() == null ? "" : this.getNgayXuatDon().toString(),
             this.getNgayThanhToan() == null ? "" : this.getNgayThanhToan().toString(),
-            this.getThue(),
             this.getTienCoc(),
             this.getTongTien(),
             this.getSoTienCanThanhToan()
@@ -285,30 +399,20 @@ public class Model_TT {
         };
     }
 
-//    public Object[] toDataRow_TT() {
-//        return new Object[]{
-//            this.getMaHD() == null ? "" : this.getMaHD(),
-//            this.getTenNV() == null ? "" : this.getTenNV(),
-//            this.getTenKH() == null ? "" : this.getTenKH(),
-//            this.getSoDienThoai() == null ? "" : this.getSoDienThoai(),
-//            this.getDiaChi() == null ? "" : this.getDiaChi(),
-//            this.getNgayXuatDon() == null ? "" : this.getNgayXuatDon().toString(),
-//            this.getThue()
-//        };
-//    }
-//
-//    public Object[] toDataRow_TT_DV() {
-//        return new Object[]{
-//            this.getTongTienDichVu()
-//        };
-//    }
-//
-//    public Object[] toDataRow_TT_P() {
-//        return new Object[]{
-//            this.getSoPhongDat(),
-//            this.getTongTienPhong()
-//        };
-//    }
+    public Object[] toDataRow_HDDDV() {
+        return new Object[]{
+            this.maHD_HDDDV == null ? "" : this.maHD_HDDDV,
+            this.maDDDV == null ? "" : this.maDDDV,
+            this.maP_HDDDV == null ? "" : this.maP_HDDDV,
+            this.maDV == null ? "" : this.maDV,
+            this.tenDV == null ? "" : this.tenDV,
+            this.soLuong,
+            this.gia,
+            this.ngayDat == null ? "" : this.ngayDat.toString(),
+            this.tongTien_HDDDV
+        };
+    }
+
     // ok 
     // star
     private String maKH;
@@ -351,30 +455,4 @@ public class Model_TT {
         return new Object[]{this.soLP, this.tongTP};
     }
 
-    //HDDDV
-    private String maHD_HDDDV;
-    private String maDDDV;
-    private String maP_HDDDV;
-    private String maDV;
-    private String tenDV;
-    private int soLuong;
-    private double gia;
-    private Date ngayDat;
-    private double tongTien_HDDDV;
-
-    public Model_TT(String maHD_HDDDV, String maDDDV, String maP_HDDDV, String maDV, String tenDV, int soLuong, double gia, Date ngayDat, double tongTien_HDDDV) {
-        this.maHD_HDDDV = maHD_HDDDV;
-        this.maDDDV = maDDDV;
-        this.maP_HDDDV = maP_HDDDV;
-        this.maDV = maDV;
-        this.tenDV = tenDV;
-        this.soLuong = soLuong;
-        this.gia = gia;
-        this.ngayDat = ngayDat;
-        this.tongTien_HDDDV = tongTien_HDDDV;
-    }
-
-    public Object[] toDaTaRow_HDDDV() {
-        return new Object[]{maHD_HDDDV, maDDDV, maP_HDDDV, maDV, tenDV, soLuong, gia, ngayDat, tongTien_HDDDV};
-    }
 }
