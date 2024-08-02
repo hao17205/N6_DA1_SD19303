@@ -4,13 +4,20 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
-            <file>file:/D:/source_01082024/QLKS/src/View/view_DichVu.java</file>
-            <file>file:/D:/source_01082024/QLKS/src/Model/Model_DichVu.java</file>
-            <file>file:/D:/source_01082024/QLKS/src/View/View_DatPhong6.java</file>
-            <file>file:/D:/source_01082024/QLKS/src/repositories/Repositories_DichVu.java</file>
+            <file>file:/D:/code_test/QLKS/src/View/View_Login.java</file>
+            <file>file:/D:/code_test/QLKS/src/View/View_TrangChu.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_N6_6/QLKS/src/View/View_Login.java</file>
+            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_N6_6/QLKS/src/View/View_DatPhong6.java</file>
+            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_N6_6/QLKS/src/View/View_TT.java</file>
+            <file>file:/C:/Users/Chi%20Dat/Desktop/DA1_N6_6/QLKS/src/View/View_QLKH.java</file>
 =======
             <file>file:/E:/FPT%20Polytechnic/DA1/QLKS/QLKS/src/View/View_TT.java</file>
->>>>>>> 8c0de64309165d990f51f386e761c035b8b75b5b
+            <file>file:/E:/FPT%20Polytechnic/DA1/QLKS/QLKS/src/repositories/Repositories_HDCT.java</file>
+            <file>file:/E:/FPT%20Polytechnic/DA1/QLKS/QLKS/src/View/View_DatPhong6.java</file>
+>>>>>>> 7d6a51f0dc5c55aad8a2727c419238e5d26767d1
+>>>>>>> 70ef0925023f00efa62bc89ee8b17e0ec0f70f1c
         </group>
     </open-files>
 </project-private>
