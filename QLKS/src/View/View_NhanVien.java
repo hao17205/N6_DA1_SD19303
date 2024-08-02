@@ -24,8 +24,14 @@ public class View_NhanVien extends javax.swing.JFrame {
         cbo_chucVu.addItem("Nhân Viên Thu Ngân");
         cbo_chucVu.addItem("Nhân Viên Đặt Phòng");
         cbo_chucVu.addItem("Bảo Vệ");
+        cbo_chucVu.addItem("Nhân Viên Dọn Phòng");
         this.fillTable(rp.getAll_NV());
         this.setLocationRelativeTo(null);
+        
+        //Cho hiện dl cuối cùng lên fillTable
+        i = rp.getAll_NV().size();
+        this.showData(i - 1);
+        tbl_bang.setRowSelectionInterval(i - 1, i - 1);
     }
     private void fillTable(ArrayList<Model_NhanVien>list){
         mol = (DefaultTableModel) tbl_bang.getModel();
@@ -351,6 +357,8 @@ public class View_NhanVien extends javax.swing.JFrame {
     private void tbl_bangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_bangMouseClicked
         i = tbl_bang.getSelectedRow();
         this.showData(i);
+        //khóa ô ko cho sửa
+        txt_maNV.disable();
     }//GEN-LAST:event_tbl_bangMouseClicked
 
     private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
@@ -388,6 +396,8 @@ public class View_NhanVien extends javax.swing.JFrame {
 
     private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaActionPerformed
        i = tbl_bang.getSelectedRow();
+       int chon = JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa nhân viên không");
+        if (chon == JOptionPane.YES_OPTION) {
         if( i == -1){
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn dòng để sửa");
         }else{
@@ -400,6 +410,7 @@ public class View_NhanVien extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Sửa thất bại");
                 }
             }
+        }
         }
     }//GEN-LAST:event_btn_suaActionPerformed
 
@@ -420,6 +431,8 @@ public class View_NhanVien extends javax.swing.JFrame {
 
     private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaActionPerformed
         i = tbl_bang.getSelectedRow();
+        int chon = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa nhân viên không ?");
+        if (chon == JOptionPane.YES_OPTION) {
         if(i == -1){
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn dòng để xóa");
         }else{
@@ -430,6 +443,7 @@ public class View_NhanVien extends javax.swing.JFrame {
            }else{
                    JOptionPane.showMessageDialog(this, "Xóa Thất Bại");
            }
+        }
         }
     }//GEN-LAST:event_btn_xoaActionPerformed
 
@@ -442,7 +456,7 @@ public class View_NhanVien extends javax.swing.JFrame {
         txt_diaChi.setText("");
                
         buttonGroup1.clearSelection();
-
+        txt_maNV.setEnabled(true);
         this.fillTable(rp.getAll_NV());
     }//GEN-LAST:event_btn_resetActionPerformed
 
