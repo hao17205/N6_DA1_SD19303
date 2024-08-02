@@ -10,14 +10,28 @@ package Model;
  */
 public class Model_luuTru {
     private static String maNV;
+    private static String chucVu;
+     private static String tenNV;
 
     // Phương thức để đặt giá trị
     public static void setMaNV(String value) {
         maNV = value;
     }
-
+    public static void setCV(String value) {
+       chucVu = value;
+    }
+    public static void settenNV(String value) {
+       tenNV = value;
+    }
     // Phương thức để lấy giá trị
     public static String getMaNV() {
         return maNV;
     }
+    public static String getCV() {
+        return chucVu;
+    }
+    public static String gettenNV() {
+        return tenNV;
+    }
+    
 }

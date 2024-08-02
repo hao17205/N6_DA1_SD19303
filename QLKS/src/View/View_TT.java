@@ -1080,7 +1080,7 @@ public class View_TT extends javax.swing.JFrame {
         txt_STCTT1.disable();
         String maHD = tbl_ThanhToan.getValueAt(i, 0).toString();
         this.fillTable_P(rp_TT.getAll_TTP(maHD));
-                this.fillTable_TTDV(rp_TT.getAll_TTDV(maHD));
+        this.fillTable_TTDV(rp_TT.getAll_TTDV(maHD));
     }//GEN-LAST:event_tbl_ThanhToanMouseClicked
 
     private void btn_Tk3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Tk3ActionPerformed
