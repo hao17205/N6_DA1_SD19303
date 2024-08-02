@@ -541,7 +541,7 @@ public class View_QLKH extends javax.swing.JFrame {
         txt_MaKhachHang.setText("");
         txt_HoTen.setText("");
         txt_Sdt.setText("");
-       // jdc_NgaySinh.setDate(null);
+        jdc_NgaySinh.setDate(null);
         txt_SoCccd.setText("");
         txt_DiaChi.setText("");
         txt_Email.setText("");
