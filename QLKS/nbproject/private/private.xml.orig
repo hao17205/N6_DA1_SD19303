@@ -4,13 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
-            <file>file:/D:/source_01082024/QLKS/src/View/view_DichVu.java</file>
-            <file>file:/D:/source_01082024/QLKS/src/Model/Model_DichVu.java</file>
-            <file>file:/D:/source_01082024/QLKS/src/View/View_DatPhong6.java</file>
-            <file>file:/D:/source_01082024/QLKS/src/repositories/Repositories_DichVu.java</file>
+            <file>file:/D:/code_test/QLKS/src/View/View_Login.java</file>
+            <file>file:/D:/code_test/QLKS/src/View/view_DichVu.java</file>
+            <file>file:/D:/code_test/QLKS/src/View/View_DatPhong6.java</file>
+            <file>file:/D:/code_test/QLKS/src/View/View_TT.java</file>
 =======
             <file>file:/E:/FPT%20Polytechnic/DA1/QLKS/QLKS/src/View/View_TT.java</file>
->>>>>>> 8c0de64309165d990f51f386e761c035b8b75b5b
+            <file>file:/E:/FPT%20Polytechnic/DA1/QLKS/QLKS/src/repositories/Repositories_HDCT.java</file>
+            <file>file:/E:/FPT%20Polytechnic/DA1/QLKS/QLKS/src/View/View_DatPhong6.java</file>
+>>>>>>> bfbb99078b8efdf6412c25655dde8805fa7df0f7
         </group>
     </open-files>
 </project-private>

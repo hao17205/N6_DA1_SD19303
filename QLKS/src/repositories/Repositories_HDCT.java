@@ -100,7 +100,7 @@ public class Repositories_HDCT {
                 Date checkOut = rs.getDate("CheckOut");
                 double tienPhong = rs.getDouble("TienPhong");
 
-                Model_TT tt = new Model_TT(maHD, maP, maP, maP, maHD, 0, tienPhong, tienPhong, tienPhong, maHD, checkOut, checkOut, tienPhong, tienPhong, tienPhong, maHDCT, maHDCT, maP, checkIn, checkOut, tienPhong, maHDCT, maHDCT, maHDCT, maP, maHD, 0, tienPhong, checkOut, tienPhong, maP, maP, sql, tienPhong, 0, tienPhong);
+                Model_TT tt = new Model_TT(maHD, maP, maP, maP, maHD, 0, tienPhong, tienPhong, tienPhong, maHD, checkOut, checkOut, tienPhong, tienPhong, tienPhong, maHDCT, maHD, maP, checkIn, checkOut, tienPhong, maHDCT, maHDCT, maHDCT, maP, maHD, 0, tienPhong, checkOut, tienPhong, maP, maP, sql, tienPhong, 0, tienPhong);
                 listHoaDonChiTiet.add(tt);
             }
         } catch (Exception e) {
