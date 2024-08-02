@@ -56,5 +56,48 @@ public class Repositories_LG {
             return null;
         }
     }
-
+    // lấy tên NV
+    public String getTenNV(String taiKhoan, String matKhau1){
+        
+        sql = "select TenNV from TAIKHOAN, NHANVIEN where TAIKHOAN.MATK = NHANVIEN.MATK and TenDangNhap like ? and MatKhau like ?";
+        String tenNV = null;
+        try {
+            con = dbconnect.DBconnect.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setObject(1, '%'+taiKhoan+'%');
+            ps.setObject(2, '%'+matKhau1+'%');
+            rs =ps.executeQuery();
+            if (rs.next()) {               
+              tenNV = rs.getString("TenNV");
+     
+           }
+            return tenNV;
+                
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    // lấy chức vụ
+    public String getCV(String taiKhoan, String matKhau1){
+        
+        sql = "select nhanvien.ChucVu from TAIKHOAN, NHANVIEN where TAIKHOAN.MATK = NHANVIEN.MATK and TenDangNhap like ? and MatKhau like ?";
+        String CV = null;
+        try {
+            con = dbconnect.DBconnect.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setObject(1, '%'+taiKhoan+'%');
+            ps.setObject(2, '%'+matKhau1+'%');
+            rs =ps.executeQuery();
+            if (rs.next()) {               
+              CV = rs.getString("ChucVu");
+     
+           }
+            return CV;
+                
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

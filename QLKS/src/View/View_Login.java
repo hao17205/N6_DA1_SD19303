@@ -36,6 +36,21 @@ public class View_Login extends javax.swing.JFrame {
        return maNV;    
         
     }
+    public String laytenNV(  ) {
+        String taiKhoan = txt_TaiKhoan.getText();
+        String matKhau = txt_MatKhau.getText();
+        String tenNV = rp_LG.getTenNV(taiKhoan, matKhau);
+       Model.Model_luuTru.settenNV(tenNV);
+       return tenNV;      
+    }
+    public String layCV(  ) {
+        String taiKhoan = txt_TaiKhoan.getText();
+        String matKhau = txt_MatKhau.getText();
+        String CV = rp_LG.getCV(taiKhoan, matKhau);
+       Model.Model_luuTru.setCV(CV);
+       return CV;    
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -229,8 +244,10 @@ public class View_Login extends javax.swing.JFrame {
         // Xác thực thông tin đăng nhập
         if (rp_LG.checkTrung_taiKhoan(tenDangNhap, matKhau)) {
             // Đăng nhập thành công
-            JOptionPane.showMessageDialog(this, "Đăng nhập thành công "+ layMNV());
-            
+            JOptionPane.showMessageDialog(this, "Đăng nhập thành công ");
+            String maNV = layMNV();
+            String chucVu = layCV();
+            String tenNV = laytenNV();
             View_TrangChu home = new View_TrangChu(); // Thay thế bằng cửa sổ chính của bạn
             home.setVisible(true);
             this.dispose(); // Đóng cửa sổ đăng nhập

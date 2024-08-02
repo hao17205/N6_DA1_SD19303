@@ -17,6 +17,7 @@ public class View_TrangChu extends javax.swing.JFrame {
     private Repositories_TrangChu rp_TT = new Repositories_TrangChu();
     private DefaultTableModel mol = new DefaultTableModel();
     private int i =-1;
+    private String CV = Model.Model_luuTru.getCV();
     public View_TrangChu() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -463,8 +464,13 @@ public class View_TrangChu extends javax.swing.JFrame {
     private void lb_NhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_NhanVienMouseClicked
         // TODO add your handling code here:
         View_NhanVien nv = new View_NhanVien();
-        nv.setVisible(true);
+        if (CV.equalsIgnoreCase("Quản Lý")) {
+             nv.setVisible(true);
         this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Bạn không đủ thẩm quyền để sử dụng chức năng này");
+        }
+       
     }//GEN-LAST:event_lb_NhanVienMouseClicked
 
     private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaActionPerformed
@@ -567,8 +573,13 @@ public class View_TrangChu extends javax.swing.JFrame {
     private void lb_ThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_ThongKeMouseClicked
         // TODO add your handling code here:
         View_ThongKe tk = new View_ThongKe();
-        tk.setVisible(true);
+        if (CV.equalsIgnoreCase("Quản Lý")) {
+             tk.setVisible(true);
         this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Bạn không đủ thẩm quyền để sử dụng chức năng này");
+        }
+       
        
     }//GEN-LAST:event_lb_ThongKeMouseClicked
 
