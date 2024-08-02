@@ -40,7 +40,7 @@ public class View_DatPhong6 extends javax.swing.JFrame {
     private View.View_Login lg = new View_Login();
     public String maNV = Model.Model_luuTru.getMaNV();
     private Repositories_ChiTiet rp_CT = new Repositories_ChiTiet();
-    
+     private String tenNV = Model.Model_luuTru.gettenNV();
     /**
      * Creates new form View_DatPhong6
      */
@@ -55,7 +55,7 @@ public class View_DatPhong6 extends javax.swing.JFrame {
         this.fillTable_KH(rp_TTKH.getAll_KH());
         this.fillTable_HDC(rp_HDC.getAll_HDC6());
         
-       
+       txt_TenNhanVien.setText(tenNV);
         txt_MaNV.setText(maNV);
     }
     private void fillTable_Dsp(ArrayList<Model_DSPhong> list_Dsp){
