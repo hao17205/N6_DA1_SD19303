@@ -129,4 +129,21 @@ public class Model_TK {
     public Object[] toDaTaRow_ThongTin() {
         return new Object[]{this.maHD, this.maKH, this.maNV, this.trangThai, this.ngayXuatDon, this.ngayThanhToan, this.tongTien};
     }
+    // làm thêm top dịch vụ
+   private String tenDV; 
+
+    public Model_TK(String tenDV) {
+        this.tenDV = tenDV;
+    }
+
+    public String getTenDV() {
+        return tenDV;
+    }
+
+    public void setTenDV(String tenDV) {
+        this.tenDV = tenDV;
+    }
+    public Object[] toDaTaRow_TDV(){
+        return new Object[]{this.tenDV};
+    }
 }
