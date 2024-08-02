@@ -872,7 +872,7 @@ public class View_TT extends javax.swing.JFrame {
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 0, 0))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), new java.awt.Color(255, 0, 0))); // NOI18N
         jPanel2.setForeground(new java.awt.Color(255, 255, 204));
 
         btn_C1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -897,7 +897,7 @@ public class View_TT extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_C1)
                 .addContainerGap())
         );
@@ -1081,6 +1081,9 @@ public class View_TT extends javax.swing.JFrame {
         txt_TC2.disable();
         txt_TTHD.disable();
         txt_STCTT1.disable();
+        String maHD = tbl_ThanhToan.getValueAt(i, 0).toString();
+        this.fillTable_P(rp_TT.getAll_TTP(maHD));
+                this.fillTable_TTDV(rp_TT.getAll_TTDV(maHD));
     }//GEN-LAST:event_tbl_ThanhToanMouseClicked
 
     private void btn_Tk3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Tk3ActionPerformed
