@@ -44,6 +44,10 @@ public class View_TT extends javax.swing.JFrame {
         this.fillTable_TT_DV(rp_TT.getTongTienDV_HD());
         this.fillTable_TT_P(rp_TT.getTongTienPhong_HD());
 
+//        cbo_TrangThai.removeAllItems();
+//        cbo_TrangThai.addItem("Đã Thanh Toán");
+//        cbo_TrangThai.addItem("Chưa Thanh Toán");
+
     }
 
     void fillTable_HD(ArrayList<Model_TT> list_HD) {
@@ -224,6 +228,7 @@ public class View_TT extends javax.swing.JFrame {
         tbl_DDV = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         btn_C1 = new javax.swing.JButton();
+        cbo_TrangThai = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -899,6 +904,13 @@ public class View_TT extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        cbo_TrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbo_TrangThai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_TrangThaiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -914,7 +926,9 @@ public class View_TT extends javax.swing.JFrame {
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(677, 677, 677)
+                .addGap(217, 217, 217)
+                .addComponent(cbo_TrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(388, 388, 388)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -929,9 +943,14 @@ public class View_TT extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(cbo_TrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Quản Lý Hóa Đơn", jPanel1);
@@ -1157,6 +1176,24 @@ public class View_TT extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_C1ActionPerformed
 
+    private void cbo_TrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_TrangThaiActionPerformed
+        // TODO add your handling code here:
+//        // Kiểm tra nếu JComboBox trả về null
+//        Object selectedItem = cbo_TrangThai.getSelectedItem();
+//        if (selectedItem == null) {
+//            return; // Dừng phương thức để không tiếp tục xử lý
+//        }
+//
+//        // Nếu không null, chuyển đổi giá trị thành chuỗi
+//        String selectedStatus = selectedItem.toString();
+//
+//        // Gọi phương thức getHDByStatus để lấy danh sách hóa đơn theo trạng thái
+//        ArrayList<Model_TT> filteredList = rp_HD.getHDByStatus(selectedStatus);
+//
+//        // Hiển thị danh sách hóa đơn lên bảng (tbl_HD)
+//        this.fillTable_HD(filteredList);
+    }//GEN-LAST:event_cbo_TrangThaiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1205,6 +1242,7 @@ public class View_TT extends javax.swing.JFrame {
     private javax.swing.JButton btn_Tk3;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JComboBox<String> cbo_TrangThai;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel24;
