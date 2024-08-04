@@ -18,8 +18,9 @@ public class View_TrangChu extends javax.swing.JFrame {
 
     private Repositories_TrangChu rp_Phong = new Repositories_TrangChu();
     private DefaultTableModel mol = new DefaultTableModel();
-    private int i =-1;
+    private int i = -1;
     private String CV = Model.Model_luuTru.getCV();
+
     public View_TrangChu() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -47,21 +48,20 @@ public class View_TrangChu extends javax.swing.JFrame {
         // 
         ArrayList list_TT = new ArrayList<>();
         for (int j = 0; j < cbo_TT_Loc.getItemCount(); j++) {
-             list_TT.add(cbo_TT_Loc.getItemAt(j).toString());
-        
+            list_TT.add(cbo_TT_Loc.getItemAt(j).toString());
+
         }
-       
+
     }
-    public void fillTable_Phong(ArrayList<Model_TrangChu>list_TT){
+
+    public void fillTable_Phong(ArrayList<Model_TrangChu> list_TT) {
         mol = (DefaultTableModel) tbl_Phong.getModel();
         mol.setRowCount(0);
         for (Model_TrangChu x : list_TT) {
             mol.addRow(x.toDaTaRows_Phong());
         }
     }
-    
-   
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -640,7 +640,7 @@ public class View_TrangChu extends javax.swing.JFrame {
 
     private void lb_homeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_homeMouseEntered
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_lb_homeMouseEntered
 
     private void lb_homeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_homeMouseExited
@@ -649,11 +649,7 @@ public class View_TrangChu extends javax.swing.JFrame {
 
     private void lb_DichVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_DichVuMouseClicked
         // TODO add your handling code here:
-<<<<<<< HEAD
-        View_DichVu dv = new View_DichVu();
-=======
-        view.view_DichVu dv = new view.view_DichVu();
->>>>>>> 2d4d0804891adde5ca26a52080bfe439294863a6
+        view.View_DichVu dv = new view.View_DichVu();
         dv.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lb_DichVuMouseClicked
@@ -669,12 +665,12 @@ public class View_TrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         View_NhanVien nv = new View_NhanVien();
         if (CV.equalsIgnoreCase("Quản Lý")) {
-             nv.setVisible(true);
-        this.dispose();
-        }else{
+            nv.setVisible(true);
+            this.dispose();
+        } else {
             JOptionPane.showMessageDialog(this, "Bạn không đủ thẩm quyền để sử dụng chức năng này");
         }
-       
+
     }//GEN-LAST:event_lb_NhanVienMouseClicked
 
     private void btn_datPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_datPhongActionPerformed
@@ -682,23 +678,23 @@ public class View_TrangChu extends javax.swing.JFrame {
         View_DatPhong6 dp6 = new View_DatPhong6();
         dp6.setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_btn_datPhongActionPerformed
 
     private void tbl_PhongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_PhongMouseClicked
-       i = tbl_Phong.getSelectedRow();
-       this.showData(i);
+        i = tbl_Phong.getSelectedRow();
+        this.showData(i);
     }//GEN-LAST:event_tbl_PhongMouseClicked
 
     private void btn_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_timKiemActionPerformed
-          String maPhong = txt_timKiem.getText().trim();
-        if(maPhong.isEmpty()){
+        String maPhong = txt_timKiem.getText().trim();
+        if (maPhong.isEmpty()) {
             JOptionPane.showMessageDialog(this, "bạn chưa nhập gì dể tìm kiếm");
-        }else{
+        } else {
             ArrayList<Model_TrangChu> TimKiem_KH = rp_Phong.timKiemPhong(maPhong);
-            if(TimKiem_KH.isEmpty()){
-                JOptionPane.showMessageDialog(this, "thông tin không tồn tại");            
-            }else{
+            if (TimKiem_KH.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "thông tin không tồn tại");
+            } else {
                 JOptionPane.showMessageDialog(this, "Đã tìm thấy thông tin");
                 this.fillTable_Phong(rp_Phong.timKiemPhong(maPhong));
             }
@@ -716,26 +712,26 @@ public class View_TrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         View_ThongKe tk = new View_ThongKe();
         if (CV.equalsIgnoreCase("Quản Lý")) {
-             tk.setVisible(true);
-        this.dispose();
-        }else{
+            tk.setVisible(true);
+            this.dispose();
+        } else {
             JOptionPane.showMessageDialog(this, "Bạn không đủ thẩm quyền để sử dụng chức năng này");
         }
-       
-       
+
+
     }//GEN-LAST:event_lb_ThongKeMouseClicked
 
     private void tbn_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbn_ThemActionPerformed
         // TODO add your handling code here
         View_ThemPhong TP = new View_ThemPhong();
-        TP.setDefaultCloseOperation(TP.DISPOSE_ON_CLOSE);       
-         TP.addWindowListener(new WindowAdapter() {
-        @Override
-        public void windowClosed(WindowEvent e) {
-            // Cập nhật bảng sau khi cửa sổ được đóng
-            fillTable_Phong(rp_Phong.getAll_TrangChu());
-        }
-    });
+        TP.setDefaultCloseOperation(TP.DISPOSE_ON_CLOSE);
+        TP.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                // Cập nhật bảng sau khi cửa sổ được đóng
+                fillTable_Phong(rp_Phong.getAll_TrangChu());
+            }
+        });
         TP.setVisible(true);
     }//GEN-LAST:event_tbn_ThemActionPerformed
 
@@ -744,13 +740,13 @@ public class View_TrangChu extends javax.swing.JFrame {
         i = tbl_Phong.getSelectedRow();
         if (i == -1) {
             JOptionPane.showMessageDialog(this, "Bạn Chưa Chọn Phòng");
-        }else{
+        } else {
             String maP = tbl_Phong.getValueAt(i, 0).toString();
-            if (this.readForm_TC()!= null) {
-                if (rp_Phong.sua_TC(maP, this.readForm_TC())>0) {
+            if (this.readForm_TC() != null) {
+                if (rp_Phong.sua_TC(maP, this.readForm_TC()) > 0) {
                     JOptionPane.showMessageDialog(this, "cập nhật thành công");
                     this.fillTable_Phong(rp_Phong.getAll_TrangChu());
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(this, "gặp bug rồi gọi cho thằng code chức năng này ngay");
                 }
             }
@@ -765,16 +761,16 @@ public class View_TrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         i = tbl_Phong.getSelectedRow();
         int chon = JOptionPane.showConfirmDialog(this, "Xóa Phòng có thể làm mất dữ liệu ở 1 số hóa đơn liên quan tới phòng, bạn có chắc chắn muốn xóa");
-        if (chon ==0) {
+        if (chon == 0) {
             if (i == -1) {
                 JOptionPane.showMessageDialog(this, "bạn chưa chọn phòng muốn xóa");
-            }else{
+            } else {
                 String maP = tbl_Phong.getValueAt(i, 0).toString();
-                if (this.readForm_TC()!= null) {
-                    if (rp_Phong.xoa_TC(maP)>0) {
+                if (this.readForm_TC() != null) {
+                    if (rp_Phong.xoa_TC(maP) > 0) {
                         JOptionPane.showMessageDialog(this, "Xóa thành công");
                         this.fillTable_Phong(rp_Phong.getAll_TrangChu());
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(this, "bạn đã gặp bug, vui lòng liên hệ ngay cho thằng code chức năng này qua SĐT 0397639827");
                     }
                 }
@@ -787,109 +783,107 @@ public class View_TrangChu extends javax.swing.JFrame {
         int tang_L = Integer.parseInt(String.valueOf(jsp_Tang_loc.getValue()));
         String loaiPhong_L = cbo_LP_Loc.getSelectedItem().toString();
         String tinhTrang_L = cbo_TT_Loc.getSelectedItem().toString();
-        
-         ArrayList list_TT = new ArrayList<>();
+
+        ArrayList list_TT = new ArrayList<>();
         for (int j = 0; j < cbo_TT_Loc.getItemCount(); j++) {
-             list_TT.add(cbo_TT_Loc.getItemAt(j).toString());
-        
+            list_TT.add(cbo_TT_Loc.getItemAt(j).toString());
+
         }
-        
+
         ArrayList list_LP = new ArrayList();
         for (int j = 0; j < cbo_LP_Loc.getItemCount(); j++) {
-             list_LP.add(cbo_LP_Loc.getItemAt(j).toString());
+            list_LP.add(cbo_LP_Loc.getItemAt(j).toString());
         }
         ArrayList<Model_TrangChu> KQTK = null;
-        
-        if (tang_L<0) {
+
+        if (tang_L < 0) {
             JOptionPane.showMessageDialog(this, "Dữ liệu không hợp lệ");
-        }else{
+        } else {
             if (tang_L == 0 && loaiPhong_L.equalsIgnoreCase("All") && tinhTrang_L.equalsIgnoreCase("All")) {
-            // không lọc gì
-            KQTK = rp_Phong.getAll_TrangChu();
-            if (KQTK.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Không có phòng nào có kết quả muốn lọc");
-            }else{
-                this.fillTable_Phong(KQTK);
-            }
-            
-            
-            //this.fillTable_Phong(rp_Phong.getAll_TrangChu());
-        }else if(loaiPhong_L.equalsIgnoreCase("All") && tinhTrang_L.equalsIgnoreCase("All")){
+                // không lọc gì
+                KQTK = rp_Phong.getAll_TrangChu();
+                if (KQTK.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Không có phòng nào có kết quả muốn lọc");
+                } else {
+                    this.fillTable_Phong(KQTK);
+                }
+
+                //this.fillTable_Phong(rp_Phong.getAll_TrangChu());
+            } else if (loaiPhong_L.equalsIgnoreCase("All") && tinhTrang_L.equalsIgnoreCase("All")) {
 // trường hợp chỉ lọc tầng
-          KQTK = rp_Phong.Loc_chiLT(tang_L);
-            if (KQTK.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Không có phòng nào có kết quả muốn lọc");
-            }else{
-                this.fillTable_Phong(KQTK);
+                KQTK = rp_Phong.Loc_chiLT(tang_L);
+                if (KQTK.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Không có phòng nào có kết quả muốn lọc");
+                } else {
+                    this.fillTable_Phong(KQTK);
+                }
+                //   fillTable_Phong(rp_Phong.Loc_chiLT(tang_L));
+            } else if (tang_L == 0 && loaiPhong_L.equalsIgnoreCase("All")) {
+                // trường hợp chỉ lọc tình trạng
+                KQTK = rp_Phong.Loc_TT(tinhTrang_L);
+                if (KQTK.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Không có phòng nào có kết quả muốn lọc");
+                } else {
+                    this.fillTable_Phong(KQTK);
+                }
+                //  fillTable_Phong(rp_Phong.Loc_TT(tinhTrang_L));
+            } else if (tang_L == 0 && tinhTrang_L.equalsIgnoreCase("All")) {
+                // trường hợp chỉ lọc loại phòng
+                KQTK = rp_Phong.Loc_LP(loaiPhong_L);
+                if (KQTK.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Không có phòng nào có kết quả muốn lọc");
+                } else {
+                    this.fillTable_Phong(KQTK);
+                }
+                //  this.fillTable_Phong(rp_Phong.Loc_LP(loaiPhong_L));
+            } else if (tang_L == 0) {
+                //trường hợp không lọc tầng
+                KQTK = rp_Phong.Loc_truTang(loaiPhong_L, tinhTrang_L);
+                if (KQTK.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Không có phòng nào có kết quả muốn lọc");
+                } else {
+                    this.fillTable_Phong(KQTK);
+                }
+
+            } else if (tinhTrang_L.equalsIgnoreCase("All")) {
+                //trường hợp không lọc tình trạng
+                KQTK = rp_Phong.Loc_truTT(tang_L, loaiPhong_L);
+                if (KQTK.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Không có phòng nào có kết quả muốn lọc");
+                } else {
+                    this.fillTable_Phong(KQTK);
+                }
+                //this.fillTable_Phong(rp_Phong.Loc_truTT(tang_L, loaiPhong_L));
+
+            } else if (loaiPhong_L.equalsIgnoreCase("All")) {
+                //trường hợp không lọc loại phòng
+                KQTK = rp_Phong.Loc_truLP(tang_L, tinhTrang_L);
+                if (KQTK.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Không có phòng nào có kết quả muốn lọc");
+                } else {
+                    this.fillTable_Phong(KQTK);
+                }
+                // this.fillTable_Phong(rp_Phong.Loc_truLP(tang_L, tinhTrang_L)); 
+
+            } else if (tang_L > 0 && list_LP.contains(loaiPhong_L) && list_TT.contains(tinhTrang_L)) {
+                // trường hợp lọc cả 3
+                KQTK = rp_Phong.Loc_C3(tang_L, tinhTrang_L, loaiPhong_L);
+                if (KQTK.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Không có phòng nào có kết quả muốn lọc");
+                } else {
+                    this.fillTable_Phong(KQTK);
+                }
+                // this.fillTable_Phong(rp_Phong.Loc_C3(tang_L, tinhTrang_L, loaiPhong_L));
             }
-         //   fillTable_Phong(rp_Phong.Loc_chiLT(tang_L));
-        }else if (tang_L == 0 && loaiPhong_L.equalsIgnoreCase("All") ) {
-        // trường hợp chỉ lọc tình trạng
-        KQTK = rp_Phong.Loc_TT(tinhTrang_L);
-            if (KQTK.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Không có phòng nào có kết quả muốn lọc");
-            }else{
-                this.fillTable_Phong(KQTK);
-            }
-          //  fillTable_Phong(rp_Phong.Loc_TT(tinhTrang_L));
-        }else if (tang_L == 0 && tinhTrang_L.equalsIgnoreCase("All")) {
-        // trường hợp chỉ lọc loại phòng
-        KQTK = rp_Phong.Loc_LP(loaiPhong_L);
-            if (KQTK.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Không có phòng nào có kết quả muốn lọc");
-            }else{
-                this.fillTable_Phong(KQTK);
-            }
-          //  this.fillTable_Phong(rp_Phong.Loc_LP(loaiPhong_L));
-        }else if (tang_L == 0) {
-            //trường hợp không lọc tầng
-            KQTK = rp_Phong.Loc_truTang(loaiPhong_L, tinhTrang_L);
-            if (KQTK.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Không có phòng nào có kết quả muốn lọc");
-            }else{
-                this.fillTable_Phong(KQTK);
-            }
-           
-        }else if(tinhTrang_L.equalsIgnoreCase("All")){
-            //trường hợp không lọc tình trạng
-           KQTK = rp_Phong.Loc_truTT(tang_L, loaiPhong_L);
-            if (KQTK.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Không có phòng nào có kết quả muốn lọc");
-            }else{
-                this.fillTable_Phong(KQTK);
-            }
-           //this.fillTable_Phong(rp_Phong.Loc_truTT(tang_L, loaiPhong_L));
-            
-        }else if(loaiPhong_L.equalsIgnoreCase("All")){
-            //trường hợp không lọc loại phòng
-            KQTK = rp_Phong.Loc_truLP(tang_L, tinhTrang_L);
-            if (KQTK.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Không có phòng nào có kết quả muốn lọc");
-            }else{
-                this.fillTable_Phong(KQTK);
-            }
-           // this.fillTable_Phong(rp_Phong.Loc_truLP(tang_L, tinhTrang_L)); 
-            
-        }else  if (tang_L > 0 && list_LP.contains(loaiPhong_L) && list_TT.contains(tinhTrang_L)) {
-        // trường hợp lọc cả 3
-        KQTK = rp_Phong.Loc_C3(tang_L, tinhTrang_L, loaiPhong_L);
-        if (KQTK.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Không có phòng nào có kết quả muốn lọc");
-            }else{
-                this.fillTable_Phong(KQTK);
-            }
-           // this.fillTable_Phong(rp_Phong.Loc_C3(tang_L, tinhTrang_L, loaiPhong_L));
         }
-        }
-        
-        
+
         // không lọc gì
-        
+
     }//GEN-LAST:event_tbn_locActionPerformed
 
     private void cbo_TT_LocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_TT_LocActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_cbo_TT_LocActionPerformed
 
     /**
@@ -981,34 +975,30 @@ public class View_TrangChu extends javax.swing.JFrame {
     private javax.swing.JTextField txt_timKiem;
     // End of variables declaration//GEN-END:variables
 
-    private void showData(int i){
+    private void showData(int i) {
         txt_maPhong.setText(tbl_Phong.getValueAt(i, 0).toString());
         txt_Tang.setText(tbl_Phong.getValueAt(i, 1).toString());
         txt_MaLoaiPhong.setText(tbl_Phong.getValueAt(i, 2).toString());
-        cbo_TinhTrangPhong.setSelectedItem(tbl_Phong.getValueAt(i,3).toString());
+        cbo_TinhTrangPhong.setSelectedItem(tbl_Phong.getValueAt(i, 3).toString());
         cbo_LoaiPhong.setSelectedItem(tbl_Phong.getValueAt(i, 4).toString());
         txt_GiaPhong.setText(tbl_Phong.getValueAt(i, 5).toString());
         txt_SoNguoiO.setText(tbl_Phong.getValueAt(i, 6).toString());
         txt_MT.setText(tbl_Phong.getValueAt(i, 7).toString());
         cbo_LoaiPhong.setEnabled(false);
         txt_maPhong.setEnabled(false);
-         txt_GiaPhong.setEnabled(false);
+        txt_GiaPhong.setEnabled(false);
         txt_SoNguoiO.setEnabled(false);
-         txt_MT.setEnabled(false);
+        txt_MT.setEnabled(false);
         txt_Tang.setEnabled(false);
         txt_MaLoaiPhong.setEnabled(false);
     }
-    private Model_TrangChu readForm_TC(){
+
+    private Model_TrangChu readForm_TC() {
         String maP = txt_maPhong.getText().trim();
         int tang = Integer.parseInt(txt_Tang.getText().trim().toString());
         String maLP = txt_MaLoaiPhong.getText().trim();
         String tinhTrang = cbo_TinhTrangPhong.getSelectedItem().toString();
         return new Model_TrangChu(maP, tang, maLP, tinhTrang);
     }
-  
-  
-  
-    
 
-    
 }
