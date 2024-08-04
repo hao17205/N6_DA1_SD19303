@@ -18,7 +18,7 @@ import repositories.Repositories_DichVu;
  *
  * @author rinbo
  */
-public class view_DichVu extends javax.swing.JFrame {
+public class View_DichVu extends javax.swing.JFrame {
 
     private repositories.Repositories_DichVu rp = new Repositories_DichVu();
     private DefaultTableModel mol = new DefaultTableModel();
@@ -27,7 +27,7 @@ public class view_DichVu extends javax.swing.JFrame {
     /**
      * Creates new form view_DichVu
      */
-    public view_DichVu() {
+    public View_DichVu() {
         initComponents();
         this.setLocationRelativeTo(null);
         cbo_LoaiDV.removeAllItems();
@@ -1255,20 +1255,21 @@ public class view_DichVu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(view_DichVu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View_DichVu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(view_DichVu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View_DichVu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(view_DichVu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View_DichVu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(view_DichVu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View_DichVu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new view_DichVu().setVisible(true);
+                new View_DichVu().setVisible(true);
             }
         });
     }
