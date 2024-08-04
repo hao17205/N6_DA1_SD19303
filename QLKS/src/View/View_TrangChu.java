@@ -649,7 +649,7 @@ public class View_TrangChu extends javax.swing.JFrame {
 
     private void lb_DichVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_DichVuMouseClicked
         // TODO add your handling code here:
-        view_DichVu dv = new view_DichVu();
+        view.view_DichVu dv = new view.view_DichVu();
         dv.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lb_DichVuMouseClicked
