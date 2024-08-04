@@ -56,7 +56,7 @@ public class View_DatPhong6 extends javax.swing.JFrame {
         this.fillTable_Dsp(rp_Dsp.getAll_DSPhong());
         this.fillTable_KH(rp_TTKH.getAll_KH());
         this.fillTable_HDC(rp_HDC.getAll_HDC6());
-        
+        txt_TienCoc.setText("0");
        txt_TenNhanVien.setText(tenNV);
         txt_MaNV.setText(maNV);
     }
@@ -253,9 +253,9 @@ private void fillTable_ChiTiet(ArrayList<Model_ChiTietPhong> list_ChiTiet){
             }
         });
 
-        jdc_CheckOut.setDateFormatString("yyyy-MM-dd");
+        jdc_CheckOut.setDateFormatString("yyyy-MM-dd HH:mm:ss");
 
-        jdc_CheckIn.setDateFormatString("yyyy-MM-dd");
+        jdc_CheckIn.setDateFormatString("yyyy-MM-dd HH:mm:ss");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh Sách Phòng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 

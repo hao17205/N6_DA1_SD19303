@@ -204,7 +204,7 @@ public class Repositories_TT {
                 if (list_MP != null) {
                     Repositories_TTPhong rp_TTPhong = new Repositories_TTPhong();
                     for (String x : list_MP) {
-                        rp_TTPhong.sua_TT(x, "Trống");
+                        rp_TTPhong.sua_TT(x, "Đang rọn phòng");
                     }
 
                 }
