@@ -44,6 +44,10 @@ public class View_TT extends javax.swing.JFrame {
         this.fillTable_TT_DV(rp_TT.getTongTienDV_HD());
         this.fillTable_TT_P(rp_TT.getTongTienPhong_HD());
 
+//        cbo_TrangThai.removeAllItems();
+//        cbo_TrangThai.addItem("Đã Thanh Toán");
+//        cbo_TrangThai.addItem("Chưa Thanh Toán");
+
     }
 
     void fillTable_HD(ArrayList<Model_TT> list_HD) {
@@ -931,7 +935,7 @@ public class View_TT extends javax.swing.JFrame {
                     .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Quản Lý Hóa Đơn", jPanel1);
