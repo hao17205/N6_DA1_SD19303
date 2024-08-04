@@ -6,7 +6,7 @@ package repositories;
 
 import java.sql.*;
 import java.util.ArrayList;
-import model.Model_DichVu;
+import Model.Model_DichVu;
 
 
 /**
@@ -21,8 +21,8 @@ public class Repositories_DichVu {
 
     private String sql = null;
 
-    public ArrayList<model.Model_DichVu> getAll_DV() {
-        ArrayList<model.Model_DichVu> list_DV = new ArrayList<>();
+    public ArrayList<Model_DichVu> getAll_DV() {
+        ArrayList<Model_DichVu> list_DV = new ArrayList<>();
         sql = "SELECT MADV, TenDichVu, Gia, LoaiDichVu, MoTa FROM DICHVU";
 
         try {
@@ -36,7 +36,7 @@ public class Repositories_DichVu {
                 String loaiDV = rs.getString(4);
                 String moTa = rs.getString(5);
 
-                model.Model_DichVu m = new Model_DichVu(maDV, tenDV, gia, loaiDV, moTa);
+                Model_DichVu m = new Model_DichVu(maDV, tenDV, gia, loaiDV, moTa);
                 list_DV.add(m);
             }
             return list_DV;
@@ -96,8 +96,8 @@ public class Repositories_DichVu {
         }
     }
 
-    public ArrayList<model.Model_DichVu> timKiem(String timKiem) {
-        ArrayList<model.Model_DichVu> list_DV = new ArrayList<>();
+    public ArrayList<Model_DichVu> timKiem(String timKiem) {
+        ArrayList<Model_DichVu> list_DV = new ArrayList<>();
         sql = "SELECT MADV, TenDichVu, Gia,  LoaiDichVu, MoTa FROM DICHVU WHERE MADV LIKE ? or TenDichVu like ? or gia like ? or MoTa like ? or LoaiDichVu like ?";
 
         try {
@@ -116,7 +116,7 @@ public class Repositories_DichVu {
                 String loaiDV = rs.getString(4);
                 String moTa = rs.getString(5);
 
-                model.Model_DichVu m = new Model_DichVu(maDV, tenDV, gia, loaiDV, moTa);
+               Model_DichVu m = new Model_DichVu(maDV, tenDV, gia, loaiDV, moTa);
                 list_DV.add(m);
             }
             return list_DV;

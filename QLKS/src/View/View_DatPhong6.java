@@ -22,7 +22,7 @@ import java.time.ZoneId;
 import Model.Model_DP3;
 import java.util.Calendar;
 import repositories.Repositories_DP3;
-import view.view_DichVu;
+
 import repositories.Repositories_ChiTiet;
 import Model.Model_ChiTietPhong;
 import java.awt.event.WindowAdapter;
@@ -870,7 +870,7 @@ private void fillTable_ChiTiet(ArrayList<Model_ChiTietPhong> list_ChiTiet){
 
     private void btn_DatDichVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DatDichVuActionPerformed
         // TODO add your handling code here:
-        view.view_DichVu dv = new view_DichVu();
+        view_DichVu dv = new view_DichVu();
         dv.setDefaultCloseOperation(dv.DISPOSE_ON_CLOSE);
         dv.setVisible(true);
     }//GEN-LAST:event_btn_DatDichVuActionPerformed

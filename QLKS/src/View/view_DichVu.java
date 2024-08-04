@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
+package View;
 
 import View.View_TrangChu;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Model_DichVu;
+import Model.Model_DichVu;
 
 import repositories.Repositories_DichVu;
 
@@ -58,7 +58,7 @@ public class view_DichVu extends javax.swing.JFrame {
         jsp_SL1.setEnabled(false);
     }
 
-    private void fillTable(ArrayList<model.Model_DichVu> list) {
+    private void fillTable(ArrayList<Model_DichVu> list) {
         mol = (DefaultTableModel) tbl_DV.getModel();
         mol.setRowCount(0);
         for (Model_DichVu x : list) {

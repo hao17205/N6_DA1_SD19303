@@ -5,7 +5,7 @@
 package View;
 
 import java.awt.Color;
-import view.view_DichVu;
+import View.view_DichVu;
 import Model.Model_TrangChu;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -649,7 +649,7 @@ public class View_TrangChu extends javax.swing.JFrame {
 
     private void lb_DichVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_DichVuMouseClicked
         // TODO add your handling code here:
-        view.view_DichVu dv = new view.view_DichVu();
+        view_DichVu dv = new view_DichVu();
         dv.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lb_DichVuMouseClicked
