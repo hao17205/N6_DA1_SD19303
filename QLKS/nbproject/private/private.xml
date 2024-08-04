@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/D:/code_Da103082024/QLKS/src/View/View_TT.java</file>
+            <file>file:/D:/code_Da103082024/QLKS/src/View/View_TrangChu.java</file>
+            <file>file:/D:/code_Da103082024/QLKS/src/View/View_Login.java</file>
+            <file>file:/D:/code_Da103082024/QLKS/src/repositories/Repositories_TrangChu.java</file>
+            <file>file:/D:/code_Da103082024/QLKS/src/Model/Model_TrangChu.java</file>
+            <file>file:/D:/code_Da103082024/QLKS/src/View/View_DatPhong6.java</file>
+        </group>
+>>>>>>> 2d4d0804891adde5ca26a52080bfe439294863a6
     </open-files>
 </project-private>
