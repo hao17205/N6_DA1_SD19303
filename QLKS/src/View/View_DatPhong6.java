@@ -253,9 +253,9 @@ private void fillTable_ChiTiet(ArrayList<Model_ChiTietPhong> list_ChiTiet){
             }
         });
 
-        jdc_CheckOut.setDateFormatString("yyyy-MM-dd");
+        jdc_CheckOut.setDateFormatString("yyyy-MM-dd HH:mm:ss");
 
-        jdc_CheckIn.setDateFormatString("yyyy-MM-dd");
+        jdc_CheckIn.setDateFormatString("yyyy-MM-dd HH:mm:ss");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh Sách Phòng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 

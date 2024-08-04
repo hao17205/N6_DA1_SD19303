@@ -340,12 +340,12 @@
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="jdc_CheckOut">
               <Properties>
-                <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+                <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
               </Properties>
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="jdc_CheckIn">
               <Properties>
-                <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+                <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel3">
