@@ -122,6 +122,12 @@ public class Model_TrangChu {
     public Model_TrangChu(String maPhong) {
         this.maPhong = maPhong;
     }
+
+    public Model_TrangChu(int tang, String tinhTrang, String loaiPhong) {
+        this.tang = tang;
+        this.tinhTrang = tinhTrang;
+        this.loaiPhong = loaiPhong;
+    }
     
     
     

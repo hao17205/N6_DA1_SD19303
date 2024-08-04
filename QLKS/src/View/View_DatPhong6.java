@@ -56,7 +56,7 @@ public class View_DatPhong6 extends javax.swing.JFrame {
         this.fillTable_Dsp(rp_Dsp.getAll_DSPhong());
         this.fillTable_KH(rp_TTKH.getAll_KH());
         this.fillTable_HDC(rp_HDC.getAll_HDC6());
-        
+        txt_TienCoc.setText("0");
        txt_TenNhanVien.setText(tenNV);
         txt_MaNV.setText(maNV);
     }
